@@ -2,41 +2,8 @@ import React from 'react';
 import "../static/stylesheets/App.css";
 
 const OnlineExhibitionListContainer = () => {
-
-
     return (
-        <div id="app">
-            <header>
-                <h1>
-                    <a href="">
-                        <img src={require("../img/h1_logo.png")} alt="" />
-                        <img src={require("../img/h1_logo_txt.png")} alt="" />
-                    </a>
-                </h1>
-                <div className="select">
-                    <select>
-                        <option>한국어</option>
-                        <option>english</option>
-                        <option>china</option>
-                        <option>japan</option>
-                    </select>
-                    <div className="select__arrow"></div>
-                </div>
-                <div id="lnb">
-                    <span>
-                        <a href=""><img src={require("../img/ic_youtube.png")} alt="" /></a>
-                        <a href=""><img src={require("../img/ic_facebook.png")} alt="" /></a>
-                        <a href=""><img src={require("../img/ic_instagram.png")} alt="" /></a>
-                    </span>
-                    <ul>
-                        <li><a href="">오프닝세션</a></li>
-                        <li><a href="">컨퍼런스</a></li>
-                        <li><a href="" className="on">온라인전시관</a></li>
-                        <li><a href="">공지 및 이벤트</a></li>
-                        <li><a href="">SNS</a></li>
-                    </ul>
-                </div>
-            </header>
+        <>
             <section id="on_ex_container">
                 <div className="left_section">
                     <h2>
@@ -58,10 +25,10 @@ const OnlineExhibitionListContainer = () => {
                         <h3>부스명 검색</h3>
                         <span>
                             <input type="text" />
-                            <button type="submit"><img src={require("../img/ic_search.png")} alt="" /></button>
+                            <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" /></button>
                         </span>
                     </div>
-                    <p><img src={require("../img/img_com.png")} alt="" /></p>
+                    <p><img src={require("../static/img/img_com.png")} alt="" /></p>
                 </div>
                 <div className="right_section">
                     <div className="content">
@@ -76,25 +43,25 @@ const OnlineExhibitionListContainer = () => {
                             <input type="radio" name="slides" id="slides_3" />
                             <ul>
                                 <li>
-                                    <div><em>㈜휴럼</em><img src={require("../img/img_brand_sm01.png")} alt="" /></div>
-                                    <div><em>㈜시루에 담은 꿈</em><img src={require("../img/img_brand_sm02.png")} alt="" /></div>
-                                    <div><em>㈜제주자연초</em><img src={require("../img/img_brand_sm03.png")} alt="" /></div>
-                                    <div><em>㈜에버그린</em><img src={require("../img/img_brand_sm04.png")} alt="" /></div>
-                                    <div><em>㈜제주자연식품</em><img src={require("../img/img_brand_sm05.png")} alt="" /></div>
+                                    <div><em>㈜휴럼</em><img src={require("../static/img/img_brand_sm01.png")} alt="" /></div>
+                                    <div><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_sm02.png")} alt="" /></div>
+                                    <div><em>㈜제주자연초</em><img src={require("../static/img/img_brand_sm03.png")} alt="" /></div>
+                                    <div><em>㈜에버그린</em><img src={require("../static/img/img_brand_sm04.png")} alt="" /></div>
+                                    <div><em>㈜제주자연식품</em><img src={require("../static/img/img_brand_sm05.png")} alt="" /></div>
                                 </li>
                                 <li>
-                                    <div><em>㈜휴럼</em><img src={require("../img/img_brand_sm01.png")} alt="" /></div>
-                                    <div><em>㈜시루에 담은 꿈</em><img src={require("../img/img_brand_sm02.png")} alt="" /></div>
-                                    <div><em>㈜제주자연초</em><img src={require("../img/img_brand_sm03.png")} alt="" /></div>
-                                    <div><em>㈜에버그린</em><img src={require("../img/img_brand_sm04.png")} alt="" /></div>
-                                    <div><em>㈜제주자연식품</em><img src={require("../img/img_brand_sm05.png")} alt="" /></div>
+                                    <div><em>㈜휴럼</em><img src={require("../static/img/img_brand_sm01.png")} alt="" /></div>
+                                    <div><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_sm02.png")} alt="" /></div>
+                                    <div><em>㈜제주자연초</em><img src={require("../static/img/img_brand_sm03.png")} alt="" /></div>
+                                    <div><em>㈜에버그린</em><img src={require("../static/img/img_brand_sm04.png")} alt="" /></div>
+                                    <div><em>㈜제주자연식품</em><img src={require("../static/img/img_brand_sm05.png")} alt="" /></div>
                                 </li>
                                 <li>
-                                    <div><em>㈜휴럼</em><img src={require("../img/img_brand_sm01.png")} alt="" /></div>
-                                    <div><em>㈜시루에 담은 꿈</em><img src={require("../img/img_brand_sm02.png")} alt="" /></div>
-                                    <div><em>㈜제주자연초</em><img src={require("../img/img_brand_sm03.png")} alt="" /></div>
-                                    <div><em>㈜에버그린</em><img src={require("../img/img_brand_sm04.png")} alt="" /></div>
-                                    <div><em>㈜제주자연식품</em><img src={require("../img/img_brand_sm05.png")} alt="" /></div>
+                                    <div><em>㈜휴럼</em><img src={require("../static/img/img_brand_sm01.png")} alt="" /></div>
+                                    <div><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_sm02.png")} alt="" /></div>
+                                    <div><em>㈜제주자연초</em><img src={require("../static/img/img_brand_sm03.png")} alt="" /></div>
+                                    <div><em>㈜에버그린</em><img src={require("../static/img/img_brand_sm04.png")} alt="" /></div>
+                                    <div><em>㈜제주자연식품</em><img src={require("../static/img/img_brand_sm05.png")} alt="" /></div>
                                 </li>
                             </ul>
                             <div className="arrows">
@@ -107,21 +74,21 @@ const OnlineExhibitionListContainer = () => {
                         </div>
                         <div className="bigimg">
                             <ul>
-                                <li><em>㈜태반의땅 제주 </em><img src={require("../img/img_brand_big01.png")} alt="" /></li>
-                                <li><em>㈜제주자연식품 </em><img src={require("../img/img_brand_big02.png")} alt="" /></li>
-                                <li><em>㈜시루에 담은 꿈</em><img src={require("../img/img_brand_big03.png")} alt="" /></li>
-                                <li><em>㈜태반의땅 제주 </em><img src={require("../img/img_brand_big01.png")} alt="" /></li>
-                                <li><em>㈜제주자연식품 </em><img src={require("../img/img_brand_big02.png")} alt="" /></li>
-                                <li><em>㈜시루에 담은 꿈</em><img src={require("../img/img_brand_big03.png")} alt="" /></li>
-                                <li><em>㈜태반의땅 제주 </em><img src={require("../img/img_brand_big01.png")} alt="" /></li>
-                                <li><em>㈜제주자연식품 </em><img src={require("../img/img_brand_big02.png")} alt="" /></li>
-                                <li><em>㈜시루에 담은 꿈</em><img src={require("../img/img_brand_big03.png")} alt="" /></li>
+                                <li><em>㈜태반의땅 제주 </em><img src={require("../static/img/img_brand_big01.png")} alt="" /></li>
+                                <li><em>㈜제주자연식품 </em><img src={require("../static/img/img_brand_big02.png")} alt="" /></li>
+                                <li><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_big03.png")} alt="" /></li>
+                                <li><em>㈜태반의땅 제주 </em><img src={require("../static/img/img_brand_big01.png")} alt="" /></li>
+                                <li><em>㈜제주자연식품 </em><img src={require("../static/img/img_brand_big02.png")} alt="" /></li>
+                                <li><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_big03.png")} alt="" /></li>
+                                <li><em>㈜태반의땅 제주 </em><img src={require("../static/img/img_brand_big01.png")} alt="" /></li>
+                                <li><em>㈜제주자연식품 </em><img src={require("../static/img/img_brand_big02.png")} alt="" /></li>
+                                <li><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_big03.png")} alt="" /></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 
