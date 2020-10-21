@@ -13,7 +13,6 @@ import Header from './components/header/Header';
 import { Paths } from './paths';
 
 import './static/stylesheets/App.css';
-import './static/stylesheets/Header.css';
 
 const App = () => {
     return (
