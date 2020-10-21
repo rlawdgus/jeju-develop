@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 
+import '../../static/stylesheets/Header.css';
+
 const Header = () => {
     const [language, setLanguage] = useState('ko');
 
