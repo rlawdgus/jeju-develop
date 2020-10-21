@@ -17,13 +17,12 @@ import './static/stylesheets/App.css';
 const App = () => {
     return (
         <>
-            <Header /> 
+            <Header />
             <Switch>
                 <Route path={Paths.index} component={MainPage} exact />
-                <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage}/>
+                <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage} />
                 <Route component={ErrorPage} />
             </Switch>
-
             {/* ----- 신경 ㄴㄴ ----- */}
             <DialogContainer />
             <LoadingContainer />
