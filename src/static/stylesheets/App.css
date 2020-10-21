@@ -83,8 +83,8 @@ a:hover, a:focus, a:active {text-decoration:none;}
 #ex_container .people span:nth-of-type(2){position:absolute;right:19%;bottom:100px;}
 #ex_container .people span:nth-of-type(1){position:absolute;left:16%;bottom:20px;}
 #ex_container .spot .center{display:block;margin:0 auto;text-align:center;margin-top:110px;padding-bottom:500px;}
-#ex_container .spot .center iframe{border:8px solid #a4a5a7}
-button.buy{border-radius:100em;display:block;margin:0 auto;text-align:center;font-size:26px;color:#fff;border:3px solid #fff;background:#777777;padding:15px 25px;}
+#ex_container .spot .center iframe{border:8px solid #a4a5a7; position: relative; z-index: 1000;}
+button.buy{border-radius:100em;display:block;margin:0 auto;text-align:center;font-size:26px;color:#fff;border:3px solid #fff;background:#777777;padding:15px 25px; position: relative; z-index: 100;}
 #ex_container .left{position:absolute;left:0px;width:25%;top:0px;min-height:990px;z-index:70;margin-top:-90px;box-sizing:border-box;
   border-left:400px solid #fcb720;
   border-top:60px solid transparent;
@@ -322,3 +322,81 @@ input.leftch[type="checkbox"]:checked + label span {  background:url(../img/ic_c
 .modal .eventin a{display:inline-block;border-radius:100em;font-size:46px;font-weight: bold;color:#fff;padding:20px 60px;margin-right:15px;}
 a.btin{background:#39a2bf}
 a.btclose{background:#757575}
+
+.modal .eventtxt{position:relative;margin:0 auto;text-align:center;background:#fff;width:720px;height:950px;padding:50px;box-sizing: border-box;}
+.modal .eventtxt h3{display:block;text-align:left;font-size:24px;color:#7d7d7d;}
+.modal .eventtxt span.inf{position:absolute;right:50px;top:55px;color:#005cc2;font-size:15px;font-weight:bold}
+.modal .eventtxt dl{display:block;overflow:hidden;padding:16px 10px;margin:0px;border-bottom:1px solid #bcbbbb;}
+.modal .eventtxt dl.fir{border-top:1px solid #444343;margin-top:20px;}
+.modal .eventtxt dl dt{font-size:17px;float:left;width:30%;text-align:left;position:relative;line-height:35px;}
+.modal .eventtxt dl dt:before{content:'*';display:inline-block;color:#005cc2;font-weight:bold;margin-right:5px;font-size:20px;}
+.modal .eventtxt dl dd{font-size:17px;float:left;width:70%;padding:0px;margin:0px;text-align:left;}
+.modal .eventtxt dl dd input{display:inline-block;border:1px solid #f1f1f1;color:#aba9a9;background-color: #f1f1f1;height:35px;line-height:35px;font-size:14px;font-weight: bold;margin:0 5px;padding:5px;box-sizing: border-box;}
+.modal .eventtxt .privacy{display:block;margin-top:30px;width:100%;}
+.modal .eventtxt .privacy h4{display:block;font-size:15px;color:#555454;margin-bottom:10px;text-align:left;font-weight: bold;}
+.modal .eventtxt .privacy > span{display:block;border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;background-color: #f9fbfd;padding:20px 35px;box-sizing:border-box;text-align:left;overflow-y: scroll;height:185px;line-height:170%;font-size:12px;color:#868484}
+.modal .eventtxt .privacy > span strong{display:block;font-size:13px;color:#868484;}
+.modal .eventtxt .privacy em{display:block;padding:15px 0;font-style:normal;text-align:right;font-size:14px;color:#a0a0a0}
+.modal .eventtxt .privacy em strong{color:#005cc2;font-weight:bold;font-size:20px;}
+.modal .eventtxt a{display:inline-block;border-radius:100em;font-size:46px;font-weight: bold;color:#fff;padding:20px 60px;margin-right:15px;}
+
+#main_container{position:relative;margin:0 auto;background:url(/img/bg_main.png) no-repeat left bottom;width:100%;height: 100%;padding:60px 0;overflow:hidden;box-sizing:border-box}
+.main_content{position:relative;margin:0 auto;text-align:center;width:95%;overflow:hidden;height:700px;}
+.main_content div.movie{float:left;position:relative;margin:0 auto;text-align:center;width:53.7%;height:100%;overflow:hidden;max-width:925px;opacity:1.0;cursor:pointer;}
+.main_content div.movie i{position:absolute;left:0px;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10}
+.main_content div.movie > img{position:absolute;z-index:0;left:0;}
+.main_content div.movie a{position:relative;display:block;z-index:20;margin:0 auto;text-align:center;margin-top:250px;}
+.main_content div.movie > span{position:absolute;width:100%;bottom:40px;color:#fff;font-size:20px;text-align:center;z-index:40;left:0;text-align:center;}
+.main_content div.movie:hover i{opacity:0;transition:all ease 1.0s;}
+
+
+.main_content div.right{float:right;width:46%;overflow:hidden;}
+.main_content div.right .confgo,
+.main_content div.right .onlinego{display:block;position: relative;width:100%;margin:0 auto;text-align:center;margin-bottom: 20px;max-height:345px;}
+.main_content div.right .onlinego i,
+.main_content div.right .confgo i{position:absolute;left:0px;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10}
+.main_content div.right .onlinego img,
+.main_content div.right .confgo img{position:relative;z-index:0;left:0;}
+.main_content div.right .onlinego span,
+.main_content div.right .confgo span {position:absolute;display:block;margin:0 auto;left:37%;z-index:20;color:#fff;border-radius:100em;border:1px solid #fff;top:50%;padding:13px 30px;font-size:28px;}
+.main_content div.right .onlinego h3,
+.main_content div.right .confgo h3{position:absolute;z-index:20;left:0;color:#fff;text-align:center;font-size:44px;width:100%;top:25%;}
+.main_content div.right .confgo:hover i,
+.main_content div.right .onlinego:hover i,
+.main_content div.right .onlinego:hover span,
+.main_content div.right .confgo:hover span,
+.main_content div.right .confgo:hover h3,
+.main_content div.right .onlinego:hover h3{opacity:0;transition:all ease 1.0s;}
+
+.main_content div.speech{display:inline-block;position:relative;margin:0 auto;text-align:center;width:53.7%;height:551px;overflow:hidden;max-width:806px;opacity:1.0;cursor:pointer;margin-left:10px;margin-right:10px;}
+.main_content div.speech i{position:absolute;left:0px;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10}
+.main_content div.speech > img{position:absolute;z-index:0;left:0;}
+.main_content div.speech a{position:relative;display:block;z-index:20;margin:0 auto;text-align:center;margin-top:200px;}
+.main_content div.speech > span{position:absolute;width:100%;bottom:40px;color:#fff;font-size:20px;text-align:center;z-index:40;left:0;text-align:center;}
+.main_content div.speech:hover i{opacity:0;transition:all ease 1.0s;}
+
+.tab{position:relative;margin:0 auto;text-align:center;}
+.tab ul{padding:0px;margin:0px;margin-bottom:30px;}
+.tab ul li{display:inline-block;margin:0 5px;}
+.tab ul li a{display:block;color:#7c7c7c;background:#d7d7d7;border-radius:100em;line-height:37px;width:130px;font-size:19px;font-weight:bold;}
+.tab ul li a:hover,
+.tab ul li a.on,
+.tab ul li a:active{color:#fff;background:#228ba8;}
+
+#comm_container{position:relative;margin:0 auto;width:100%;height: 100%;padding:60px 0;overflow:hidden;box-sizing:border-box}
+.noticebox{display:block;margin:0 auto;max-width:1072px;padding-top:40px;}
+.noticebox > span{display:block;text-align:left;color:#7d7d7d;font-size:24px;font-weight:bold;padding-bottom:25px;}
+.noticebox > span strong{color:#4869d2}
+.noticebox table{width:100%;border-collapse:collapse ;border-spacing: 0;border-top:1px solid #616161}
+.noticebox table caption{display:none;}
+.noticebox table th{text-align:center;font-size:24px;font-weight:bold;color:#7d7d7d;padding:20px 0;border-bottom:1px solid #cfcfcf;}
+.noticebox table td {padding:30px 0;color:#707070;font-size:21px;text-align:center;border-bottom:1px solid #cfcfcf;}
+.noticebox table td a{color:#707070;}
+.noticebox table td:nth-of-type(2){text-align:left;}
+.noticebox table td a.go{display:block;margin:0 auto;background:#f3be38;color:#fff;width:100px;border-radius:10px;line-height:41px;font-size:19px;color:#fff;}
+.noticebox .tnavi{display:block;margin:0 auto;text-align:center;padding-top:60px;}
+.noticebox .tnavi ul{padding:0px;margin:0px;}
+.noticebox .tnavi ul li{display:inline-block;border:1px solid #969696;width:44px;height:44px;}
+.noticebox .tnavi ul li a{display:block;margin:0 auto;line-height:44px;text-align:center;color:#8a8a8a;font-size:22px;}
+.noticebox .tnavi ul li:hover{border:1px solid #000}
+.noticebox .tnavi ul li:hover a{color:#000;font-weight:bold;}
