@@ -6,7 +6,6 @@ import A4 from '../static/img/img_a4.jpg';
 import CenterBooth from '../static/img/img_center_booth.png';
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
-// import Ytube from 'https://www.youtube.com/embed/G9ntaxClfrA'
 
 const OnlineExhibitionContainer = () => {
 
@@ -14,7 +13,7 @@ const OnlineExhibitionContainer = () => {
 
     const onClick = useCallback(() => {
         history.push(Paths.exhibition + '/list');
-    }, []);
+    }, [history]);
 
     return (
         <section id="ex_container">

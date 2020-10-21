@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import ErrorPage from './pages/ErrorPage';
-import MainPage from './pages/MainPage';
+import HomePage from './pages/HomePage';
 import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
 
 import DialogContainer from './container/assets/DialogContainer';
@@ -19,7 +19,7 @@ const App = () => {
         <>
             <Header /> 
             <Switch>
-                <Route path={Paths.index} component={MainPage} exact />
+                <Route path={Paths.index} component={HomePage} exact />
                 <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage}/>
                 <Route component={ErrorPage} />
             </Switch>
