@@ -8,7 +8,7 @@ import HeaderNavItem from './HeaderNavItem'
 export default ({ language }) => {
     const [navList, setNavList] = useState([
         {
-            id: 0,
+            id: 1,
             ko: "오프닝세션",
             en: "Opening-Session",
             ch: "중국어",
@@ -16,7 +16,7 @@ export default ({ language }) => {
             checked: false
         },
         {
-            id: 1,
+            id: 2,
             ko: "컨퍼런스",
             en: "Conference",
             ch: "중국어",
@@ -24,7 +24,7 @@ export default ({ language }) => {
             checked: false
         },
         {
-            id: 2,
+            id: 3,
             ko: "온라인전시관",
             en: "Online-Exhibition",
             ch: "중국어",
@@ -32,7 +32,7 @@ export default ({ language }) => {
             checked: false
         },
         {
-            id: 3,
+            id: 4,
             value: "ko",
             ko: "공지 및 이벤트",
             en: "Notice",
@@ -41,7 +41,7 @@ export default ({ language }) => {
             checked: false
         },
         {
-            id: 4,
+            id: 5,
             value: "ko",
             ko: "SNS",
             en: "SNS",
@@ -57,6 +57,8 @@ export default ({ language }) => {
                 item.id === id ? {...item, checked:true} : {...item, checked:false}
             )
         )
+
+        console.log(navList)
     }, [navList])
 
     return (
