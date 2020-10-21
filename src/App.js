@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import ErrorPage from './pages/ErrorPage';
+import MainPage from './pages/MainPage';
+import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
+
+import DialogContainer from './container/assets/DialogContainer';
+import LoadingContainer from './container/assets/LoadingContainer';
+
+import Header from './components/header/Header';
+
+import { Paths } from './paths';
+
+import './static/stylesheets/App.css';
+import './static/stylesheets/Header.css';
+
+const App = () => {
+    return (
+        <>
+            <Header /> 
+            <Switch>
+                <Route path={Paths.index} component={MainPage} exact />
+                <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage}/>
+                <Route component={ErrorPage} />
+            </Switch>
+
+            {/* ----- 신경 ㄴㄴ ----- */}
+            <DialogContainer />
+            <LoadingContainer />
+        </>
+    );
+};
 
 export default App;
