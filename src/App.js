@@ -7,8 +7,10 @@ import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
 
 import DialogContainer from './container/assets/DialogContainer';
 import LoadingContainer from './container/assets/LoadingContainer';
+import OnlineExhibitionEventContainer from './container/OnlineExhibitionEventContainer';
 
 import Header from './components/header/Header';
+
 
 import { Paths } from './paths';
 
@@ -24,6 +26,7 @@ const App = () => {
                 <Route component={ErrorPage} />
             </Switch>
 
+            <OnlineExhibitionEventContainer />
             {/* ----- 신경 ㄴㄴ ----- */}
             <DialogContainer />
             <LoadingContainer />
