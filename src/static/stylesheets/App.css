@@ -338,6 +338,7 @@ a.btclose{background:#757575}
 .modal .eventtxt .privacy > span strong{display:block;font-size:13px;color:#868484;}
 .modal .eventtxt .privacy em{display:block;padding:15px 0;font-style:normal;text-align:right;font-size:14px;color:#a0a0a0}
 .modal .eventtxt .privacy em strong{color:#005cc2;font-weight:bold;font-size:20px;}
+.modal .eventtxt a{display:inline-block;border-radius:100em;font-size:46px;font-weight: bold;color:#fff;padding:20px 60px;margin-right:15px;}
 
 #main_container{position:relative;margin:0 auto;background:url(/img/bg_main.png) no-repeat left bottom;width:100%;height: 100%;padding:60px 0;overflow:hidden;box-sizing:border-box}
 .main_content{position:relative;margin:0 auto;text-align:center;width:95%;overflow:hidden;height:700px;}
