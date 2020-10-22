@@ -44,11 +44,11 @@ const OnlineExhibitionEventContainer = () => {
     const onChange = (e) => action(e.target);
 
     const history = useHistory();
-    const inputCheck = useCallback(() => {
+    const inputCheck = useCallback((event) => {
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
         if (!phone.match(PhoneRegExp)) {
             alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
-
+             event.preventDefault()
         }
     }, [state]);
 
