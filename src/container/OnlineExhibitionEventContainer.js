@@ -1,9 +1,10 @@
-import React, { useCallback, useReducer, useEffect } from 'react';
+import React, { useCallback, useReducer } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { secondModalOpen, modalClose } from '../store/modal';
 import { Backdrop } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 /* Redux */
 
 function reducer(state, action) {
@@ -42,12 +43,14 @@ const OnlineExhibitionEventContainer = () => {
     const { name, position, title, phone, tel, front_email, back_email } = state;
     const onChange = (e) => action(e.target);
 
-    useEffect(() => {
+    const history = useHistory();
+    const inputCheck = useCallback(() => {
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
         if (!phone.match(PhoneRegExp)) {
-            alert("asdf");
+            alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
+
         }
-    }, [phone]);
+    }, [state]);
 
     return (
         <>
@@ -115,7 +118,7 @@ const OnlineExhibitionEventContainer = () => {
                                 <label for="p1"><span></span> </label>
                             </em>
                         </div>
-                        <a href="" className="btin">응모하기 </a>
+                        <a href="" className="btin" onClick={inputCheck}>응모하기 </a>
                     </div>
                 }
             </div>
