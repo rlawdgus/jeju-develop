@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
+import ConferencePage from './pages/ConferencePage';
 
 import DialogContainer from './container/assets/DialogContainer';
 import LoadingContainer from './container/assets/LoadingContainer';
@@ -39,6 +40,7 @@ const App = () => {
             <Switch>
                 <Route path={Paths.index} component={HomePage} exact />
                 <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage} />
+                <Route path={Paths.conference} component={ConferencePage} />
                 <Route component={ErrorPage} />
             </Switch>
 
