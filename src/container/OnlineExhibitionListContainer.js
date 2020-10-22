@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDocumentList } from '../api/OnlineExhibitionAPI';
@@ -82,6 +82,7 @@ const OnlineExhibitionListContainer = () => {
 
     const listClick = async (e) => {
         setType(e.target.value);
+        // type별로 결과가 다름
         // const res = await getDocumentList(e.target.value);
         const res = await getDocumentList(1);
         // console.log(res[0]);
@@ -89,6 +90,19 @@ const OnlineExhibitionListContainer = () => {
         setPhoto(URL + res[0].photo_1);
         setTest(<SwiperContainer dataSet={res[0]} />)
     }
+
+    // 초기 화면 설정
+    const setInit = async () => {
+        setType(0);
+        const res = await getDocumentList(1); // default : 0
+        setTitle(res[0].title);
+        setPhoto(URL + res[0].photo_1);
+        setTest(<SwiperContainer dataSet={res[0]} />)
+    }
+
+    useEffect(() => {
+        setInit();
+    }, [])
 
     return (
         <>
