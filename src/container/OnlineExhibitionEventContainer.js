@@ -5,7 +5,7 @@ import { secondModalOpen, modalClose } from '../store/modal';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Backdrop } from '@material-ui/core';
-// import { PostUserEvent } from '../api/PostUserEvent';
+import { postUserEvent } from '../api/UserAPI';
 /* Redux */
 
 function reducer(state, action) {
@@ -47,26 +47,28 @@ const OnlineExhibitionEventContainer = () => {
     const { name, position, title, phone, tel, email } = state;
     const onChange = (e) => action(e.target);
 
+    // console.log(state);
     const inputCheck = useCallback(async (e) => {
+    // console.log(state);
+
         e.preventDefault();
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
         if (!phone.match(PhoneRegExp)) {
             alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
         }
 
-        console.log(name, position, email, phone, tel)
+        // console.log(name, position, email, phone, tel)
 
-        // const result = await PostUserEvent({
-        //     name: name,
-        //     position: position,
-        //     email: email,
-        //     phone: phone
-        //   });
-
-        //   console.log(result)
+        const result = await postUserEvent({
+            name: name,
+            position: position,
+            email: email,
+            phone: phone
+          });
+        console.log(result);
 
         //   sessionStorage.setItem('signed_token', TOKEN);
-    }, [phone]);
+    }, [name, position, email, phone]);
 
     return (
         <>

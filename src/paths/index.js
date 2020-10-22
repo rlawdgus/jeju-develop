@@ -4,5 +4,6 @@ export const Paths = {
     session: '/Opening-Session',
     conference: '/Conference',
     notice: '/Notice',
-    sns: '/SNS'
+    sns: '/SNS',
+    api: 'http://14.63.174.102:84/api/v1'
 };

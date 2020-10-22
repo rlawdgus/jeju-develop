@@ -16,16 +16,16 @@ export default () => {
 
     return (
         <section id="main_container">
-            <div class="main_content">
-                <div class="movie">
+            <div className="main_content">
+                <div className="movie">
                     <i></i>
                     <img src={BgMovie} alt="" />
                     <a href="#!"><img src={BtMovieGo} alt="" /></a>
                     <span> {'<'}제 2회 6차산업제주국제박람회{'>'} </span>
                 </div>
-                <div class="right">
+                <div className="right">
                     <Link to={Paths.exhibition} >
-                        <div class="onlinego">
+                        <div className="onlinego">
                             <i></i>
                             <img src={BgOnlineGo} alt="" />
                             <h3>{language === 'ko' ? "온라인전시관" : "Online-exhibition"}</h3>
@@ -33,7 +33,7 @@ export default () => {
                         </div>
                     </Link>
                     <Link to={Paths.conference} >
-                        <div class="confgo">
+                        <div className="confgo">
                             <i></i>
                             <img src={BgConfGo} alt="" />
                             <h3>{language === 'ko' ? "컨퍼런스관" : "Conference"}</h3>

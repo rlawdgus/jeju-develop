@@ -11,28 +11,11 @@ import DialogContainer from './container/assets/DialogContainer';
 import LoadingContainer from './container/assets/LoadingContainer';
 import OnlineExhibitionEventContainer from './container/OnlineExhibitionEventContainer';
 
-import Header from './components/header/Header';
-
-import { getDocumentList } from './api/GetDocumentList'
-import { getDocumentList2 } from './api/GetDocumentList2'
-import { postUserEvent } from './api/PostUserEvent'
-import { showDocument } from './api/ShowDocument'
-import { showDocument2 } from './api/ShowDocument2'
-
+import Header from './components/header/Header'
 
 import { Paths } from './paths';
 
 import './static/stylesheets/App.css';
-
-const debug = async () => {
-    const result = await getDocumentList(1)
-    const result2 = await showDocument()
-    const result3 = await getDocumentList2()
-    const result4 = await showDocument2()
-    const result5 = await postUserEvent("name", "position", "email", "phone")
-
-    console.log(result, result2, result3, result4, result5)
-}
 
 const App = () => {
     return (
@@ -50,8 +33,6 @@ const App = () => {
             {/* ----- 신경 ㄴㄴ ----- */}
             <DialogContainer />
             <LoadingContainer />
-
-            <div onClick={debug}>API TEST</div>
         </>
     );
 };

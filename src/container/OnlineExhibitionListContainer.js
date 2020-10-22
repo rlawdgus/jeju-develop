@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getDocumentList } from '../api/GetDocumentList';
+import { getDocumentList } from '../api/OnlineExhibitionAPI';
 
 import { firstModalOpen } from '../store/modal';
+
+import SwiperContainer from './SwiperContainer'
 
 const OnlineExhibitionListContainer = () => {
 
@@ -71,10 +73,18 @@ const OnlineExhibitionListContainer = () => {
 
     const firstOpen = useCallback(() => dispatch(firstModalOpen()), [dispatch]);
 
+    const [test, setTest] = useState('')
+    const [title, setTitle] = useState('');
+    const [photo, setPhoto] = useState('');
+
     const listClick = async (e) => {
         setType(e.target.value);
-        const res = await getDocumentList(e.target.value);
-        console.log(res);
+        // const res = await getDocumentList(e.target.value);
+        const res = await getDocumentList(1);
+        // console.log(res[0]);
+        setTitle(res[0].title);
+        setPhoto(res[0].photo_1);
+        setTest(<SwiperContainer dataSet={res[0]} />)
     }
 
     return (
@@ -107,7 +117,8 @@ const OnlineExhibitionListContainer = () => {
                         <div className="subtop menu01">
                             <h3><strong>건강식품</strong>관 </h3>
                         </div>
-                        <div className="csslider infinity" id="slider1">
+                        {test}
+                        {/* <div className="csslider infinity" id="slider1">
                             <i className="leftbg"></i>
                             <i className="rightbg"></i>
                             <input type="radio" name="slides" id="slides_1" />
@@ -143,18 +154,18 @@ const OnlineExhibitionListContainer = () => {
                                 <label className="goto-first" htmlFor="slides_1"></label>
                                 <label className="goto-last" htmlFor="slides_3"></label>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="bigimg">
                             <ul>
-                                <li><em>㈜태반의땅 제주 </em><img src={require("../static/img/img_brand_big01.png")} alt="" onClick={firstOpen} /></li>
-                                <li><em>㈜제주자연식품 </em><img src={require("../static/img/img_brand_big02.png")} alt="" /></li>
-                                <li><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_big03.png")} alt="" /></li>
-                                <li><em>㈜태반의땅 제주 </em><img src={require("../static/img/img_brand_big01.png")} alt="" /></li>
-                                <li><em>㈜제주자연식품 </em><img src={require("../static/img/img_brand_big02.png")} alt="" /></li>
-                                <li><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_big03.png")} alt="" /></li>
-                                <li><em>㈜태반의땅 제주 </em><img src={require("../static/img/img_brand_big01.png")} alt="" /></li>
-                                <li><em>㈜제주자연식품 </em><img src={require("../static/img/img_brand_big02.png")} alt="" /></li>
-                                <li><em>㈜시루에 담은 꿈</em><img src={require("../static/img/img_brand_big03.png")} alt="" /></li>
+                                <li><em>{title} </em><img src={require("../static/img/img_brand_big01.png")} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img src={photo} alt="1" /></li>
+                                <li><em>{title}</em><img src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img src={photo} alt="1" /></li>
+                                <li><em>{title}</em><img src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img src={photo} alt="1" /></li>
+                                <li><em>{title}</em><img src={photo} alt="1" /></li>
                             </ul>
                         </div>
                     </div>

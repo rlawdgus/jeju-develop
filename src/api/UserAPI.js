@@ -1,9 +1,11 @@
 import Axios from 'axios'
 
-const URL = "http://14.63.174.102:84/api/v1/user/add_attend_user";
+import { Paths } from '../paths/index'
+
+const URL = Paths.api
 
 export const postUserEvent = async ({ name, position, email, phone }) => {
-    const REQUEST_URL = URL;
+    const query = `${URL}/user/add_attend_user`
 
     const formData = new FormData();
     formData.append('name', name);
@@ -11,8 +13,7 @@ export const postUserEvent = async ({ name, position, email, phone }) => {
     formData.append('email', email);
     formData.append('phone', phone);
     
-    const res = await Axios.post(REQUEST_URL, formData);
+    const res = await Axios.post(query, formData);
 
-    // console.log(res, formData)
     return res.data;
 }
