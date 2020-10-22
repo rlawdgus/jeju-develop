@@ -1,9 +1,13 @@
 import React, { useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-import {Paths} from '../paths/index'
+import { Paths } from '../paths/index'
 
 export default () => {
+
+    const language = useSelector(state => state.language.current);
+
     const history = useHistory();
 
     const onClick = useCallback(() => {
@@ -14,8 +18,8 @@ export default () => {
         <section id="main_container">
             <div className="tab">
                 <ul>
-                    <li><Link to={Paths.session}>환영사</Link></li>
-                    <li><Link className="on" onClick={onClick}>축사</Link></li>
+                    <li><Link to={Paths.session}>{language === 'ko' ? "환영사" : "Welcome Address"}</Link></li>
+                    <li><Link className="on" onClick={onClick}>{language === 'ko' ? "축사" : "Congratulatory message"}</Link></li>
                 </ul>
             </div>
             <div className="main_content">
@@ -23,14 +27,14 @@ export default () => {
                     <i></i>
                     <img src={require("../static/img/bg_speech.png")} alt="" />
                     <a href=""><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
-                    <span> {'<'}이름{'('}소속{')>'} </span>
+                    <span> {language === 'ko' ? "이름(소속)" : "Title"} </span>
                 </div>
 
                 <div className="speech">
                     <i></i>
                     <img src={require("../static/img/bg_speech.png")} alt="" />
                     <a href=""><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
-                    <span> {'<'}이름{'('}소속{')>'} </span>
+                    <span> {language === 'ko' ? "이름(소속)" : "Title"} </span>
                 </div>
             </div>
         </section>
