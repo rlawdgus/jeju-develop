@@ -1,13 +1,21 @@
 import React, { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 
 import '../../static/stylesheets/Header.css';
+import { setLanguage } from '../../store/language';
 
 const Header = () => {
-    const [language, setLanguage] = useState('ko');
+    const language = useSelector(state => state.language);
+    const reduxDispatch = useDispatch();
 
-    const selectLanguage = (e) => setLanguage(e.target.value);
+    console.log(language);
+
+    const selectLanguage = useCallback(e => {
+        // 언어 변경
+        reduxDispatch(setLanguage(e.target.value));
+    }, []);
 
     const [navList, setNavList] = useState([
         {
@@ -67,7 +75,7 @@ const Header = () => {
     return (
         <header>
             <HeaderLogo selectLanguage={selectLanguage} setDefault={setDefault} />
-            <HeaderNav language={language} navList={navList} selected={selected} />
+            <HeaderNav language={language.current} navList={navList} selected={selected} />
         </header>
     );
 };
