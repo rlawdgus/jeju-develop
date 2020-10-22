@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import { Paths } from '../paths/index'
 
@@ -10,6 +11,9 @@ import BgConfGo from '../static/img/bg_confgo.png'
 
 
 export default () => {
+
+    const language = useSelector(state => state.language.current);
+
     return (
         <section id="main_container">
             <div class="main_content">
@@ -24,16 +28,16 @@ export default () => {
                         <div class="onlinego">
                             <i></i>
                             <img src={BgOnlineGo} alt="" />
-                            <h3>온라인전시관</h3>
-                            <span>바로가기  {'>'}</span>
+                            <h3>{language === 'ko' ? "온라인전시관" : "Online-exhibition"}</h3>
+                            <span>{language === 'ko' ? "바로가기" : "GO"}  {'>'}</span>
                         </div>
                     </Link>
                     <Link to={Paths.conference} >
                         <div class="confgo">
                             <i></i>
                             <img src={BgConfGo} alt="" />
-                            <h3>컨퍼런스관</h3>
-                            <span>바로가기  {'>'}</span>
+                            <h3>{language === 'ko' ? "컨퍼런스관" : "Conference"}</h3>
+                            <span>{language === 'ko' ? "바로가기" : "GO"}  {'>'}</span>
                         </div>
                     </Link>
                 </div>

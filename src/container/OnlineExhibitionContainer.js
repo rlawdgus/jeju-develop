@@ -1,13 +1,19 @@
 import React, { useCallback } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import PeoLeft from '../static/img/img_peo_left.png';
 import PeoRight from '../static/img/img_peo_right.png';
 import A4 from '../static/img/img_a4.jpg';
 import CenterBooth from '../static/img/img_center_booth.png';
-import { useHistory } from 'react-router-dom';
+
 import { Paths } from '../paths';
+import { useSelector } from 'react-redux';
 
 const OnlineExhibitionContainer = () => {
+
+    const language = useSelector(state => state.language.current);
+
     const history = useHistory();
 
     const onClick = useCallback(() => {
@@ -47,7 +53,7 @@ const OnlineExhibitionContainer = () => {
                     ></iframe>
                 </div>
                 <button className="buy" onClick={onClick}>
-                    제품 구매하러 가기 {'>'}
+                    {language === 'ko' ? "제품 구매하러 가기" : "Purchase"} {'>'}
                 </button>
             </div>
         </section>

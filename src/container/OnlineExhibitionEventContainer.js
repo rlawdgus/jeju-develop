@@ -1,8 +1,9 @@
 import React, { useCallback, useReducer } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
 import { useSelector, useDispatch } from 'react-redux';
+
 import { secondModalOpen, modalClose } from '../store/modal';
+
+import { makeStyles } from '@material-ui/core/styles';
 import { Backdrop } from '@material-ui/core';
 // import { PostUserEvent } from '../api/PostUserEvent';
 /* Redux */
@@ -21,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const OnlineExhibitionEventContainer = () => {
+
+    const language = useSelector(state => state.language.current);
 
     const classes = useStyles();
 
@@ -41,10 +44,10 @@ const OnlineExhibitionEventContainer = () => {
         // frontEmail: '',
         // backEmail: ''
     });
-    const { name, position, title, phone, tel, email} = state;
+    const { name, position, title, phone, tel, email } = state;
     const onChange = (e) => action(e.target);
 
-    const inputCheck = useCallback(async(e) => {
+    const inputCheck = useCallback(async (e) => {
         e.preventDefault();
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
         if (!phone.match(PhoneRegExp)) {
@@ -81,30 +84,40 @@ const OnlineExhibitionEventContainer = () => {
                 {/* event2 */}
                 {second &&
                     <div className="eventtxt">
-                        <h3>이벤트 참여를 위한 회원정보 입력</h3>
-                        <span className="inf">*는 필수 입력 항목 입니다.</span>
+                        {language === 'ko' ? <h3 style={{ fontWeight: 'bold' }}>이벤트 참여를 위한 회원정보 입력</h3>
+                            : <><h3>Entering member information</h3><p /><div>to participate in the event</div></>}
+                        <span className="inf">{language === 'ko' ? "*는 필수 입력 항목 입니다." : "*"}</span>
                         <dl className="fir">
-                            <dt>이름</dt>
-                            <dd><input type="text" placeholder="영문, 숫자, _ 만 입력 가능, 최소 3자 이상" style={{ width: '100%' }} name="name" value={name} onChange={onChange} /></dd>
+                            <dt>{language === 'ko' ? "이름" : "Name"}</dt>
+                            <dd>
+                                <input
+                                    type="text"
+                                    placeholder={language === 'ko' ? "영문, 숫자, _ 만 입력 가능, 최소 3자 이상" : "Only English, numbers, and_can be entered, at least 3 characters"}
+                                    style={{ width: '100%' }}
+                                    name="name"
+                                    value={name}
+                                    onChange={onChange}
+                                />
+                            </dd>
                         </dl>
                         <dl>
-                            <dt>소속 </dt>
+                            <dt>{language === 'ko' ? "소속" : "Organization"} </dt>
                             <dd><input type="text" style={{ width: '100%' }} name="position" value={position} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>직함</dt>
+                            <dt>{language === 'ko' ? "직함" : "Title"}</dt>
                             <dd><input type="text" style={{ width: '100%' }} name="title" value={title} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>휴대폰 번호 </dt>
+                            <dt>{language === 'ko' ? "휴대폰 번호" : "Mobile"} </dt>
                             <dd><input type="text" style={{ width: '100%' }} name="phone" value={phone} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>전화 번호 </dt>
+                            <dt>{language === 'ko' ? "전화 번호" : "Phone"} </dt>
                             <dd><input type="text" style={{ width: '100%' }} name="tel" value={tel} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>이메일 주소 </dt>
+                            <dt>{language === 'ko' ? "이메일 주소" : "e-mail"} </dt>
                             <dd>
                                 <input type="text" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
                                 {/* <input type="text" style={{ width: '43%' }} name="frontEmail" value={frontEmail} onChange={onChange} />
@@ -113,9 +126,9 @@ const OnlineExhibitionEventContainer = () => {
                             </dd>
                         </dl>
                         <div className="privacy">
-                            <h4>· 개인정보취급방침</h4>
+                            <h4>· {language === 'ko' ? "개인정보취급방침" : "Privacy policy"}</h4>
                             <span>
-                                <strong>개인정보취급방침</strong>
+                                <strong>{language === 'ko' ? "개인정보취급방침" : "Privacy policy"}</strong>
 
                                     ㈜이노윙(이하 “회사”)는 정보통신망 이용촉진 및 정보보호에 관한 법률, 개인정보보호법에 따라
                                     모든 고객님의 개인정보보호 및 권익을 보호하기 위하여 수집, 보유된 정보를 적법하고 적정하게 취급할 것입니다.
@@ -127,12 +140,12 @@ const OnlineExhibitionEventContainer = () => {
                                     제12조 (서비스의 이용 신청에 대한 승낙과 거절)
                                 </span>
                             <em>
-                                <strong>*</strong>동의합니다.
+                                <strong>*</strong>{language === 'ko' ? "동의합니다. " : "I agree. "}
                                 <input type="checkbox" id="p1" name="" className="leftch" />
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
-                        <a href="" className="btin" onClick={inputCheck}>응모하기 </a>
+                        <a href="" className="btin" onClick={inputCheck}>{language === 'ko' ? "응모하기" : "submit"} </a>
                     </div>
                 }
             </div>
