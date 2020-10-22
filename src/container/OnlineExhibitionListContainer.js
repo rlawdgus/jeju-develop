@@ -7,7 +7,10 @@ import { firstModalOpen } from '../store/modal';
 
 import SwiperContainer from './SwiperContainer'
 
+
 const OnlineExhibitionListContainer = () => {
+
+    const URL = "http://14.63.174.102:84";
 
     const language = useSelector(state => state.language.current);
 
@@ -83,7 +86,7 @@ const OnlineExhibitionListContainer = () => {
         const res = await getDocumentList(1);
         // console.log(res[0]);
         setTitle(res[0].title);
-        setPhoto(res[0].photo_1);
+        setPhoto(URL + res[0].photo_1);
         setTest(<SwiperContainer dataSet={res[0]} />)
     }
 
@@ -157,15 +160,15 @@ const OnlineExhibitionListContainer = () => {
                         </div> */}
                         <div className="bigimg">
                             <ul>
-                                <li><em>{title} </em><img src={require("../static/img/img_brand_big01.png")} alt="1" onClick={firstOpen} /></li>
-                                <li><em>{title} </em><img src={photo} alt="1" /></li>
-                                <li><em>{title}</em><img src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img src={photo} alt="1" /></li>
-                                <li><em>{title}</em><img src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img src={photo} alt="1" /></li>
-                                <li><em>{title}</em><img src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title}</em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title}</em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title}</em><img className="bigimgsize" src={photo} alt="1" /></li>
                             </ul>
                         </div>
                     </div>
