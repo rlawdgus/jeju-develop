@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import { getDoucmentList } from '../api/GetDoucumentList';
+import { getDocumentList } from '../api/GetDocumentList';
 
 import { useDispatch } from 'react-redux';
 import { firstModalOpen } from '../store/modal';
@@ -62,8 +62,8 @@ const OnlineExhibitionListContainer = () => {
 
     const listClick = async (e) => {
         setType(e.target.value);
-        const res = await getDoucmentList(e.target.value);
-        // console.log(res);
+        const res = await getDocumentList(e.target.value);
+        console.log(res);
     }
 
     return (

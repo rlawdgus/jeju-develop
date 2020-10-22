@@ -60,8 +60,6 @@ const Header = () => {
                 item.id === id ? {...item, checked:true} : {...item, checked:false}
             )
         )
-
-        console.log(navList)
     }, [navList])
 
     const setDefault = () => setNavList(navList.map(item => ({...item, checked:false})))

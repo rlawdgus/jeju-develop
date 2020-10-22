@@ -4,12 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { secondModalOpen, modalClose } from '../store/modal';
 import { Backdrop } from '@material-ui/core';
+// import { PostUserEvent } from '../api/PostUserEvent';
 /* Redux */
 
 function reducer(state, action) {
     return {
         ...state,
-        [action.name]: action.value.trim(),
+        [action.name]: action.value,
     };
 }
 
@@ -36,19 +37,32 @@ const OnlineExhibitionEventContainer = () => {
         title: '', // 직함
         phone: '', // 휴대폰 번호
         tel: '', // 전화번호
-        front_email: '',
-        back_email: ''
+        email: ''
+        // frontEmail: '',
+        // backEmail: ''
     });
-    const { name, position, title, phone, tel, front_email, back_email } = state;
+    const { name, position, title, phone, tel, email} = state;
     const onChange = (e) => action(e.target);
 
-    const inputCheck = useCallback((e) => {
+    const inputCheck = useCallback(async(e) => {
         e.preventDefault();
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
         if (!phone.match(PhoneRegExp)) {
             alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
         }
 
+        console.log(name, position, email, phone, tel)
+
+        // const result = await PostUserEvent({
+        //     name: name,
+        //     position: position,
+        //     email: email,
+        //     phone: phone
+        //   });
+
+        //   console.log(result)
+
+        //   sessionStorage.setItem('signed_token', TOKEN);
     }, [phone]);
 
     return (
@@ -92,9 +106,10 @@ const OnlineExhibitionEventContainer = () => {
                         <dl>
                             <dt>이메일 주소 </dt>
                             <dd>
-                                <input type="text" style={{ width: '43%' }} name="front_email" value={front_email} onChange={onChange} />
+                                <input type="text" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
+                                {/* <input type="text" style={{ width: '43%' }} name="frontEmail" value={frontEmail} onChange={onChange} />
                                 @
-                                <input type="text" style={{ width: '45%' }} name="back_email" value={back_email} onChange={onChange} />
+                                <input type="text" style={{ width: '45%' }} name="backEmail" value={backEmail} onChange={onChange} /> */}
                             </dd>
                         </dl>
                         <div className="privacy">
