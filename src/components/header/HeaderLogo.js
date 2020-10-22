@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import Logo from '../../static/img/h1_logo.png';
 import LogoText from '../../static/img/h1_logo_txt.png';
 
-export default ({ selectLanguage }) => {
+export default ({ selectLanguage, setDefault }) => {
     return (
         <>
             <h1>
-                <Link to="/">
+                <Link to="/" onClick={setDefault} >
                     <img src={Logo} alt="" />
                     <img src={LogoText} alt="" />
                 </Link>

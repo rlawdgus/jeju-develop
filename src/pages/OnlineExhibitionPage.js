@@ -7,8 +7,8 @@ const OnlineExhibitionPage = ({ match }) => {
     
     return (
         <>
-            {mode === 'list' ? <OnlineExhibitionListContainer />
-            : <OnlineExhibitionContainer />}
+            {mode === 'list' ? <OnlineExhibitionContainer />
+            : <OnlineExhibitionListContainer />}
              
         </>
     );
