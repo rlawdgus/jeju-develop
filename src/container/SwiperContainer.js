@@ -17,23 +17,37 @@ import '../static/stylesheets/Swiper.scss'
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default ({ dataSet }) => {
-    console.log(dataSet)
+  const URL = "http://14.63.174.102:84";
+    
   return (
     <Swiper
       spaceBetween={0}
-      slidesPerView={3}
+      slidesPerView={5}
       navigation
-      pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
+      loop
+      autoplay
+      delay={2500}
     >
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
-      <SwiperSlide>{dataSet.title}</SwiperSlide>
+      <SwiperSlide>
+        {dataSet.title}
+        <img style={{ width: 320, height: 200 }} src={URL + dataSet.photo_1} />
+      </SwiperSlide>
+      <SwiperSlide>
+        {dataSet.title}
+        <img style={{ width: 320, height: 200 }} src={URL + dataSet.photo_1} />
+      </SwiperSlide>
+      <SwiperSlide>
+        {dataSet.title}
+        <img style={{ width: 320, height: 200 }} src={URL + dataSet.photo_1} />
+      </SwiperSlide>
+      <SwiperSlide>
+        {dataSet.title}
+        <img style={{ width: 320, height: 200 }} src={URL + dataSet.photo_1} />
+      </SwiperSlide>
+      <SwiperSlide>
+        {dataSet.title}
+        <img style={{ width: 320, height: 200 }} src={URL + dataSet.photo_1} />
+      </SwiperSlide>
     </Swiper>
   );
 };
