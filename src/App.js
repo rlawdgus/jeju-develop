@@ -11,18 +11,18 @@ import OnlineExhibitionEventContainer from './container/OnlineExhibitionEventCon
 
 import Header from './components/header/Header';
 
-import {getDocumentList} from './api/GetDocumentList'
-import {getDocumentList2} from './api/GetDocumentList2'
-import {postUserEvent} from './api/PostUserEvent'
-import {showDocument} from './api/ShowDocument'
-import {showDocument2} from './api/ShowDocument2'
+import { getDocumentList } from './api/GetDocumentList'
+import { getDocumentList2 } from './api/GetDocumentList2'
+import { postUserEvent } from './api/PostUserEvent'
+import { showDocument } from './api/ShowDocument'
+import { showDocument2 } from './api/ShowDocument2'
 
 
 import { Paths } from './paths';
 
 import './static/stylesheets/App.css';
 
-const debug = async() => {
+const debug = async () => {
     const result = await getDocumentList(1)
     const result2 = await showDocument()
     const result3 = await getDocumentList2()

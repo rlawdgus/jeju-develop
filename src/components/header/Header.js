@@ -10,7 +10,7 @@ const Header = () => {
     const language = useSelector(state => state.language);
     const reduxDispatch = useDispatch();
 
-    console.log(language);
+    // console.log(language);
 
     const selectLanguage = useCallback(e => {
         // 언어 변경
@@ -65,12 +65,12 @@ const Header = () => {
     const selected = useCallback(id => {
         setNavList(
             navList.map(item =>
-                item.id === id ? {...item, checked:true} : {...item, checked:false}
+                item.id === id ? { ...item, checked: true } : { ...item, checked: false }
             )
         )
     }, [navList])
 
-    const setDefault = () => setNavList(navList.map(item => ({...item, checked:false})))
+    const setDefault = () => setNavList(navList.map(item => ({ ...item, checked: false })))
 
     return (
         <header>
