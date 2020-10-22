@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
 
 const OnlineExhibitionContainer = () => {
-
     const history = useHistory();
 
     const onClick = useCallback(() => {
