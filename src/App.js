@@ -5,6 +5,7 @@ import ErrorPage from './pages/ErrorPage';
 import HomePage from './pages/HomePage';
 import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
 import ConferencePage from './pages/ConferencePage';
+import WelcomingPage from './pages/WelcomingPage';
 
 import DialogContainer from './container/assets/DialogContainer';
 import LoadingContainer from './container/assets/LoadingContainer';
@@ -41,6 +42,7 @@ const App = () => {
                 <Route path={Paths.index} component={HomePage} exact />
                 <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage} />
                 <Route path={Paths.conference} component={ConferencePage} />
+                <Route path={Paths.session + '/:mode?'} component={WelcomingPage} />
                 <Route component={ErrorPage} />
             </Switch>
 

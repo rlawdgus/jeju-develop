@@ -13,7 +13,7 @@ export default () => {
             <div class="speech">
                 <i></i>
                 <img src={require("../static/img/bg_speech.png")} alt="" />
-                <a href=""><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
+                <a href="#!"><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
                 <span> {'<'}이름{'('}소속{')>'} </span>
             </div>
         </div>
