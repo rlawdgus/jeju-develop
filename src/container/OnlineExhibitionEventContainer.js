@@ -4,13 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { secondModalOpen, modalClose } from '../store/modal';
 import { Backdrop } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
 /* Redux */
 
 function reducer(state, action) {
     return {
         ...state,
-        [action.name]: action.value,
+        [action.name]: action.value.trim(),
     };
 }
 
@@ -43,14 +42,14 @@ const OnlineExhibitionEventContainer = () => {
     const { name, position, title, phone, tel, front_email, back_email } = state;
     const onChange = (e) => action(e.target);
 
-    const history = useHistory();
-    const inputCheck = useCallback((event) => {
+    const inputCheck = useCallback((e) => {
+        e.preventDefault();
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
         if (!phone.match(PhoneRegExp)) {
             alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
-             event.preventDefault()
         }
-    }, [state]);
+
+    }, [phone]);
 
     return (
         <>
@@ -115,7 +114,7 @@ const OnlineExhibitionEventContainer = () => {
                             <em>
                                 <strong>*</strong>동의합니다.
                                 <input type="checkbox" id="p1" name="" className="leftch" />
-                                <label for="p1"><span></span> </label>
+                                <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
                         <a href="" className="btin" onClick={inputCheck}>응모하기 </a>
