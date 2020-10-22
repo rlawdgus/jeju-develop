@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback, useReducer, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -40,9 +40,14 @@ const OnlineExhibitionEventContainer = () => {
         back_email: ''
     });
     const { name, position, title, phone, tel, front_email, back_email } = state;
-    const onChange = (e) => {
-        action(e.target);
-    }
+    const onChange = (e) => action(e.target);
+
+    useEffect(() => {
+        const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
+        if (!phone.match(PhoneRegExp)) {
+            alert("asdf");
+        }
+    }, [phone]);
 
     return (
         <>
