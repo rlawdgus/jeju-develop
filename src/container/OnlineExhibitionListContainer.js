@@ -80,42 +80,37 @@ const OnlineExhibitionListContainer = () => {
     const [title, setTitle] = useState('');
     const [photo, setPhoto] = useState('');
 
-    const listClick = async (e) => {
-        setType(e.target.value);
-        // type별로 결과가 다름
-        // const res = await getDocumentList(e.target.value);
-        const res = await getDocumentList(1);
-        // console.log(res[0]);
-        setTitle(res[0].title);
-        setPhoto(URL + res[0].photo_1);
-        setTest(<SwiperContainer dataSet={res[0]} />)
-    }
+    const listClick = e => setType(parseInt(e.target.value));
 
-    // 초기 화면 설정
-    const setInit = async () => {
-        setType(0);
-        const res = await getDocumentList(1); // default : 0
-        setTitle(res[0].title);
-        setPhoto(URL + res[0].photo_1);
-        setTest(<SwiperContainer dataSet={res[0]} />)
-    }
+
+    const callGetDocumentList = useCallback(async () => {
+        try {
+            const res = await getDocumentList(type); // default : 0
+            console.log('callType: ', type);
+            setTitle(res[0].title);
+            setPhoto(URL + res[0].photo_1);
+            setTest(<SwiperContainer dataSet={res[0]} />);
+        } catch (e) {
+            alert('서버에 오류가 발생했습니다.');
+        }
+    }, [type]);
 
     useEffect(() => {
-        setInit();
-    }, [])
+        callGetDocumentList();
+    }, [callGetDocumentList]);
 
     return (
         <>
             <section id="on_ex_container">
                 <div className="left_section">
                     <h2>
-                        <input type="checkbox" id="c1" name="" className="leftch" value={0} onClick={listClick} />
+                        <input type="checkbox" id="c1" name="" className="leftch" value={0} onClick={listClick} checked={type === 0} />
                         <label htmlFor="c1"><span></span>{language === 'ko' ? "온라인 전시관" : "Online-Exhibition"}</label>
                     </h2>
                     <ul>
                         {leftLists.map(list => (
                             <li key={list.num}>
-                                <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} />
+                                <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} checked={type === list.num} />
                                 <label htmlFor={list.id}><span></span>{language === 'ko' ? list.ko_text : list.en_text}</label>
                             </li>
                         ))}
@@ -175,14 +170,14 @@ const OnlineExhibitionListContainer = () => {
                         <div className="bigimg">
                             <ul>
                                 <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
-                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title}</em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title}</em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" /></li>
-                                <li><em>{title}</em><img className="bigimgsize" src={photo} alt="1" /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
+                                <li><em>{title} </em><img className="bigimgsize" src={photo} alt="1" onClick={firstOpen} /></li>
                             </ul>
                         </div>
                     </div>

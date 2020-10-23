@@ -23,6 +23,7 @@ export default ({ dataSet }) => {
     <Swiper
       spaceBetween={0}
       slidesPerView={5}
+      slidesPerGroup={5}
       navigation
       loop
       autoplay

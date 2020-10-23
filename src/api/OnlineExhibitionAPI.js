@@ -5,8 +5,15 @@ import { Paths } from '../paths/index'
 const URL = Paths.api
 
 export const getDocumentList = async (type) => {
-    const query = `${URL}/document?module_id=1&type=${type}`
-    const res = await Axios.get(query)
+    const query = `${URL}/document`;
+    const config = {
+        params: {
+            module_id: 1,
+            type: type
+        }
+    };
+    const res = await Axios.get(query, config);
+    console.log(res);
     return res.data
 }
 
