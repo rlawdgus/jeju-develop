@@ -402,3 +402,15 @@ a.btclose{background:#757575}
 .noticebox .tnavi ul li a{display:block;margin:0 auto;line-height:44px;text-align:center;color:#8a8a8a;font-size:22px;}
 .noticebox .tnavi ul li:hover{border:1px solid #000}
 .noticebox .tnavi ul li:hover a{color:#000;font-weight:bold;}
+
+
+
+
+
+
+.api-test{
+  position: relative;
+  padding: 20px;
+  z-index: 3000;
+  background-color: skyblue;
+}

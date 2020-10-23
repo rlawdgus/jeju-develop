@@ -13,12 +13,12 @@ export const getDocumentList = async (type) => {
         }
     };
     const res = await Axios.get(query, config);
-    console.log(res);
+    // console.log(res);
     return res.data
 }
 
-export const getShowDocument = async () => {
-    const query = `${URL}/document/1`
+export const getShowDocument = async (id) => {
+    const query = `${URL}/document/${id}`
     const res = await Axios.get(query)
     return res.data
 }

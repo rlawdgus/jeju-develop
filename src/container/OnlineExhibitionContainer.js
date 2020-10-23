@@ -2,6 +2,8 @@ import React, { useCallback } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
+import { getShowDocument } from '../api/OnlineExhibitionAPI'
+
 import PeoLeft from '../static/img/img_peo_left.png';
 import PeoRight from '../static/img/img_peo_right.png';
 import A4 from '../static/img/img_a4.jpg';
@@ -20,9 +22,16 @@ const OnlineExhibitionContainer = () => {
         history.push(Paths.exhibition + '/list');
     }, [history]);
 
+    const showingDocument = useCallback(async () => {
+        const result = await getShowDocument(1)
+
+        console.log(result)
+    })
+
     return (
         <section id="ex_container">
             <h2>화장품관ㅣ(주)마사플래닛</h2>
+            <div onClick={showingDocument} className="api-test">API TEST</div>
             <div className="people">
                 <span>
                     <img src={PeoLeft} alt="" />

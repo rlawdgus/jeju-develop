@@ -86,12 +86,13 @@ const OnlineExhibitionListContainer = () => {
     const callGetDocumentList = useCallback(async () => {
         try {
             const res = await getDocumentList(type); // default : 0
-            console.log('callType: ', type);
+            // console.log('callType: ', type);
             setTitle(res[0].title);
             setPhoto(URL + res[0].photo_1);
             setTest(<SwiperContainer dataSet={res[0]} />);
         } catch (e) {
             alert('서버에 오류가 발생했습니다.');
+            setTest(<SwiperContainer dataSet={"Error"} />)
         }
     }, [type]);
 
