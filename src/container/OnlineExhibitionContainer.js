@@ -26,7 +26,7 @@ const OnlineExhibitionContainer = () => {
         const result = await getShowDocument(1)
 
         console.log(result)
-    })
+    }, [])
 
     return (
         <section id="ex_container">

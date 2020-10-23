@@ -15,7 +15,7 @@ const Header = () => {
     const selectLanguage = useCallback(e => {
         // 언어 변경
         reduxDispatch(setLanguage(e.target.value));
-    }, []);
+    }, [reduxDispatch]);
 
     const [navList, setNavList] = useState([
         {
