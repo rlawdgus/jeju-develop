@@ -6,12 +6,14 @@ import { getDocumentList } from '../api/OnlineExhibitionAPI';
 import { firstModalOpen } from '../store/modal';
 
 import SwiperContainer from './SwiperContainer'
+import { useHistory } from 'react-router-dom';
+import { Paths } from '../paths';
 
 
 const OnlineExhibitionListContainer = () => {
 
     const URL = "http://14.63.174.102:84";
-
+    const history = useHistory();
     const language = useSelector(state => state.language.current);
 
     const leftLists = [
@@ -79,30 +81,49 @@ const OnlineExhibitionListContainer = () => {
     const [type, setType] = useState(0);
     const dispatch = useDispatch();
 
-    const firstOpen = useCallback(() => dispatch(firstModalOpen()), [dispatch]);
+    const firstOpen = useCallback(() => {
+        const TOKEN = localStorage.getItem('token');
+        if (TOKEN) {
+            history.push(Paths.exhibition + '/list');
+        } else {
+            dispatch(firstModalOpen())
+        }
+    }, [dispatch, history]);
 
-    const [test, setTest] = useState('');
+    const [swiper, setSwiper] = useState('');
     const [result, setResult] = useState([]);
     const [search, setSearch] = useState('');
+    const [find, setFind] = useState([]);
 
     const onChange = e => setSearch(e.target.value);
 
-    const listClick = e => setType(parseInt(e.target.value));
+    const listClick = e => { setType(parseInt(e.target.value)); setFind([]); };
 
     const callGetDocumentList = useCallback(async () => {
         try {
             const res = await getDocumentList(type); // default : 0
             setResult(res);
-            setTest(<SwiperContainer dataSet={res[0]} />);
+            setSwiper(<SwiperContainer dataSet={res} />);
         } catch (e) {
             alert('서버에 오류가 발생했습니다.');
-            setTest(<SwiperContainer dataSet={"Error"} />)
+            setSwiper(<SwiperContainer dataSet={"Error"} />)
         }
     }, [type]);
 
     const imgError = useCallback((e) => {
         e.target.src = URL + "/data/uploaded/documents-photo_1-882.jpeg?v=1602807638";
     }, []);
+
+    const findList = useCallback(() => {
+        const findItem = result.filter(item => item.title === search);
+        if (findItem.length !== 0) {
+            setFind(findItem)
+        } else {
+            alert("검색하신 부스가 존재하지 않습니다.");
+            setFind([]);
+            setSearch('');
+        }
+    }, [search, result])
 
     useEffect(() => {
         callGetDocumentList();
@@ -129,7 +150,7 @@ const OnlineExhibitionListContainer = () => {
                         <h3>{language === 'ko' ? "부스명 검색" : "Booth name search"}</h3>
                         <span>
                             <input type="text" value={search} onChange={onChange} />
-                            <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" /></button>
+                            <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
                         </span>
                     </div>
                     <p><img src={require("../static/img/img_com.png")} alt="" /></p>
@@ -139,15 +160,22 @@ const OnlineExhibitionListContainer = () => {
                         <div className="subtop menu01">
                             <h3>{language === 'ko' ? <><strong>{leftLists[type].ko_text}</strong>관 </> : <strong>{leftLists[type].en_text}</strong>}</h3>
                         </div>
-                        {test}
+                        {swiper}
                         <div className="bigimg">
                             <ul>
-                                {result.map(res => (
-                                    <li key={res.id}>
-                                        <em>{res.title}</em>
-                                        <img className="bigimgsize" src={URL + res.photo_1} onError={imgError} onClick={firstOpen} alt="" />
-                                    </li>
-                                ))}
+                                {
+                                    find.length === 0
+                                        ? result.map(res => (
+                                            <li key={res.id}>
+                                                <em>{res.title}</em>
+                                                <img className="bigimgsize" src={URL + res.photo_1} onError={imgError} onClick={firstOpen} alt="" />
+                                            </li>
+                                        ))
+                                        : <li>
+                                            <em>{find[0].title}</em>
+                                            <img className="bigimgsize" src={URL + find[0].photo_1} onError={imgError} onClick={firstOpen} alt="" />
+                                        </li>
+                                }
                             </ul>
                         </div>
                     </div>

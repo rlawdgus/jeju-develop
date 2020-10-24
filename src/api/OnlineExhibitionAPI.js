@@ -13,7 +13,6 @@ export const getDocumentList = async (type) => {
         }
     };
     const res = await Axios.get(query, config);
-    // console.log(res);
     return res.data
 }
 

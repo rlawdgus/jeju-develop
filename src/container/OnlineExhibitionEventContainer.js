@@ -6,6 +6,8 @@ import { secondModalOpen, modalClose } from '../store/modal';
 import { makeStyles } from '@material-ui/core/styles';
 import { Backdrop } from '@material-ui/core';
 import { postUserEvent } from '../api/UserAPI';
+import { useHistory } from 'react-router-dom';
+import { Paths } from '../paths';
 /* Redux */
 
 function reducer(state, action) {
@@ -24,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 const OnlineExhibitionEventContainer = () => {
 
     const language = useSelector(state => state.language.current);
-
     const classes = useStyles();
+    const history = useHistory();
 
     const dispatch = useDispatch();
     const secondOpen = useCallback(() => dispatch(secondModalOpen()), [dispatch]);
@@ -61,10 +63,16 @@ const OnlineExhibitionEventContainer = () => {
             email: email,
             phone: phone
         });
-        // console.log(result);
 
-        //   sessionStorage.setItem('signed_token', TOKEN);
-    }, [name, position, email, phone]);
+        localStorage.setItem('token', true);
+        dispatch(modalClose());
+        history.push(Paths.exhibition + '/list');
+    }, [name, position, email, phone, dispatch, history]);
+
+    const nextTime = useCallback(() => {
+        dispatch(modalClose());
+        history.push(Paths.exhibition + '/list');
+    }, [dispatch, history]);
 
     return (
         <>
@@ -76,7 +84,7 @@ const OnlineExhibitionEventContainer = () => {
                         <span>행사 종료 후 추첨을 통하여 경품을 지급해 드립니다.</span>
                         <p><img src={require("../static/img/img_eventin.png")} alt="" /></p>
                         <a className="btin" onClick={secondOpen}>참여하기</a>
-                        <a href="" className="btclose" onClick={close}>다음에</a>
+                        <a href="" className="btclose" onClick={nextTime}>다음에</a>
                     </div>
                 }
                 {/* event2 */}

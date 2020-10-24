@@ -12,7 +12,7 @@ export const postUserEvent = async ({ name, position, email, phone }) => {
     formData.append('position', position);
     formData.append('email', email);
     formData.append('phone', phone);
-    
+
     const res = await Axios.post(query, formData);
 
     return res.data;
