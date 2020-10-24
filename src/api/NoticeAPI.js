@@ -10,8 +10,8 @@ export const getDocumentList = async () => {
     return res.data
 }
 
-export const getShowDocument = async () => {
-    const query = `${URL}/document/3`
+export const getShowDocument = async (id) => {
+    const query = `${URL}/document/3?moduel_id=${id}`
     const res = await Axios.get(query)
     return res.data
 }

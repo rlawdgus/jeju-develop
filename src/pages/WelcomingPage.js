@@ -10,7 +10,6 @@ export default ({ match }) => {
         <>
             {mode === 'congraturation' ? <CongraturationContainer />
             : <WelcomingContainer />}
-             
         </>
     )
 }

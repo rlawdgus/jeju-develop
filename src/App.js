@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
 import ConferencePage from './pages/ConferencePage';
 import WelcomingPage from './pages/WelcomingPage';
+import NoticeListPage from './pages/NoticeListPage'
 
 import DialogContainer from './container/assets/DialogContainer';
 import LoadingContainer from './container/assets/LoadingContainer';
@@ -17,6 +18,7 @@ import { Paths } from './paths';
 
 import './static/stylesheets/App.css';
 
+
 const App = () => {
     return (
         <>
@@ -26,6 +28,7 @@ const App = () => {
                 <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage} />
                 <Route path={Paths.conference} component={ConferencePage} />
                 <Route path={Paths.session + '/:mode?'} component={WelcomingPage} />
+                <Route path={Paths.notice + '/:mode?'} component={NoticeListPage} />
                 <Route component={ErrorPage} />
             </Switch>
 

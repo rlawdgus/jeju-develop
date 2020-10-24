@@ -27,7 +27,7 @@ export default ({ dataSet }) => {
     <>
       {dataSet === "Error" ? <Swiper><SwiperSlide><img className="error" style={{ width: "100%", height: "200px" }} src={ErrorImage} alt="" /> </SwiperSlide></Swiper> :
         <Swiper
-        spaceBetween={0}
+        spaceBetween={30}
         slidesPerView={5}
         slidesPerGroup={5}
         navigation

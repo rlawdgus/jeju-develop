@@ -6,7 +6,7 @@ export default ({ onClick, item, language }) => {
 
     return (
         <li>
-            <Link to={'/' + item.en} className={selectEffect} onClick={() => onClick(item.id)}>
+            <Link to={item.path} className={selectEffect} onClick={() => onClick(item.id)}>
                 {language === 'ko'
                     ? item.ko
                     : language === 'en'

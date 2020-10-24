@@ -22,8 +22,8 @@ const OnlineExhibitionContainer = () => {
         history.push(Paths.exhibition + '/list');
     }, [history]);
 
-    const showingDocument = useCallback(async () => {
-        const result = await getShowDocument(1)
+    const showingDocument = useCallback(async (id) => {
+        const result = await getShowDocument(id)
 
         console.log(result)
     })
@@ -31,7 +31,7 @@ const OnlineExhibitionContainer = () => {
     return (
         <section id="ex_container">
             <h2>화장품관ㅣ(주)마사플래닛</h2>
-            <div onClick={showingDocument} className="api-test">API TEST</div>
+            <div onClick={() => showingDocument(1)} className="api-test">API TEST</div>
             <div className="people">
                 <span>
                     <img src={PeoLeft} alt="" />

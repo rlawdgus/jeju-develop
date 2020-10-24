@@ -6,6 +6,8 @@ import HeaderNav from './HeaderNav';
 import '../../static/stylesheets/Header.css';
 import { setLanguage } from '../../store/language';
 
+import { Paths } from '../../paths/index'
+
 const Header = () => {
     const language = useSelector(state => state.language);
     const reduxDispatch = useDispatch();
@@ -15,7 +17,7 @@ const Header = () => {
     const selectLanguage = useCallback(e => {
         // 언어 변경
         reduxDispatch(setLanguage(e.target.value));
-    }, []);
+    }, [reduxDispatch]);
 
     const [navList, setNavList] = useState([
         {
@@ -24,6 +26,7 @@ const Header = () => {
             en: "Opening-Session",
             ch: "중국어",
             ja: "일본어",
+            path: Paths.session,
             checked: false
         },
         {
@@ -32,6 +35,7 @@ const Header = () => {
             en: "Conference",
             ch: "중국어",
             ja: "일본어",
+            path: Paths.conference,
             checked: false
         },
         {
@@ -40,6 +44,7 @@ const Header = () => {
             en: "Online-Exhibition",
             ch: "중국어",
             ja: "일본어",
+            path: Paths.exhibition,
             checked: false
         },
         {
@@ -49,6 +54,7 @@ const Header = () => {
             en: "Notice",
             ch: "중국어",
             ja: "일본어",
+            path: Paths.notice,
             checked: false
         },
         {
@@ -58,6 +64,7 @@ const Header = () => {
             en: "SNS",
             ch: "중국어",
             ja: "일본어",
+            path: Paths.sns,
             checked: false
         }
     ])
