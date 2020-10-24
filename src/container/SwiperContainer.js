@@ -20,9 +20,6 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 export default ({ dataSet }) => {
   const URL = "http://14.63.174.102:84";
-
-  console.log(dataSet)
-
   return (
     <>
       {dataSet === "Error" ? <Swiper><SwiperSlide><img className="error" style={{ width: "100%", height: "200px" }} src={ErrorImage} alt="" /> </SwiperSlide></Swiper> :

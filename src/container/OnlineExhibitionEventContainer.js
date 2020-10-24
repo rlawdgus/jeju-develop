@@ -47,9 +47,7 @@ const OnlineExhibitionEventContainer = () => {
     const { name, position, title, phone, tel, email } = state;
     const onChange = (e) => action(e.target);
 
-    // console.log(state);
     const inputCheck = useCallback(async (e) => {
-    // console.log(state);
 
         e.preventDefault();
         const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
@@ -57,15 +55,13 @@ const OnlineExhibitionEventContainer = () => {
             alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
         }
 
-        // console.log(name, position, email, phone, tel)
-
         const result = await postUserEvent({
             name: name,
             position: position,
             email: email,
             phone: phone
-          });
-        console.log(result);
+        });
+        // console.log(result);
 
         //   sessionStorage.setItem('signed_token', TOKEN);
     }, [name, position, email, phone]);
@@ -78,7 +74,7 @@ const OnlineExhibitionEventContainer = () => {
                     <div className="eventin">
                         <h3><strong>이벤트 참여 후</strong>전시관 둘러보기</h3>
                         <span>행사 종료 후 추첨을 통하여 경품을 지급해 드립니다.</span>
-                        <p><img src={require("../static/img/img_eventin.png")} /></p>
+                        <p><img src={require("../static/img/img_eventin.png")} alt="" /></p>
                         <a className="btin" onClick={secondOpen}>참여하기</a>
                         <a href="" className="btclose" onClick={close}>다음에</a>
                     </div>
