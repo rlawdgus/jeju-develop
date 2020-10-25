@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getDocumentList } from '../api/OnlineExhibitionAPI';
 
+import Loading from '../components/assets/Loading';
+
 import { firstModalOpen } from '../store/modal';
+import { setID } from '../store/exhibition';
 
 import SwiperContainer from './SwiperContainer'
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
-import Loading from '../components/assets/Loading';
 
 
 const OnlineExhibitionListContainer = () => {
@@ -82,12 +84,13 @@ const OnlineExhibitionListContainer = () => {
     const [type, setType] = useState(0);
     const dispatch = useDispatch();
 
-    const firstOpen = useCallback(() => {
+    const firstOpen = useCallback((id) => {
         const TOKEN = localStorage.getItem('token');
         if (TOKEN) {
             history.push(Paths.exhibition + '/list');
         } else {
-            dispatch(firstModalOpen())
+            dispatch(setID(id));
+            dispatch(firstModalOpen());
         }
     }, [dispatch, history]);
 
@@ -176,7 +179,7 @@ const OnlineExhibitionListContainer = () => {
                                         ? result.map(res => (
                                             <li key={res.id}>
                                                 <em>{res.title}</em>
-                                                <img className="bigimgsize" src={URL + res.photo_1} onError={imgError} onClick={firstOpen} alt="" />
+                                                <img className="bigimgsize" src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                             </li>
                                         ))
                                         : <li>

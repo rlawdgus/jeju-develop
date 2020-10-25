@@ -30,8 +30,8 @@ const OnlineExhibitionEventContainer = () => {
     const language = useSelector(state => state.language.current);
     const classes = useStyles();
     const history = useHistory();
-
     const dispatch = useDispatch();
+
     const secondOpen = useCallback(() => dispatch(secondModalOpen()), [dispatch]);
     const close = useCallback(() => dispatch(modalClose()), [dispatch]);
 
@@ -53,6 +53,7 @@ const OnlineExhibitionEventContainer = () => {
 
     const [phoneForm, setPhoneForm] = useState(false);
     const [emailForm, setEmailForm] = useState(false);
+
     const formCheck = useCallback(() => {
         const phoneData = isCellPhoneForm(phone, true);
         const emailData = isEmailForm(email);
@@ -70,6 +71,7 @@ const OnlineExhibitionEventContainer = () => {
             setPhoneForm(true); setEmailForm(true);
         }
     }, [phone, email])
+
     const inputCheck = useCallback(async (e) => {
 
         e.preventDefault();

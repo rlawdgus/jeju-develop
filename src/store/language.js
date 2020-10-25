@@ -11,9 +11,11 @@ const initialState = {
 
 const language = handleActions(
     {
-        [SET_LANGUAGE]: (state, action) => ({
-            current: action.payload
-        })
+        [SET_LANGUAGE]: (state, action) => (
+            console.log(state, action),
+            {
+                current: action.payload
+            })
     },
     initialState
 );
