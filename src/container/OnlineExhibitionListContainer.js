@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDocumentList } from '../api/OnlineExhibitionAPI';
 
 import { firstModalOpen } from '../store/modal';
+import { setID } from '../store/exhibition';
 
 import SwiperContainer from './SwiperContainer'
 import { useHistory } from 'react-router-dom';
@@ -102,12 +103,13 @@ const OnlineExhibitionListContainer = () => {
     const [type, setType] = useState(0);
     const dispatch = useDispatch();
 
-    const firstOpen = useCallback(() => {
+    const firstOpen = useCallback((id) => {
         const TOKEN = localStorage.getItem('token');
         if (TOKEN) {
             history.push(Paths.exhibition + '/list');
         } else {
-            dispatch(firstModalOpen())
+            dispatch(setID(id));
+            dispatch(firstModalOpen());
         }
     }, [dispatch, history]);
 
@@ -229,12 +231,12 @@ const OnlineExhibitionListContainer = () => {
                                         ? result.map(res => (
                                             <li key={res.id}>
                                                 <em>{res.title}</em>
-                                                <img className="bigimgsize" src={URL + res.photo_1} onError={imgError} onClick={firstOpen} alt="" />
+                                                <img className="bigimgsize" src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                             </li>
                                         ))
                                         : <li>
                                             <em>{find[0].title}</em>
-                                            <img className="bigimgsize" src={URL + find[0].photo_1} onError={imgError} onClick={firstOpen} alt="" />
+                                            <img className="bigimgsize" src={URL + find[0].photo_1} onError={imgError} onClick={firstOpen(find[0].id)} alt="" />
                                         </li>
                                 }
                             </ul>

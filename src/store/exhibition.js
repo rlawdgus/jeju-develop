@@ -1,17 +1,17 @@
 import { createAction, handleActions } from 'redux-actions';
 
-const SET_ID = 'exhibition/SET_ID';
+const SETID = 'exhibition/SETID';
 
-
-export const setID = createAction(SET_ID, id => id);
+export const setID = createAction(SETID, id => id);
 
 const initialState = {
-    current: -1
+    current: -1,
+    item: ''
 };
 
 const exhibition = handleActions(
     {
-        [SET_ID]: (state, action) => ({
+        [SETID]: (state, action) => ({
             current: action.payload
         })
     },
