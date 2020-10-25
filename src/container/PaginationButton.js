@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react'
+import { useHistory } from 'react-router-dom'
+import { Paths } from '../paths';
 
-export default ({ noticeList, currentPage, setCurrentPage }) => {
+export default ({ noticeList, currentPage }) => {
 
-    // const listLength = noticeList.length
-    const listLength = 41
+    const history = useHistory();
+    const listLength = noticeList.length
     const paging = []
 
     const paginationButton = (listLength) => {
@@ -16,14 +18,11 @@ export default ({ noticeList, currentPage, setCurrentPage }) => {
         }
     }
 
-    const pageLink = useCallback((page) => {
-        if(1 <= page && paging.length >= page) {
-            if(page === 0) setCurrentPage(page + 1)
-            else if(page === paging.length + 1) setCurrentPage(page - 1)
-            else setCurrentPage(page)
-        }
-        console.log(page)
-    }, [paging.length, setCurrentPage])
+    const pageLink = useCallback(page => {
+        if (page <= 0) history.push(Paths.notice + '?page=1')
+        else if (page > paging.length) history.push(Paths.notice + '?page=' + paging.length)
+        else history.push(Paths.notice + '?page=' + page)
+    }, [paging, history]);
 
     return (
         <>
@@ -33,7 +32,7 @@ export default ({ noticeList, currentPage, setCurrentPage }) => {
             {paginationButton(listLength)}
             {
                 paging.map(item =>
-                    <li><div onClick={() => pageLink(item)} className={item === currentPage ? "on" : ""} >{item}</div></li>
+                    <li key={item} className={item}><div onClick={() => pageLink(item)} className={item === currentPage ? "on" : ""} >{item}</div></li>
                 )
             }
 

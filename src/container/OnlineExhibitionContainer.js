@@ -52,6 +52,7 @@ const OnlineExhibitionContainer = () => {
                 </span>
                 <div className="center">
                     <iframe
+                        title="youtube"
                         width="660"
                         height="376"
                         src="https://www.youtube.com/embed/G9ntaxClfrA"

@@ -25,7 +25,7 @@ export default () => {
                 <div className="speech">
                     <i></i>
                     <img src={require("../static/img/bg_welcoming.png")} alt="" />
-                    <a href=""><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
+                    <Link href=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>
                     <span> {language === 'ko' ? "이름(소속)" : "Title"} </span>
                 </div>
             </div>

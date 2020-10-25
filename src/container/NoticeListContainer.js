@@ -1,26 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Paths } from '../paths/index'
 
-import { getDocumentList } from '../api/NoticeAPI'
 
 import Pagination from './Pagination'
 import PaginationButton from './PaginationButton'
 
-export default ({ setViewId }) => {
-    const [noticeList, setNoticeList] = useState([])
-    useEffect(async () => {
-        setNoticeList(await getDocumentList())
-    }, [])
-
-    const [currentPage, setCurrentPage] = useState(1)
-
-    const history = useHistory();
-    const onClick = useCallback((id) => {
-        history.push(Paths.notice + '/view');
-        setViewId(id)
-    }, [history, currentPage]);
+export default ({ page, noticeList }) => {
+    
 
     return (
         <section id="comm_container">
@@ -46,12 +34,12 @@ export default ({ setViewId }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <Pagination noticeList={noticeList} currentPage={currentPage} onClick={onClick} />
+                        <Pagination noticeList={noticeList} currentPage={page} />
                     </tbody>
                 </table>
                 <div className="tnavi">
                     <ul>
-                        <PaginationButton noticeList={noticeList} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                        <PaginationButton noticeList={noticeList} currentPage={page} />
                     </ul>
                 </div>
             </div>

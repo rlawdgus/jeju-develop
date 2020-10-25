@@ -1,31 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { Paths } from '../paths'
 
 import { getShowDocument } from '../api/NoticeAPI'
+import Loading from '../components/assets/Loading'
+import { dateToYYYYMMDD } from '../lib/formatter'
 
-export default ({ id }) => {
+export default ({ viewId }) => {
+    const history = useHistory();
+    const [loading, setLoading] = useState(false);
     const [noticeView, setNoticeView] = useState({})
 
-    useEffect(async() => {
-        setNoticeView(await getShowDocument(id))
-    },[])
+
+    const callNoticeView = useCallback(async () => {
+        setLoading(true);
+        // api 요청할 때는 로딩 중이 필요하다
+        try {
+            const res = await getShowDocument(viewId);
+            console.log(res);
+            if (res) {
+                setNoticeView(res);
+            }
+        } catch (e) {
+            // 예외처리 해주고
+            alert('삭제되거나 없는 게시물입니다.');
+            history.goBack();
+        }
+        setLoading(false);
+    }, [viewId, history]);
+
+    useEffect(() => {
+        callNoticeView();
+        // 코드 이렇게 쓰면 res 에러 검출 못 한다
+        // 무조건 try catch 해라
+    }, [callNoticeView])
+    // useEffect에서 async 잘 안 씀
 
     return (
         <section id="comm_container">
-            {/* <div onClick={() => showing(2)} className="api-test">API TEST</div> */}
-            {/* {console.log(noticeView)} */}
             <div className="tab">
                 <ul>
                     <li><Link to={Paths.notice} className="on" >공지사항</Link></li>
                 </ul>
             </div>
+            {!loading && 
             <div className="noticeview">
                 <div className="viewhead">
                     <h3>{noticeView.title}</h3>
                     <ul>
                         <li>공지사항</li>
-                        <li>{noticeView.created_at}</li>
+                        <li>{dateToYYYYMMDD(noticeView.created_at)}</li>
                         <li>조회수 637</li>
                     </ul>
                 </div>
@@ -50,12 +74,13 @@ export default ({ id }) => {
                 - 후면 이미지 파일 : 사이즈 2,920mm *2,460mm 홍보 이미지<br />
                     <img src={require("../static/img/img_noticeview.png")} /> */}
                     <div className="file">
-                        <a href=""><img src={require("../static/img/ic_download.png")} /></a>
+                        <Link to="#"><img src={require("../static/img/ic_download.png")} alt="download" /></Link>
                         <span>{noticeView.file_1}<em>334kb</em></span>
                     </div>
                 </div>
-                <div className="btbox"><Link to={Paths.notice} className="bk">목 록</Link><a href="" className="wr">다음글</a></div>
-            </div>
+                <div className="btbox"><Link to={Paths.notice} className="bk">목 록</Link><Link to="#" className="wr">다음글</Link></div>
+            </div>}
+            <Loading open={loading} />
         </section>
     )
 }

@@ -5,5 +5,6 @@ export const Paths = {
     conference: '/Conference',
     notice: '/Notice',
     sns: '/SNS',
-    api: 'http://14.63.174.102:84/api/v1'
+    api: 'http://14.63.174.102:84/api/v1',
+    stored: 'http://14.63.174.102:64/'
 };

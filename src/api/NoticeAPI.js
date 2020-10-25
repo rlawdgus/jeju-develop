@@ -11,7 +11,7 @@ export const getDocumentList = async () => {
 }
 
 export const getShowDocument = async (id) => {
-    const query = `${URL}/document/3?moduel_id=${id}`
+    const query = `${URL}/document/${id}?moduel_id=2`
     const res = await Axios.get(query)
     return res.data
 }

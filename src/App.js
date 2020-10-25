@@ -28,7 +28,7 @@ const App = () => {
                 <Route path={Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage} />
                 <Route path={Paths.conference} component={ConferencePage} />
                 <Route path={Paths.session + '/:mode?'} component={WelcomingPage} />
-                <Route path={Paths.notice + '/:mode?'} component={NoticeListPage} />
+                <Route path={Paths.notice + '/:index?'} component={NoticeListPage} />
                 <Route component={ErrorPage} />
             </Switch>
 

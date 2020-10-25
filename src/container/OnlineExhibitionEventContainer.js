@@ -1,4 +1,5 @@
 import React, { useCallback, useReducer } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { secondModalOpen, modalClose } from '../store/modal';
@@ -63,6 +64,7 @@ const OnlineExhibitionEventContainer = () => {
             email: email,
             phone: phone
         });
+        console.log(result);
 
         localStorage.setItem('token', true);
         dispatch(modalClose());
@@ -83,8 +85,8 @@ const OnlineExhibitionEventContainer = () => {
                         <h3><strong>이벤트 참여 후</strong>전시관 둘러보기</h3>
                         <span>행사 종료 후 추첨을 통하여 경품을 지급해 드립니다.</span>
                         <p><img src={require("../static/img/img_eventin.png")} alt="" /></p>
-                        <a className="btin" onClick={secondOpen}>참여하기</a>
-                        <a href="" className="btclose" onClick={nextTime}>다음에</a>
+                        <Link className="btin" onClick={secondOpen}>참여하기</Link>
+                        <Link href="" className="btclose" onClick={nextTime}>다음에</Link>
                     </div>
                 }
                 {/* event2 */}
@@ -151,7 +153,7 @@ const OnlineExhibitionEventContainer = () => {
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
-                        <a href="" className="btin" onClick={inputCheck}>{language === 'ko' ? "응모하기" : "submit"} </a>
+                        <Link href="" className="btin" onClick={inputCheck}>{language === 'ko' ? "응모하기" : "submit"} </Link>
                     </div>
                 }
             </div>
