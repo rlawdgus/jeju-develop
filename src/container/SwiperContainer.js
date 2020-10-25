@@ -34,25 +34,29 @@ export default ({ dataSet }) => {
                     </SwiperSlide>
                 </Swiper>
             ) : (
-                <Swiper
-                    spaceBetween={5}
-                    slidesPerView={5}
-                    slidesPerGroup={5}
-                    navigation
-                    autoplay
-                    delay={2500}
-                >
-                    {' '}
-                    {dataSet.map((data) => (
-                        <SwiperSlide key={data.id}>
-                            <div>
-                                <em>{data.title}</em>
-                                <img src={URL + data.photo_1} alt="no_image" />
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            )}
+                    <Swiper
+                        spaceBetween={10} // 슬라이드 간 거리
+                        slidesPerView={5} // 보이는 슬라이드 수
+                        slidesPerGroup={5} // 슬라이드 할때 몇개를 슬라이드 할것이냐
+                        // loop={true} // 반복
+                        // loopFillGroupWithBlank={true} // 빈공간은 빈 슬라이드로 채움
+                        // loopedSlides={5} // 루프를 하면 몇개를 할것인지
+                        // pagination={{ clickable: true }}
+                        navigation
+                        delay={2500}
+                    // onSwiper={(swiper) => console.log(swiper)}
+                    >
+                        {' '}
+                        {dataSet.map((data) => (
+                            <SwiperSlide key={data.id}>
+                                <div>
+                                    <em>{data.title}</em>
+                                    <img src={URL + data.photo_1} alt="no_image" />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                )}
         </>
     );
 };

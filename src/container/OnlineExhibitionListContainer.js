@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getDocumentList } from '../api/OnlineExhibitionAPI';
 
+import Loading from '../components/assets/Loading';
+
 import { firstModalOpen } from '../store/modal';
 import { setID } from '../store/exhibition';
 
 import SwiperContainer from './SwiperContainer'
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
-import Loading from '../components/assets/Loading';
 
 
 const OnlineExhibitionListContainer = () => {

@@ -5,8 +5,7 @@ const SETID = 'exhibition/SETID';
 export const setID = createAction(SETID, id => id);
 
 const initialState = {
-    current: -1,
-    item: ''
+    current: -1
 };
 
 const exhibition = handleActions(
