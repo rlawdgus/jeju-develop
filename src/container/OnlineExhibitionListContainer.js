@@ -8,6 +8,7 @@ import { firstModalOpen } from '../store/modal';
 import SwiperContainer from './SwiperContainer'
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
+import Loading from '../components/assets/Loading';
 
 
 const OnlineExhibitionListContainer = () => {
@@ -94,12 +95,14 @@ const OnlineExhibitionListContainer = () => {
     const [result, setResult] = useState([]);
     const [search, setSearch] = useState('');
     const [find, setFind] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const onChange = e => setSearch(e.target.value);
 
     const listClick = e => { setType(parseInt(e.target.value)); setFind([]); };
 
     const callGetDocumentList = useCallback(async () => {
+        setLoading(true);
         try {
             const res = await getDocumentList(type); // default : 0
             setResult(res);
@@ -108,6 +111,7 @@ const OnlineExhibitionListContainer = () => {
             alert('서버에 오류가 발생했습니다.');
             setSwiper(<SwiperContainer dataSet={"Error"} />)
         }
+        setLoading(false);
     }, [type]);
 
     const imgError = useCallback((e) => {
@@ -126,35 +130,39 @@ const OnlineExhibitionListContainer = () => {
     }, [search, result])
 
     useEffect(() => {
-        callGetDocumentList();
+        try {
+            callGetDocumentList();
+        } catch (e) {
+            alert('서버에 오류가 발생했습니다.');
+        }
     }, [callGetDocumentList]);
 
     return (
-        <>
-            <section id="on_ex_container">
-                <div className="left_section">
-                    <h2>
-                        <input type="checkbox" id="c1" name="" className="leftch" value={0} onClick={listClick} checked={type === 0} readOnly />
-                        <label htmlFor="c1"><span></span>{language === 'ko' ? "온라인 전시관" : "Online-Exhibition"}</label>
-                    </h2>
-                    <ul>
-                        {leftLists.map(list => (
-                            list.num !== 0 &&
-                            <li key={list.id}>
-                                <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} checked={type === list.num} readOnly />
-                                <label htmlFor={list.id}><span></span>{language === 'ko' ? list.ko_text : list.en_text}</label>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="search">
-                        <h3>{language === 'ko' ? "부스명 검색" : "Booth name search"}</h3>
-                        <span>
-                            <input type="text" value={search} onChange={onChange} />
-                            <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
-                        </span>
-                    </div>
-                    <p><img src={require("../static/img/img_com.png")} alt="" /></p>
+        <section id="on_ex_container">
+            <div className="left_section">
+                <h2>
+                    <input type="checkbox" id="c1" name="" className="leftch" value={0} onClick={listClick} checked={type === 0} readOnly />
+                    <label htmlFor="c1"><span></span>{language === 'ko' ? "온라인 전시관" : "Online-Exhibition"}</label>
+                </h2>
+                <ul>
+                    {leftLists.map(list => (
+                        list.num !== 0 &&
+                        <li key={list.id}>
+                            <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} checked={type === list.num} readOnly />
+                            <label htmlFor={list.id}><span></span>{language === 'ko' ? list.ko_text : list.en_text}</label>
+                        </li>
+                    ))}
+                </ul>
+                <div className="search">
+                    <h3>{language === 'ko' ? "부스명 검색" : "Booth name search"}</h3>
+                    <span>
+                        <input type="text" value={search} onChange={onChange} />
+                        <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
+                    </span>
                 </div>
+                <p><img src={require("../static/img/img_com.png")} alt="" /></p>
+            </div>
+            {!loading &&
                 <div className="right_section">
                     <div className="content">
                         <div className="subtop menu01">
@@ -180,8 +188,9 @@ const OnlineExhibitionListContainer = () => {
                         </div>
                     </div>
                 </div>
-            </section>
-        </>
+            }
+            <Loading open={loading} />
+        </section>
     )
 }
 

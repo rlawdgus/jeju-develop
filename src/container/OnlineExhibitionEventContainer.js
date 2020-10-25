@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from 'react';
+import React, { useCallback, useReducer, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -9,6 +9,7 @@ import { Backdrop } from '@material-ui/core';
 import { postUserEvent } from '../api/UserAPI';
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
+import { isCellPhoneForm, isEmailForm } from '../lib/formatChecker';
 /* Redux */
 
 function reducer(state, action) {
@@ -50,26 +51,49 @@ const OnlineExhibitionEventContainer = () => {
     const { name, position, title, phone, tel, email } = state;
     const onChange = (e) => action(e.target);
 
+    const [phoneForm, setPhoneForm] = useState(false);
+    const [emailForm, setEmailForm] = useState(false);
+    const formCheck = useCallback(() => {
+        const phoneData = isCellPhoneForm(phone, true);
+        const emailData = isEmailForm(email);
+
+        if (!phoneData && !emailData) { // 둘다 틀림
+            alert("휴대폰 번호와 이메일 주소를 확인해 주세요.");
+            setPhoneForm(false); setEmailForm(false);
+        } else if (!phoneData && emailData) {
+            alert("휴대폰 번호를 확인해 주세요.");
+            setPhoneForm(false);
+        } else if (phoneData && !emailData) {
+            alert("이메일 주소를 확인해 주세요.");
+            setEmailForm(false);
+        } else {
+            setPhoneForm(true); setEmailForm(true);
+        }
+    }, [phone, email])
     const inputCheck = useCallback(async (e) => {
 
         e.preventDefault();
-        const PhoneRegExp = /^\d{3}-\d{4}-\d{4}$/;
-        if (!phone.match(PhoneRegExp)) {
-            alert("휴대폰 형식이 맞지 않습니다. 다시 입력해 주세요.(000-0000-0000)");
+        formCheck();
+
+        if (phoneForm && emailForm) { // 두가지의 양식이 일치할 경우
+            // loading을 어떻게 써야할까요,,,,
+            try {
+                const result = await postUserEvent({
+                    name: name,
+                    position: position,
+                    email: email,
+                    phone: phone
+                });
+            } catch (e) {
+                alert('서버에 오류가 발생했습니다.');
+            }
+
+            localStorage.setItem('token', true);
+            dispatch(modalClose());
+            history.push(Paths.exhibition + '/list');
         }
 
-        const result = await postUserEvent({
-            name: name,
-            position: position,
-            email: email,
-            phone: phone
-        });
-        console.log(result);
-
-        localStorage.setItem('token', true);
-        dispatch(modalClose());
-        history.push(Paths.exhibition + '/list');
-    }, [name, position, email, phone, dispatch, history]);
+    }, [name, position, email, phone, dispatch, history, formCheck, emailForm, phoneForm]);
 
     const nextTime = useCallback(() => {
         dispatch(modalClose());
