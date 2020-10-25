@@ -6,7 +6,7 @@ const SET_LANGUAGE = 'language/SET_LANGUAGE';
 export const setLanguage = createAction(SET_LANGUAGE, c_lang => c_lang);
 
 const initialState = {
-    current: "ko"
+    current: ""
 };
 
 const language = handleActions(

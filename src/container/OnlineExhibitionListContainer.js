@@ -22,82 +22,82 @@ const OnlineExhibitionListContainer = () => {
     const leftLists = [
         {
             num: 0,
-            ko_text: "온라인 전시",
+            kr_text: "온라인 전시",
             en_text: "Online-Exhibition",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 1,
             id: "c8",
-            ko_text: "음료,차류",
+            kr_text: "음료,차류",
             en_text: "Beverages/Tea",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 2,
             id: "c6",
-            ko_text: "전통식품",
+            kr_text: "전통식품",
             en_text: "Traditional Foods",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 3,
             id: "c2",
-            ko_text: "가공식품",
+            kr_text: "가공식품",
             en_text: "Processed Foods",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 4,
             id: "c4",
-            ko_text: "건강식품",
+            kr_text: "건강식품",
             en_text: "Healthy Foods & supplements",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 5,
             id: "c7",
-            ko_text: "주류",
+            kr_text: "주류",
             en_text: "Alcoholic drinks",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 6,
             id: "c3",
-            ko_text: "간식",
+            kr_text: "간식",
             en_text: "Snacks",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 7,
             id: "c10",
-            ko_text: "화장품",
+            kr_text: "화장품",
             en_text: "Cosmetics",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 8,
             id: "c9",
-            ko_text: "천연염색",
+            kr_text: "천연염색",
             en_text: "Dyed products",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         },
         {
             num: 9,
             id: "c5",
-            ko_text: "마을공동체",
+            kr_text: "마을공동체",
             en_text: "Local community",
-            ch_text: "중국어",
-            ja_text: "일본어"
+            cn_text: "중국어",
+            jp_text: "일본어"
         }
     ]
 
@@ -162,7 +162,7 @@ const OnlineExhibitionListContainer = () => {
 
         //--------------------------------------------------------------------------------------
         const LANGUAGE_PACK = {
-            ko: {
+            kr: {
                 title: "온라인전시관",
                 unit: "관",
                 search : "부스명 검색"
@@ -172,19 +172,19 @@ const OnlineExhibitionListContainer = () => {
                 unit: "",
                 search : "Booth name search"
             },
-            ch: {
+            cn: {
                 title: "중국어",
                 unit: "중국어",
                 search : "중국어"
             },
-            ja: {
+            jp: {
                 title: "일본어",
                 unit: "일본어",
                 search : "일본어"
             }
         }
     
-        const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+        const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
         //--------------------------------------------------------------------------------------
 
     return (
@@ -199,7 +199,7 @@ const OnlineExhibitionListContainer = () => {
                         list.num !== 0 &&
                         <li key={list.id}>
                             <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} checked={type === list.num} readOnly />
-                            <label htmlFor={list.id}><span></span>{language === 'en' ? list.en_text : language === 'ch' ? list.ch_text : language === 'ja' ? list.ja_text : list.ko_text}</label>
+                            <label htmlFor={list.id}><span></span>{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</label>
                         </li>
                         
                     ))}
@@ -218,9 +218,9 @@ const OnlineExhibitionListContainer = () => {
                     <div className="content">
                         <div className="subtop menu01">
                             <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>
-                                :language === 'ch' ? <><strong>{leftLists[type].ch_text}</strong>{current_pack.unit} </>
-                                :language === 'ja' ? <><strong>{leftLists[type].ja_text}</strong>{current_pack.unit} </>
-                                : <><strong>{leftLists[type].ko_text}</strong>{current_pack.unit} </>}
+                                :language === 'cn' ? <><strong>{leftLists[type].cn_text}</strong>{current_pack.unit} </>
+                                :language === 'jp' ? <><strong>{leftLists[type].jp_text}</strong>{current_pack.unit} </>
+                                : <><strong>{leftLists[type].kr_text}</strong>{current_pack.unit} </>}
                             </h3>
                         </div>
                         

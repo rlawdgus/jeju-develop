@@ -10,35 +10,36 @@ export default () => {
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
-        ko:{
+        kr: {
             title: "컨퍼런스"
         },
-        en:{
+        en: {
             title: "Conference"
         },
-        ch:{
+        cn: {
             title: "중국어"
         },
-        ja:{
+        jp: {
             title: "일본어"
         }
     }
     
-    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
         <section id="main_container">
-            <div class="tab">
+            <div className="tab">
                 <ul>
-                    <li><Link to="#!" class="on">{current_pack.title}</Link></li>
+                    <li><Link to="" className="on">{current_pack.title}</Link></li>
                 </ul>
             </div>
-            <div class="main_content">
-                <div class="speech">
+            <div className="main_content">
+                <div className="speech">
                     <i></i>
                     <img src={require("../static/img/bg_speech.png")} alt="" />
-                    <Link href=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>
+                    <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>
                     {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
                 </div>
             </div>

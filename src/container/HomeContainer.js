@@ -16,7 +16,7 @@ export default () => {
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
-        ko:{
+        kr:{
             movie_name: "<제 2회 6차산업제주국제박람회>",
             online_go: "온라인전시관",
             conference_go: "컨퍼런스",
@@ -28,13 +28,13 @@ export default () => {
             conference_go: "Conference",
             go: "Go"
         },
-        ch:{
+        cn:{
             movie_name: "중국어",
             online_go: "중국어",
             conference_go: "중국어",
             go: "중국어"
         },
-        ja:{
+        jp:{
             movie_name: "일본어",
             online_go: "일본어",
             conference_go: "일본어",
@@ -42,8 +42,10 @@ export default () => {
         }
     }
     
-    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
+
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
         <section id="main_container">
@@ -55,7 +57,7 @@ export default () => {
                     <span> {current_pack.movie_name} </span>
                 </div>
                 <div className="right">
-                    <Link to={Paths.exhibition} >
+                    <Link to={LANGUAGE_PATH + Paths.exhibition} >
                         <div className="onlinego">
                             <i></i>
                             <img src={BgOnlineGo} alt="" />
@@ -63,7 +65,7 @@ export default () => {
                             <span>{current_pack.go}  {'>'}</span>
                         </div>
                     </Link>
-                    <Link to={Paths.conference} >
+                    <Link to={LANGUAGE_PATH + Paths.conference} >
                         <div className="confgo">
                             <i></i>
                             <img src={BgConfGo} alt="" />

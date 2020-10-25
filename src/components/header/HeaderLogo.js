@@ -1,10 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../static/img/h1_logo.png';
 import LogoText from '../../static/img/h1_logo_txt.png';
 
 export default ({ selectLanguage, setDefault }) => {
+    const language = useSelector(state => state.language.current);
     return (
         <>
             <h1>
@@ -14,11 +16,11 @@ export default ({ selectLanguage, setDefault }) => {
                 </Link>
             </h1>
             <div className="select">
-                <select onChange={selectLanguage} className="select-option">
-                    <option value="ko">한국어</option>
+                <select onChange={selectLanguage} value={language} className="select-option">
+                    <option value="kr">한국어</option>
                     <option value="en">english</option>
-                    <option value="ch">china</option>
-                    <option value="ja">japan</option>
+                    <option value="cn">china</option>
+                    <option value="jp">japan</option>
                 </select>
                 <div className="select__arrow"></div>
             </div>

@@ -23,8 +23,9 @@ const OnlineExhibitionContainer = () => {
 
     const history = useHistory();
 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     const onClick = useCallback(() => {
-        history.push(Paths.exhibition + '/list');
+        history.push(LANGUAGE_PATH + Paths.exhibition + '/list');
     }, [history]);
 
     const [loading, setLoading] = useState(false);
@@ -115,8 +116,8 @@ const OnlineExhibitionContainer = () => {
             {!loading &&
                 <>
                     <h2>{ language === 'en' ? type[1]
-                        : language === 'ch' ? type[2]
-                        : language === 'ja' ? type[3]
+                        : language === 'cn' ? type[2]
+                        : language === 'jp' ? type[3]
                         : type[0]}ㅣ{booth.title}</h2>
                     <div className="people">
                         <span>
@@ -160,8 +161,8 @@ const OnlineExhibitionContainer = () => {
                         </div>
                         <button className="buy" onClick={onClick}>
                             {language === 'en' ? "Purchase"
-                                : language === 'ch' ? "중국어"
-                                    : language === 'ja' ? "일본어"
+                                : language === 'cn' ? "중국어"
+                                    : language === 'jp' ? "일본어"
                                         : "구매하러 가기"} {'>'}
                         </button>
                     </div>

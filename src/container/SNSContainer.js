@@ -9,7 +9,7 @@ export default () => {
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
-        ko: {
+        kr: {
             title: "SNS",
             youtube: "유튜브 바로가기",
             facebook: "페이스북 바로가기",
@@ -21,13 +21,13 @@ export default () => {
             facebook: "Facebook Link",
             instagram: "Instagram Link"
         },
-        ch: {
+        cn: {
             title: "중국어",
             youtube: "중국어",
             facebook: "중국어",
             instagram: "중국어"
         },
-        ja: {
+        jp: {
             title: "일본어",
             youtube: "일본어",
             facebook: "일본어",
@@ -35,14 +35,15 @@ export default () => {
         }
     }
 
-    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
         <section id="main_container">
             <div className="tab">
                 <ul>
-                    <li><Link to={Paths.sns} className="on">{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.sns} className="on">{current_pack.title}</Link></li>
                 </ul>
             </div>
             <div className="snsbox">

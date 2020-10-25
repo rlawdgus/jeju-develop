@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react'
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { Paths } from '../paths';
 
 export default ({ noticeList, currentPage }) => {
 
+    const language = useSelector(state => state.language.current);
     const history = useHistory();
     const listLength = noticeList.length
     const paging = []
@@ -18,10 +20,12 @@ export default ({ noticeList, currentPage }) => {
         }
     }
 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+
     const pageLink = useCallback(page => {
-        if (page <= 0) history.push(Paths.notice + '?page=1')
-        else if (page > paging.length) history.push(Paths.notice + '?page=' + paging.length)
-        else history.push(Paths.notice + '?page=' + page)
+        if (page <= 0) history.push(LANGUAGE_PATH + Paths.notice + '?page=1')
+        else if (page > paging.length) history.push(LANGUAGE_PATH + Paths.notice + '?page=' + paging.length)
+        else history.push(LANGUAGE_PATH + Paths.notice + '?page=' + page)
     }, [paging, history]);
 
     return (

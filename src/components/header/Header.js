@@ -4,66 +4,72 @@ import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 
 import '../../static/stylesheets/Header.css';
-import { setLanguage } from '../../store/language';
 
 import { Paths } from '../../paths/index'
+import { useHistory, useLocation } from 'react-router-dom';
+
+const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
 
 const Header = () => {
-    const language = useSelector(state => state.language);
-    const reduxDispatch = useDispatch();
+    const location = useLocation();
+    const history = useHistory();
 
+    console.log(location);
+
+    const language = useSelector(state => state.language);
     // console.log(language);
 
     const selectLanguage = useCallback(e => {
         // 언어 변경
-        reduxDispatch(setLanguage(e.target.value));
-    }, [reduxDispatch]);
+        const pathbase = LANGUAGE_URL_LIST.reduce((prev, cur) => {
+            return prev.replace(cur, '');
+        }, location.pathname);
+        history.push(`/${e.target.value}` + pathbase + location.search);
+    }, [location, history]);
 
     const [navList, setNavList] = useState([
         {
             id: 1,
-            ko: "오프닝세션",
+            kr: "오프닝세션",
             en: "Opening-Session",
-            ch: "중국어",
-            ja: "일본어",
+            cn: "중국어",
+            jp: "일본어",
             path: Paths.session,
             checked: false
         },
         {
             id: 2,
-            ko: "컨퍼런스",
+            kr: "컨퍼런스",
             en: "Conference",
-            ch: "중국어",
-            ja: "일본어",
+            cn: "중국어",
+            jp: "일본어",
             path: Paths.conference,
             checked: false
         },
         {
             id: 3,
-            ko: "온라인전시관",
+            kr: "온라인전시관",
             en: "Online-Exhibition",
-            ch: "중국어",
-            ja: "일본어",
+            cn: "중국어",
+            jp: "일본어",
             path: Paths.exhibition,
             checked: false
         },
         {
             id: 4,
-            value: "ko",
-            ko: "공지 및 이벤트",
+            kr: "공지 및 이벤트",
             en: "Notice",
-            ch: "중국어",
-            ja: "일본어",
+            cn: "중국어",
+            jp: "일본어",
             path: Paths.notice,
             checked: false
         },
         {
             id: 5,
-            value: "ko",
-            ko: "SNS",
+            kr: "SNS",
             en: "SNS",
-            ch: "중국어",
-            ja: "일본어",
+            cn: "중국어",
+            jp: "일본어",
             path: Paths.sns,
             checked: false
         }

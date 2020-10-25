@@ -5,12 +5,14 @@ import { Paths } from '../paths'
 import { getShowDocument } from '../api/NoticeAPI'
 import Loading from '../components/assets/Loading'
 import { dateToYYYYMMDD } from '../lib/formatter'
+import { useSelector } from 'react-redux'
 
 export default ({ viewId, near }) => {
     const history = useHistory();
     const [loading, setLoading] = useState(false);
     const [noticeView, setNoticeView] = useState({})
 
+    const language = useSelector(state => state.language.current);
 
     const callNoticeView = useCallback(async () => {
         setLoading(true);
@@ -36,12 +38,14 @@ export default ({ viewId, near }) => {
     }, [callNoticeView])
     // useEffect에서 async 잘 안 씀
 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+
     return (
         <section id="comm_container">
             <div className="tab">
                 <ul>
                     <li>
-                        <Link to={Paths.notice} className="on">
+                        <Link to={LANGUAGE_PATH + Paths.notice} className="on">
                             공지사항
                         </Link>
                     </li>
@@ -91,13 +95,13 @@ export default ({ viewId, near }) => {
                         </div>
                     </div>
                     <div className="btbox">
-                        <Link to={Paths.notice} className="bk">
+                        <Link to={LANGUAGE_PATH + Paths.notice} className="bk">
                             목 록
                         </Link>
-                        {near.next && <Link to={Paths.notice + '/' + near.next} className="wr">
+                        {near.next && <Link to={LANGUAGE_PATH + Paths.notice + '/' + near.next} className="wr">
                             다음글
                         </Link>}
-                        {near.prev && <Link to={Paths.notice + '/' + near.prev} className="wr">
+                        {near.prev && <Link to={LANGUAGE_PATH + Paths.notice + '/' + near.prev} className="wr">
                             이전글
                         </Link>}
                     </div>

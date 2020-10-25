@@ -179,7 +179,7 @@ const OnlineExhibitionEventContainer = () => {
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
-                        <Link href="" className="btin" onClick={inputCheck}>{language === 'ko' ? "응모하기" : "submit"} </Link>
+                        <Link to="" className="btin" onClick={inputCheck}>{language === 'ko' ? "응모하기" : "submit"} </Link>
                     </div>
                 }
             </div>

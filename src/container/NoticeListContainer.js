@@ -13,7 +13,7 @@ export default ({ page, noticeList }) => {
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
-        ko: {
+        kr: {
             title: "공지사항",
             amount: "총",
             amount2: "건의 글이 있습니다.",
@@ -29,7 +29,7 @@ export default ({ page, noticeList }) => {
             subject: "Contents",
             go: "View"
         },
-        ch: {
+        cn: {
             title: "중국어",
             amount: "중국어",
             amount2: "중국어",
@@ -37,7 +37,7 @@ export default ({ page, noticeList }) => {
             subject: "중국어",
             go: "중국어"
         },
-        ja: {
+        jp: {
             title: "일본어",
             amount: "일본어",
             amount2: "일본어",
@@ -47,14 +47,16 @@ export default ({ page, noticeList }) => {
         }
     }
 
-    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
+ 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
         <section id="comm_container">
             <div className="tab">
                 <ul>
-                    <li><Link to={Paths.notice} className="on">{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.notice} className="on">{current_pack.title}</Link></li>
                 </ul>
             </div>
             <div className="noticebox">
