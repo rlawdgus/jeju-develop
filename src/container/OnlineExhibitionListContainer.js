@@ -21,61 +21,81 @@ const OnlineExhibitionListContainer = () => {
         {
             num: 0,
             ko_text: "온라인 전시",
-            en_text: "Online-Exhibition"
+            en_text: "Online-Exhibition",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 1,
             id: "c8",
             ko_text: "음료,차류",
-            en_text: "Beverages/Tea"
+            en_text: "Beverages/Tea",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 2,
             id: "c6",
             ko_text: "전통식품",
-            en_text: "Traditional Foods"
+            en_text: "Traditional Foods",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 3,
             id: "c2",
             ko_text: "가공식품",
-            en_text: "Processed Foods"
+            en_text: "Processed Foods",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 4,
             id: "c4",
             ko_text: "건강식품",
-            en_text: "Healthy Foods & supplements"
+            en_text: "Healthy Foods & supplements",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 5,
             id: "c7",
             ko_text: "주류",
-            en_text: "Alcoholic drinks"
+            en_text: "Alcoholic drinks",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 6,
             id: "c3",
             ko_text: "간식",
-            en_text: "Snacks"
+            en_text: "Snacks",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 7,
             id: "c10",
             ko_text: "화장품",
-            en_text: "Cosmetics"
+            en_text: "Cosmetics",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 8,
             id: "c9",
             ko_text: "천연염색",
-            en_text: "Dyed products"
+            en_text: "Dyed products",
+            ch_text: "중국어",
+            ja_text: "일본어"
         },
         {
             num: 9,
             id: "c5",
             ko_text: "마을공동체",
-            en_text: "Local community"
+            en_text: "Local community",
+            ch_text: "중국어",
+            ja_text: "일본어"
         }
     ]
 
@@ -137,24 +157,52 @@ const OnlineExhibitionListContainer = () => {
         }
     }, [callGetDocumentList]);
 
+        //--------------------------------------------------------------------------------------
+        const LANGUAGE_PACK = {
+            ko: {
+                title: "온라인전시관",
+                unit: "관",
+                search : "부스명 검색"
+            },
+            en: {
+                title: "Online Exhibition",
+                unit: "",
+                search : "Booth name search"
+            },
+            ch: {
+                title: "중국어",
+                unit: "중국어",
+                search : "중국어"
+            },
+            ja: {
+                title: "일본어",
+                unit: "일본어",
+                search : "일본어"
+            }
+        }
+    
+        const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+        //--------------------------------------------------------------------------------------
+
     return (
         <section id="on_ex_container">
             <div className="left_section">
                 <h2>
                     <input type="checkbox" id="c1" name="" className="leftch" value={0} onClick={listClick} checked={type === 0} readOnly />
-                    <label htmlFor="c1"><span></span>{language === 'ko' ? "온라인 전시관" : "Online-Exhibition"}</label>
+                    <label htmlFor="c1"><span></span>{current_pack.title}</label>
                 </h2>
                 <ul>
                     {leftLists.map(list => (
                         list.num !== 0 &&
                         <li key={list.id}>
                             <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} checked={type === list.num} readOnly />
-                            <label htmlFor={list.id}><span></span>{language === 'ko' ? list.ko_text : list.en_text}</label>
+                            <label htmlFor={list.id}><span></span>{language === 'en' ? list.en_text : language === 'ch' ? list.ch_text : language === 'ja' ? list.ja_text : list.ko_text}</label>
                         </li>
+                        
                     ))}
                 </ul>
                 <div className="search">
-                    <h3>{language === 'ko' ? "부스명 검색" : "Booth name search"}</h3>
+                    <h3>{current_pack.search}</h3>
                     <span>
                         <input type="text" value={search} onChange={onChange} />
                         <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
@@ -166,8 +214,13 @@ const OnlineExhibitionListContainer = () => {
                 <div className="right_section">
                     <div className="content">
                         <div className="subtop menu01">
-                            <h3>{language === 'ko' ? <><strong>{leftLists[type].ko_text}</strong>관 </> : <strong>{leftLists[type].en_text}</strong>}</h3>
+                            <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>
+                                :language === 'ch' ? <><strong>{leftLists[type].ch_text}</strong>{current_pack.unit} </>
+                                :language === 'ja' ? <><strong>{leftLists[type].ja_text}</strong>{current_pack.unit} </>
+                                : <><strong>{leftLists[type].ko_text}</strong>{current_pack.unit} </>}
+                            </h3>
                         </div>
+                        
                         {swiper}
                         <div className="bigimg">
                             <ul>

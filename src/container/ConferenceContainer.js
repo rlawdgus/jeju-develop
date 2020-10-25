@@ -8,11 +8,30 @@ export default () => {
 
     const language = useSelector(state => state.language.current);
 
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        ko:{
+            title: "컨퍼런스"
+        },
+        en:{
+            title: "Conference"
+        },
+        ch:{
+            title: "중국어"
+        },
+        ja:{
+            title: "일본어"
+        }
+    }
+    
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["ko"]
+    //--------------------------------------------------------------------------------------
+
     return (
         <section id="main_container">
             <div class="tab">
                 <ul>
-                    <li><Link to="#!" class="on">{language === 'ko' ? "컨퍼런스" : "Conference"}</Link></li>
+                    <li><Link to="#!" class="on">{current_pack.title}</Link></li>
                 </ul>
             </div>
             <div class="main_content">

@@ -7,13 +7,13 @@ export default ({ onClick, item, language }) => {
     return (
         <li>
             <Link to={item.path} className={selectEffect} onClick={() => onClick(item.id)}>
-                {language === 'ko'
-                    ? item.ko
-                    : language === 'en'
+                {language === 'en'
                     ? item.en
                     : language === 'ch'
                     ? item.ch
-                    : item.ja}
+                    : language === 'ja'
+                    ? item.ja
+                    : item.ko}
             </Link>
         </li>
     );
