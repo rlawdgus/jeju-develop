@@ -7,6 +7,7 @@ import OnlineExhibitionPage from './pages/OnlineExhibitionPage';
 import ConferencePage from './pages/ConferencePage';
 import WelcomingPage from './pages/WelcomingPage';
 import NoticeListPage from './pages/NoticeListPage'
+import SNSPage from './pages/SNSPage'
 
 import DialogContainer from './container/assets/DialogContainer';
 import LoadingContainer from './container/assets/LoadingContainer';
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path={Paths.conference} component={ConferencePage} />
                 <Route path={Paths.session + '/:mode?'} component={WelcomingPage} />
                 <Route path={Paths.notice + '/:index?'} component={NoticeListPage} />
+                <Route path={Paths.sns} component={SNSPage} />
                 <Route component={ErrorPage} />
             </Switch>
 
