@@ -59,7 +59,7 @@ const OnlineExhibitionContainer = () => {
                         alt=""
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
+                        allowFullScreen
                     ></iframe>
                 </div>
                 <button className="buy" onClick={onClick}>
