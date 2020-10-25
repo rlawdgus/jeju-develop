@@ -78,7 +78,7 @@ const OnlineExhibitionEventContainer = () => {
         if (phoneForm && emailForm) { // 두가지의 양식이 일치할 경우
             // loading을 어떻게 써야할까요,,,,
             try {
-                const result = await postUserEvent({
+                await postUserEvent({
                     name: name,
                     position: position,
                     email: email,
