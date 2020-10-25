@@ -62,8 +62,8 @@ const OnlineExhibitionContainer = () => {
         type.push('일본어')
     }
     else if(booth.type === 2){
-        type.push('중국어')
-        type.push('일본어')
+        type.push('전통식품')
+        type.push('Traditional Foods')
         type.push('중국어')
         type.push('일본어')
     }
