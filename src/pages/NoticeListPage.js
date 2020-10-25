@@ -8,6 +8,7 @@ import Loading from '../components/assets/Loading';
 
 export default ({ match, location, history }) => {
     const { index } = match.params; // 이걸 view인지 검출하지말고
+    const viewId = parseInt(index);
     // const [viewId, setViewId] = useState(0);
     // 이것도 필요가 없지 REST_API 쓸거니까
 
@@ -38,10 +39,21 @@ export default ({ match, location, history }) => {
         callNoticeList();
     }, [callNoticeList]);
 
+    const getNearFromList = useCallback(id => {
+        const idx = noticeList.findIndex(item => item.id === id)
+        if (idx !== -1) {
+            const prev = idx !== 0 ? noticeList[idx - 1].id : null;
+            const next = idx !== noticeList.length - 1 ? noticeList[idx + 1].id : null;
+            return { prev, next };
+        } else {
+            return { prev: null, next: null}; // 에러
+        }
+    } , [noticeList]);
+
     return (
         <>
             {!loading && <>
-                {index !== undefined ? <NoticeViewContainer viewId={index} />
+                {!isNaN(viewId) ? <NoticeViewContainer viewId={viewId} near={getNearFromList(viewId)} />
                 : <NoticeListContainer page={p} noticeList={noticeList} />}
             </>}
             <Loading open={loading} />
