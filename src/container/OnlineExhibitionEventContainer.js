@@ -15,7 +15,7 @@ import { isCellPhoneForm, isEmailForm } from '../lib/formatChecker';
 function reducer(state, action) {
     return {
         ...state,
-        [action.name]: action.value,
+        [action.name]: action.value.trim(),
     };
 }
 
@@ -49,11 +49,22 @@ const OnlineExhibitionEventContainer = () => {
         // frontEmail: '',
         // backEmail: ''
     });
+    const [check, setCheck] = useState(false);
+
     const { name, position, title, phone, tel, email } = state;
     const onChange = (e) => action(e.target);
 
+    const [agree, setAgree] = useState(false);
     const [phoneForm, setPhoneForm] = useState(false);
     const [emailForm, setEmailForm] = useState(false);
+
+    const contentCheck = useCallback(() => {
+        if (name === '' || position === '' || title === '' || phone === '' || tel === '' || email === '' || !agree) {
+            alert("필수항목들을 입력해주세요");
+            setCheck(false);
+        }
+        else setCheck(true);
+    }, [name, position, email, title, tel, phone, agree])
 
     const formCheck = useCallback(() => {
         const phoneData = isCellPhoneForm(phone, true);
@@ -76,9 +87,10 @@ const OnlineExhibitionEventContainer = () => {
     const inputCheck = useCallback(async (e) => {
 
         e.preventDefault();
-        formCheck();
+        contentCheck();
+        check && formCheck();
 
-        if (phoneForm && emailForm) { // 두가지의 양식이 일치할 경우
+        if (check && phoneForm && emailForm) { // 두가지의 양식이 일치할 경우
             // setLoading(true);
             try {
                 await postUserEvent({
@@ -96,7 +108,7 @@ const OnlineExhibitionEventContainer = () => {
             history.push(Paths.exhibition + '/' + viewId);
         }
 
-    }, [name, position, email, phone, dispatch, history, formCheck, emailForm, phoneForm, viewId]);
+    }, [name, position, email, phone, dispatch, history, formCheck, emailForm, phoneForm, viewId, check, contentCheck]);
 
     const nextTime = useCallback(() => {
         dispatch(modalClose());
@@ -192,9 +204,9 @@ const OnlineExhibitionEventContainer = () => {
                 {second &&
                     <div className="eventtxt">
                         {language === "en" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
-                        :language === "cn" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
-                        :language === "jp" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
-                        :<h3 style={{ fontWeight: 'bold' }}>{current_pack.subject}</h3>}
+                            : language === "cn" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
+                                : language === "jp" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
+                                    : <h3 style={{ fontWeight: 'bold' }}>{current_pack.subject}</h3>}
                         <span className="inf">{current_pack.necessary}</span>
                         <dl className="fir">
                             <dt>{current_pack.name}</dt>
@@ -250,11 +262,11 @@ const OnlineExhibitionEventContainer = () => {
                                 </span>
                             <em>
                                 <strong>*</strong>{current_pack.agree}
-                                <input type="checkbox" id="p1" name="" className="leftch" />
+                                <input type="checkbox" id="p1" name="" className="leftch" onClick={() => setAgree(true)} />
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
-                        <Link href="" className="btin" onClick={inputCheck}>{current_pack.submit} </Link>
+                        <Link to="#" className="btin" onClick={inputCheck}>{current_pack.submit} </Link>
                     </div>
                 }
             </div>
