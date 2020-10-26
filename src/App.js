@@ -38,15 +38,15 @@ const App = ({ match }) => {
         }
     }, [reduxDispatch, state]);
 
-    
+
     const STATE_PATH = state ? `/${state}` : '';
-    
+
     return (
         <>
             <Header />
             <Switch>
                 <Route path={STATE_PATH + Paths.index} component={HomePage} exact />
-                <Route path={STATE_PATH + Paths.exhibition + '/:mode?'} component={OnlineExhibitionPage} />
+                <Route path={STATE_PATH + Paths.exhibition + '/:index?'} component={OnlineExhibitionPage} />
                 <Route path={STATE_PATH + Paths.conference} component={ConferencePage} />
                 <Route path={STATE_PATH + Paths.session + '/:mode?'} component={WelcomingPage} />
                 <Route path={STATE_PATH + Paths.notice + '/:index?'} component={NoticeListPage} />

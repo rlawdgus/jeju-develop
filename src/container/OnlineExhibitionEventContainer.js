@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const OnlineExhibitionEventContainer = () => {
 
     const language = useSelector(state => state.language.current);
+    const viewId = useSelector(state => state.exhibition.current);
     const classes = useStyles();
     const history = useHistory();
     const dispatch = useDispatch();
@@ -78,7 +79,7 @@ const OnlineExhibitionEventContainer = () => {
         formCheck();
 
         if (phoneForm && emailForm) { // 두가지의 양식이 일치할 경우
-            // loading을 어떻게 써야할까요,,,,
+            // setLoading(true);
             try {
                 await postUserEvent({
                     name: name,
@@ -89,18 +90,18 @@ const OnlineExhibitionEventContainer = () => {
             } catch (e) {
                 alert('서버에 오류가 발생했습니다.');
             }
-
+            // setLoading(false);
             localStorage.setItem('token', true);
             dispatch(modalClose());
-            history.push(Paths.exhibition + '/list');
+            history.push(Paths.exhibition + '/' + viewId);
         }
 
-    }, [name, position, email, phone, dispatch, history, formCheck, emailForm, phoneForm]);
+    }, [name, position, email, phone, dispatch, history, formCheck, emailForm, phoneForm, viewId]);
 
     const nextTime = useCallback(() => {
         dispatch(modalClose());
-        history.push(Paths.exhibition + '/list');
-    }, [dispatch, history]);
+        history.push(Paths.exhibition + '/' + viewId);
+    }, [dispatch, history, viewId]);
 
     return (
         <>

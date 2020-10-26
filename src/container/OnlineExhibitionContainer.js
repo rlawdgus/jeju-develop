@@ -13,9 +13,7 @@ import CenterBooth from '../static/img/img_center_booth.png';
 
 import { Paths } from '../paths';
 
-const OnlineExhibitionContainer = () => {
-    const exID = useSelector(state => state.exhibition.current)
-    console.log(exID)
+const OnlineExhibitionContainer = ({ viewId }) => {
 
     const [booth, setBooth] = useState({})
 
@@ -25,21 +23,21 @@ const OnlineExhibitionContainer = () => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     const onClick = useCallback(() => {
-        history.push(LANGUAGE_PATH + Paths.exhibition + '/list');
-    }, [history]);
+        history.push(LANGUAGE_PATH + Paths.exhibition);
+    }, [history, LANGUAGE_PATH]);
 
     const [loading, setLoading] = useState(false);
 
     const showingDocument = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await getShowDocument(exID)
+            const res = await getShowDocument(viewId)
             setBooth(res)
         } catch (e) {
-            alert('서버에 오류가 발생했습니다.')
+            alert('찾으시는 부스가 존재하지 않습니다.')
         }
         setLoading(false);
-    }, [exID])
+    }, [viewId])
 
     useEffect(() => {
         try {
@@ -50,61 +48,61 @@ const OnlineExhibitionContainer = () => {
     }, [showingDocument]);
 
     const type = []
-    if(booth.type === 0){
+    if (booth.type === 0) {
         type.push('온라인 전시')
         type.push('Online-Exhibition')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 1){
+    else if (booth.type === 1) {
         type.push('음료,차류')
         type.push('Beverages/Tea')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 2){
+    else if (booth.type === 2) {
         type.push('전통식품')
         type.push('Traditional Foods')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 3){
+    else if (booth.type === 3) {
         type.push('가공식품')
         type.push('Processed Foods')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 4){
+    else if (booth.type === 4) {
         type.push('건강식품')
         type.push('Healthy Foods & supplements')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 5){
+    else if (booth.type === 5) {
         type.push('주류')
         type.push('Alcoholic drinks')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 6){
+    else if (booth.type === 6) {
         type.push('간식')
         type.push('Snacks')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 7){
+    else if (booth.type === 7) {
         type.push('화장품')
         type.push('Cosmetics')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 8){
+    else if (booth.type === 8) {
         type.push('천연염색')
         type.push('Dyed products')
         type.push('중국어')
         type.push('일본어')
     }
-    else if(booth.type === 9){
+    else if (booth.type === 9) {
         type.push('마을공동체')
         type.push('Local community')
         type.push('중국어')
@@ -115,10 +113,10 @@ const OnlineExhibitionContainer = () => {
         <section id="ex_container">
             {!loading &&
                 <>
-                    <h2>{ language === 'en' ? type[1]
+                    <h2>{language === 'en' ? type[1]
                         : language === 'cn' ? type[2]
-                        : language === 'jp' ? type[3]
-                        : type[0]}ㅣ{booth.title}</h2>
+                            : language === 'jp' ? type[3]
+                                : type[0]}ㅣ{booth.title}</h2>
                     <div className="people">
                         <span>
                             <img src={PeoLeft} alt="" />

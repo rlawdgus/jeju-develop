@@ -3,13 +3,14 @@ import OnlineExhibitionContainer from '../container/OnlineExhibitionContainer';
 import OnlineExhibitionListContainer from '../container/OnlineExhibitionListContainer';
 
 const OnlineExhibitionPage = ({ match }) => {
-    const { mode } = match.params;
-    
+    const { index } = match.params;
+    const viewId = parseInt(index);
+
     return (
         <>
-            {mode === 'list' ? <OnlineExhibitionContainer />
-            : <OnlineExhibitionListContainer />}
-             
+            {!isNaN(viewId) ? <OnlineExhibitionContainer viewId={viewId} />
+                : <OnlineExhibitionListContainer />}
+
         </>
     );
 };

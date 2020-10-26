@@ -105,11 +105,11 @@ const OnlineExhibitionListContainer = () => {
     const dispatch = useDispatch();
 
     const firstOpen = useCallback((id) => {
+        dispatch(setID(id));
         const TOKEN = localStorage.getItem('token');
         if (TOKEN) {
-            history.push(Paths.exhibition + '/list');
+            history.push(Paths.exhibition + '/' + id);
         } else {
-            dispatch(setID(id));
             dispatch(firstModalOpen());
         }
     }, [dispatch, history]);
@@ -160,32 +160,32 @@ const OnlineExhibitionListContainer = () => {
         }
     }, [callGetDocumentList]);
 
-        //--------------------------------------------------------------------------------------
-        const LANGUAGE_PACK = {
-            kr: {
-                title: "온라인전시관",
-                unit: "관",
-                search : "부스명 검색"
-            },
-            en: {
-                title: "Online Exhibition",
-                unit: "",
-                search : "Booth name search"
-            },
-            cn: {
-                title: "중국어",
-                unit: "중국어",
-                search : "중국어"
-            },
-            jp: {
-                title: "일본어",
-                unit: "일본어",
-                search : "일본어"
-            }
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            title: "온라인전시관",
+            unit: "관",
+            search: "부스명 검색"
+        },
+        en: {
+            title: "Online Exhibition",
+            unit: "",
+            search: "Booth name search"
+        },
+        cn: {
+            title: "중국어",
+            unit: "중국어",
+            search: "중국어"
+        },
+        jp: {
+            title: "일본어",
+            unit: "일본어",
+            search: "일본어"
         }
-    
-        const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
-        //--------------------------------------------------------------------------------------
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
 
     return (
         <section id="on_ex_container">
@@ -201,7 +201,7 @@ const OnlineExhibitionListContainer = () => {
                             <input type="checkbox" id={list.id} name="" className="leftch" value={list.num} onClick={listClick} checked={type === list.num} readOnly />
                             <label htmlFor={list.id}><span></span>{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</label>
                         </li>
-                        
+
                     ))}
                 </ul>
                 <div className="search">
@@ -218,12 +218,12 @@ const OnlineExhibitionListContainer = () => {
                     <div className="content">
                         <div className="subtop menu01">
                             <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>
-                                :language === 'cn' ? <><strong>{leftLists[type].cn_text}</strong>{current_pack.unit} </>
-                                :language === 'jp' ? <><strong>{leftLists[type].jp_text}</strong>{current_pack.unit} </>
-                                : <><strong>{leftLists[type].kr_text}</strong>{current_pack.unit} </>}
+                                : language === 'cn' ? <><strong>{leftLists[type].cn_text}</strong>{current_pack.unit} </>
+                                    : language === 'jp' ? <><strong>{leftLists[type].jp_text}</strong>{current_pack.unit} </>
+                                        : <><strong>{leftLists[type].kr_text}</strong>{current_pack.unit} </>}
                             </h3>
                         </div>
-                        
+
                         {swiper}
                         <div className="bigimg">
                             <ul>
