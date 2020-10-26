@@ -115,6 +115,7 @@ const OnlineExhibitionListContainer = () => {
     const listClick = e => { setType(parseInt(e.target.value)); setFind([]); };
 
     const firstOpen = useCallback((id) => {
+        window.scrollTo(0, 0);
         dispatch(setID(id));
         const TOKEN = localStorage.getItem('token');
         if (TOKEN) {

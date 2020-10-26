@@ -46,52 +46,28 @@ const OnlineExhibitionEventContainer = () => {
         phone: '', // 휴대폰 번호
         tel: '', // 전화번호
         email: ''
-        // frontEmail: '',
-        // backEmail: ''
     });
-    const [check, setCheck] = useState(false);
-
     const { name, position, title, phone, tel, email } = state;
     const onChange = (e) => action(e.target);
 
     const [agree, setAgree] = useState(false);
-    const [phoneForm, setPhoneForm] = useState(false);
-    const [emailForm, setEmailForm] = useState(false);
-
-    const contentCheck = useCallback(() => {
-        if (name === '' || position === '' || title === '' || phone === '' || tel === '' || email === '' || !agree) {
-            alert("필수항목들을 입력해주세요");
-            setCheck(false);
-        }
-        else setCheck(true);
-    }, [name, position, email, title, tel, phone, agree])
-
-    const formCheck = useCallback(() => {
-        const phoneData = isCellPhoneForm(phone, false);
-        const emailData = isEmailForm(email);
-
-        if (!phoneData && !emailData) { // 둘다 틀림
-            alert("휴대폰 번호와 이메일 주소를 확인해 주세요.");
-            setPhoneForm(false); setEmailForm(false);
-        } else if (!phoneData && emailData) {
-            alert("휴대폰 번호를 확인해 주세요.");
-            setPhoneForm(false);
-        } else if (phoneData && !emailData) {
-            alert("이메일 주소를 확인해 주세요.");
-            setEmailForm(false);
-        } else {
-            setPhoneForm(true); setEmailForm(true);
-        }
-    }, [phone, email])
 
     const inputCheck = useCallback(async (e) => {
 
         e.preventDefault();
-        contentCheck();
-        check && formCheck();
 
-        if (check && phoneForm && emailForm) { // 두가지의 양식이 일치할 경우
-            // setLoading(true);
+        const phoneData = isCellPhoneForm(phone, false);
+        const emailData = isEmailForm(email);
+
+        if (name === '' || position === '' || title === '' || phone === '' || tel === '' || email === '' || !agree)
+            alert("필수항목들을 입력해주세요");
+        else if (!phoneData && !emailData)  // 둘다 틀림
+            alert("휴대폰 번호와 이메일 주소를 확인해 주세요.");
+        else if (!phoneData && emailData)
+            alert("휴대폰 번호를 확인해 주세요.");
+        else if (phoneData && !emailData)
+            alert("이메일 주소를 확인해 주세요.");
+        else {
             try {
                 await postUserEvent({
                     name: name,
@@ -102,13 +78,12 @@ const OnlineExhibitionEventContainer = () => {
             } catch (e) {
                 alert('서버에 오류가 발생했습니다.');
             }
-            // setLoading(false);
             localStorage.setItem('token', true);
             dispatch(modalClose());
             history.push(Paths.exhibition + '/' + viewId);
         }
 
-    }, [name, position, email, phone, dispatch, history, formCheck, emailForm, phoneForm, viewId, check, contentCheck]);
+    }, [name, position, email, phone, dispatch, history, viewId, agree, tel, title]);
 
     const nextTime = useCallback(() => {
         dispatch(modalClose());
@@ -241,9 +216,6 @@ const OnlineExhibitionEventContainer = () => {
                             <dt>{current_pack.email} </dt>
                             <dd>
                                 <input type="text" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
-                                {/* <input type="text" style={{ width: '43%' }} name="frontEmail" value={frontEmail} onChange={onChange} />
-                                @
-                                <input type="text" style={{ width: '45%' }} name="backEmail" value={backEmail} onChange={onChange} /> */}
                             </dd>
                         </dl>
                         <div className="privacy">
