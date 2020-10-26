@@ -41,6 +41,7 @@ export default ({ dataSet }) => {
                         loopedSlides={5} // 루프를 하면 몇개를 할것인지
                         initslide={0}
                         navigation
+                        watchOverflow={true}
                         loopPreventsSlide={true} // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
                     >
                         {' '}

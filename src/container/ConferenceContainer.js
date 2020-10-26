@@ -3,6 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
+import { Paths } from '../paths';
 
 export default () => {
 
@@ -23,7 +24,7 @@ export default () => {
             title: "일본어"
         }
     }
-    
+
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
@@ -32,7 +33,7 @@ export default () => {
         <section id="main_container">
             <div className="tab">
                 <ul>
-                    <li><Link to="" className="on">{current_pack.title}</Link></li>
+                    <li><Link to={Paths.conference} className="on">{current_pack.title}</Link></li>
                 </ul>
             </div>
             <div className="main_content">

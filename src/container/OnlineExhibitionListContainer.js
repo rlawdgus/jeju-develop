@@ -104,16 +104,6 @@ const OnlineExhibitionListContainer = () => {
     const [type, setType] = useState(0);
     const dispatch = useDispatch();
 
-    const firstOpen = useCallback((id) => {
-        dispatch(setID(id));
-        const TOKEN = localStorage.getItem('token');
-        if (TOKEN) {
-            history.push(Paths.exhibition + '/' + id);
-        } else {
-            dispatch(firstModalOpen());
-        }
-    }, [dispatch, history]);
-
     const [swiper, setSwiper] = useState('');
     const [result, setResult] = useState([]);
     const [search, setSearch] = useState('');
@@ -124,6 +114,16 @@ const OnlineExhibitionListContainer = () => {
 
     const listClick = e => { setType(parseInt(e.target.value)); setFind([]); };
 
+    const firstOpen = useCallback((id) => {
+        dispatch(setID(id));
+        const TOKEN = localStorage.getItem('token');
+        if (TOKEN) {
+            history.push(Paths.exhibition + '/' + id);
+        } else {
+            dispatch(firstModalOpen());
+        }
+    }, [dispatch, history]);
+
     const callGetDocumentList = useCallback(async () => {
         setLoading(true);
         try {
@@ -131,7 +131,6 @@ const OnlineExhibitionListContainer = () => {
             res.sort((a, b) => {
                 return a.title < b.title ? -1 : a.title > b.title ? 1 : 0
             })
-            console.log(res)
             setResult(res);
             setSwiper(<SwiperContainer dataSet={res} />);
         } catch (e) {
@@ -155,6 +154,12 @@ const OnlineExhibitionListContainer = () => {
             setSearch('');
         }
     }, [search, result])
+
+    const handleKeyPrress = e => {
+        if (e.key === 'Enter') {
+            findList();
+        }
+    }
 
     useEffect(() => {
         try {
@@ -211,7 +216,7 @@ const OnlineExhibitionListContainer = () => {
                 <div className="search">
                     <h3>{current_pack.search}</h3>
                     <span>
-                        <input type="text" value={search} onChange={onChange} />
+                        <input type="text" value={search} onChange={onChange} onKeyPress={handleKeyPrress} />
                         <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
                     </span>
                 </div>
@@ -241,7 +246,7 @@ const OnlineExhibitionListContainer = () => {
                                         ))
                                         : <li>
                                             <em>{find[0].title}</em>
-                                            <img className="bigimgsize" src={URL + find[0].photo_1} onError={imgError} onClick={firstOpen(find[0].id)} alt="" />
+                                            <img className="bigimgsize" src={URL + find[0].photo_1} onError={imgError} onClick={() => firstOpen(find[0].id)} alt="" />
                                         </li>
                                 }
                             </ul>

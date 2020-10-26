@@ -14,8 +14,6 @@ const Header = () => {
     const location = useLocation();
     const history = useHistory();
 
-    console.log(location);
-
     const language = useSelector(state => state.language);
     // console.log(language);
 

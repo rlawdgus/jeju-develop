@@ -67,7 +67,7 @@ const OnlineExhibitionEventContainer = () => {
     }, [name, position, email, title, tel, phone, agree])
 
     const formCheck = useCallback(() => {
-        const phoneData = isCellPhoneForm(phone, true);
+        const phoneData = isCellPhoneForm(phone, false);
         const emailData = isEmailForm(email);
 
         if (!phoneData && !emailData) { // 둘다 틀림
