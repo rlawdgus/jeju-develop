@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 import Loading from '../components/assets/Loading'
 
@@ -11,20 +10,11 @@ import PeoRight from '../static/img/img_peo_right.png';
 import A4 from '../static/img/img_a4.jpg';
 import CenterBooth from '../static/img/img_center_booth.png';
 
-import { Paths } from '../paths';
-
 const OnlineExhibitionContainer = ({ viewId }) => {
 
     const [booth, setBooth] = useState({})
 
     const language = useSelector(state => state.language.current);
-
-    const history = useHistory();
-
-    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
-    const onClick = useCallback(() => {
-        history.push(LANGUAGE_PATH + Paths.exhibition);
-    }, [history, LANGUAGE_PATH]);
 
     const [loading, setLoading] = useState(false);
 
@@ -157,7 +147,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                                 allowFullScreen
                             ></iframe> */}
                         </div>
-                        <button className="buy" onClick={onClick}>
+                        <button className="buy" onClick={window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
                                 : language === 'cn' ? "중국어"
                                     : language === 'jp' ? "일본어"

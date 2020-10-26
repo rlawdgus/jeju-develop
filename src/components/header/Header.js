@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 

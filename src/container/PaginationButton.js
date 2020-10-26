@@ -26,7 +26,7 @@ export default ({ noticeList, currentPage }) => {
         if (page <= 0) history.push(LANGUAGE_PATH + Paths.notice + '?page=1')
         else if (page > paging.length) history.push(LANGUAGE_PATH + Paths.notice + '?page=' + paging.length)
         else history.push(LANGUAGE_PATH + Paths.notice + '?page=' + page)
-    }, [paging, history]);
+    }, [paging, history, LANGUAGE_PATH]);
 
     return (
         <>

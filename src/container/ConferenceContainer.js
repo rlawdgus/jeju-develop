@@ -27,7 +27,7 @@ export default () => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
-    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+    // const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
         <section id="main_container">
             <div className="tab">

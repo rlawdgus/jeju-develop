@@ -103,6 +103,78 @@ const OnlineExhibitionEventContainer = () => {
         history.push(Paths.exhibition + '/' + viewId);
     }, [dispatch, history, viewId]);
 
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            subject: "이벤트 참여를 위한 회원정보 입력",
+            subject2: "",
+            necessary: "*는 필수 항목입니다.",
+            name: "이름",
+            placeholder: "영문, 숫자, _ 만 입력 가능, 최소 3자 이상",
+            belong: "소속",
+            title: "직함",
+            mobile: "휴대폰 번호",
+            phone: "전화번호",
+            email: "이메일 주소",
+            privacy: "개인정보취급방침",
+            agree: "동의합니다",
+            submit: "응모하기"
+        },
+        en: {
+            subject: "Entering member information",
+            subject2: "to participate in the event",
+            necessary: "*",
+            name: "Name",
+            placeholder: "Only English, numbers, and_can be entered, at least 3 characters",
+            belong: "Organization",
+            title: "Title",
+            mobile: "Mobile",
+            phone: "Phone",
+            email: "e-mail",
+            privacy: "Privacy policy",
+            agree: "I agree",
+            submit: "Submit"
+        },
+        cn: {
+            subject: "중국어",
+            subject2: "중국어",
+            necessary: "중국어",
+            name: "중국어",
+            placeholder: "중국어",
+            belong: "중국어",
+            title: "중국어",
+            mobile: "중국어",
+            phone: "중국어",
+            email: "중국어",
+            privacy: "중국어",
+            agree: "중국어",
+            submit: "중국어"
+        },
+        jp: {
+            mention: "일본어",
+            mention2: "일본어",
+            mention3: "일본어",
+            join: "일본어",
+            cancel: "일본어",
+            subject: "일본어",
+            subject2: "일본어",
+            necessary: "일본어",
+            name: "일본어",
+            placeholder: "일본어",
+            belong: "일본어",
+            title: "일본어",
+            mobile: "일본어",
+            phone: "일본어",
+            email: "일본어",
+            privacy: "일본어",
+            agree: "일본어",
+            submit: "일본어"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
+
     return (
         <>
             <div className="modal ">
@@ -119,15 +191,17 @@ const OnlineExhibitionEventContainer = () => {
                 {/* event2 */}
                 {second &&
                     <div className="eventtxt">
-                        {language === 'ko' ? <h3 style={{ fontWeight: 'bold' }}>이벤트 참여를 위한 회원정보 입력</h3>
-                            : <><h3>Entering member information</h3><p /><div>to participate in the event</div></>}
-                        <span className="inf">{language === 'ko' ? "*는 필수 입력 항목 입니다." : "*"}</span>
+                        {language === "en" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
+                        :language === "cn" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
+                        :language === "jp" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
+                        :<h3 style={{ fontWeight: 'bold' }}>{current_pack.subject}</h3>}
+                        <span className="inf">{current_pack.necessary}</span>
                         <dl className="fir">
-                            <dt>{language === 'ko' ? "이름" : "Name"}</dt>
+                            <dt>{current_pack.name}</dt>
                             <dd>
                                 <input
                                     type="text"
-                                    placeholder={language === 'ko' ? "영문, 숫자, _ 만 입력 가능, 최소 3자 이상" : "Only English, numbers, and_can be entered, at least 3 characters"}
+                                    placeholder={current_pack.placeholder}
                                     style={{ width: '100%' }}
                                     name="name"
                                     value={name}
@@ -136,23 +210,23 @@ const OnlineExhibitionEventContainer = () => {
                             </dd>
                         </dl>
                         <dl>
-                            <dt>{language === 'ko' ? "소속" : "Organization"} </dt>
+                            <dt>{current_pack.belong} </dt>
                             <dd><input type="text" style={{ width: '100%' }} name="position" value={position} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>{language === 'ko' ? "직함" : "Title"}</dt>
+                            <dt>{current_pack.title}</dt>
                             <dd><input type="text" style={{ width: '100%' }} name="title" value={title} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>{language === 'ko' ? "휴대폰 번호" : "Mobile"} </dt>
+                            <dt>{current_pack.mobile} </dt>
                             <dd><input type="text" style={{ width: '100%' }} name="phone" value={phone} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>{language === 'ko' ? "전화 번호" : "Phone"} </dt>
+                            <dt>{current_pack.phone} </dt>
                             <dd><input type="text" style={{ width: '100%' }} name="tel" value={tel} onChange={onChange} /></dd>
                         </dl>
                         <dl>
-                            <dt>{language === 'ko' ? "이메일 주소" : "e-mail"} </dt>
+                            <dt>{current_pack.email} </dt>
                             <dd>
                                 <input type="text" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
                                 {/* <input type="text" style={{ width: '43%' }} name="frontEmail" value={frontEmail} onChange={onChange} />
@@ -161,9 +235,9 @@ const OnlineExhibitionEventContainer = () => {
                             </dd>
                         </dl>
                         <div className="privacy">
-                            <h4>· {language === 'ko' ? "개인정보취급방침" : "Privacy policy"}</h4>
+                            <h4>· {current_pack.privacy}</h4>
                             <span>
-                                <strong>{language === 'ko' ? "개인정보취급방침" : "Privacy policy"}</strong>
+                                <strong>{current_pack.privacy}</strong>
 
                                     ㈜이노윙(이하 “회사”)는 정보통신망 이용촉진 및 정보보호에 관한 법률, 개인정보보호법에 따라
                                     모든 고객님의 개인정보보호 및 권익을 보호하기 위하여 수집, 보유된 정보를 적법하고 적정하게 취급할 것입니다.
@@ -175,12 +249,12 @@ const OnlineExhibitionEventContainer = () => {
                                     제12조 (서비스의 이용 신청에 대한 승낙과 거절)
                                 </span>
                             <em>
-                                <strong>*</strong>{language === 'ko' ? "동의합니다. " : "I agree. "}
+                                <strong>*</strong>{current_pack.agree}
                                 <input type="checkbox" id="p1" name="" className="leftch" />
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
-                        <Link to="" className="btin" onClick={inputCheck}>{language === 'ko' ? "응모하기" : "submit"} </Link>
+                        <Link href="" className="btin" onClick={inputCheck}>{current_pack.submit} </Link>
                     </div>
                 }
             </div>
