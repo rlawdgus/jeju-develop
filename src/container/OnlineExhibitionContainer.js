@@ -36,7 +36,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
             alert('서버에 오류가 발생했습니다.');
         }
     }, [showingDocument]);
-
+    
     const type = []
     if (booth.type === 0) {
         type.push('온라인 전시')
@@ -147,7 +147,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                                 allowFullScreen
                             ></iframe> */}
                         </div>
-                        <button className="buy" onClick={window.open(booth.link)}>
+                        <button className="buy" onClick={() => window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
                                 : language === 'cn' ? "중국어"
                                     : language === 'jp' ? "일본어"

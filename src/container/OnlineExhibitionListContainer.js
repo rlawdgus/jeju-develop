@@ -128,6 +128,10 @@ const OnlineExhibitionListContainer = () => {
         setLoading(true);
         try {
             const res = await getDocumentList(type); // default : 0
+            res.sort((a, b) => {
+                return a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+            })
+            console.log(res)
             setResult(res);
             setSwiper(<SwiperContainer dataSet={res} />);
         } catch (e) {
