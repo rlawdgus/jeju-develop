@@ -147,7 +147,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                                 allowFullScreen
                             ></iframe> */}
                         </div>
-                        <button className="buy" onClick={window.open(booth.link)}>
+                        <button className="buy" onClick={() => window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
                                 : language === 'cn' ? "중국어"
                                     : language === 'jp' ? "일본어"
