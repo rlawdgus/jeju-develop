@@ -15,7 +15,7 @@ export default ({ language, navList, selected }) => {
             </span>
             <ul>
                 {navList.map(item => (
-                    <HeaderNavItem key={item.id} onClick={selected} item={item} language={language} />
+                    <HeaderNavItem key={item.id} onClick={selected} item={item} Language={language} />
                 ))}
             </ul>
         </div>

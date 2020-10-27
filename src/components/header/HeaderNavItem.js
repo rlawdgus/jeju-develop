@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export default ({ onClick, item, language }) => {
+export default ({ onClick, item, Language }) => {
     const selectEffect = item.checked ? 'on' : '';
-    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+    const LANGUAGE_PATH = Language !== '' ? `/${Language}` : '';
     const language = useSelector(state => state.language.current);
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {

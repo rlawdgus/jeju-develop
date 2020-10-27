@@ -34,14 +34,14 @@ export default () => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
-        <section id={"main_container" + current_pack.css}>
+        <section id={"main_container " + current_pack.css}>
             <div className={"tab" + current_pack.css}>
                 <ul>
-                    <li><Link to={LANGUAGE_PATH + Paths.conference} className={"on" + current_pack.css}>{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.conference} className={"on " + current_pack.css}>{current_pack.title}</Link></li>
                 </ul>
             </div>
-            <div className={"main_content" + current_pack.css}>
-                <div className={"speech" + current_pack.css}>
+            <div className={"main_content " + current_pack.css}>
+                <div className={"speech " + current_pack.css}>
                     <i></i>
                     <img src={require("../static/img/bg_speech.png")} alt="" />
                     <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>

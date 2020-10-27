@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import '../static/stylesheets/Error.css';
 
 const ErrorPage = () => {
@@ -33,8 +34,8 @@ const ErrorPage = () => {
 
     return (
         <div className={"ERROR" + current_pack.css}>
-            <h1 className={"title" + current_pack.css}>{current.title}</h1>
-            <p className={"warning" + current_pack.css}>{current.content}</p>
+            <h1 className={"title" + current_pack.css}>{current_pack.title}</h1>
+            <p className={"warning" + current_pack.css}>{current_pack.content}</p>
         </div>
     );
 };
