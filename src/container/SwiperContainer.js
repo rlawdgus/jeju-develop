@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 // import Swiper core and required components
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -20,13 +21,34 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export default ({ dataSet }) => {
     const URL = 'http://14.63.174.102:84';
 
+    const language = useSelector(state => state.language.current);
+
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            css: ""
+        },
+        en: {
+            css: " language-en"
+        },
+        cn: {
+            css: " language-cn"
+        },
+        jp: {
+            css: " language-jp"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
+
     return (
         <>
             {dataSet === 'Error' ? (
                 <Swiper>
                     <SwiperSlide>
                         <img
-                            className="error"
+                            className={"error" + current_pack.css}
                             src={ErrorImage}
                             alt=""
                         />{' '}

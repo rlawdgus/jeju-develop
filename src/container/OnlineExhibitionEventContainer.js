@@ -21,6 +21,7 @@ function reducer(state, action) {
 
 const useStyles = makeStyles((theme) => ({
     backdrop: {
+        css: "",
         zIndex: 90,
     },
 }));
@@ -93,6 +94,7 @@ const OnlineExhibitionEventContainer = () => {
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
+            css: "",
             subject: "이벤트 참여를 위한 회원정보 입력",
             subject2: "",
             necessary: "*는 필수 항목입니다.",
@@ -108,6 +110,7 @@ const OnlineExhibitionEventContainer = () => {
             submit: "응모하기"
         },
         en: {
+            css: " language-en",
             subject: "Entering member information",
             subject2: "to participate in the event",
             necessary: "*",
@@ -123,6 +126,7 @@ const OnlineExhibitionEventContainer = () => {
             submit: "Submit"
         },
         cn: {
+            css: " language-cn",
             subject: "중국어",
             subject2: "중국어",
             necessary: "중국어",
@@ -138,6 +142,7 @@ const OnlineExhibitionEventContainer = () => {
             submit: "중국어"
         },
         jp: {
+            css: " language-jp",
             mention: "일본어",
             mention2: "일본어",
             mention3: "일본어",
@@ -164,26 +169,26 @@ const OnlineExhibitionEventContainer = () => {
 
     return (
         <>
-            <div className="modal ">
+            <div className={"modal" + current_pack.css}>
                 {/* event1 */}
                 {first &&
-                    <div className="eventin">
+                    <div className={"eventin" + current_pack.css}>
                         <h3><strong>이벤트 참여 후</strong>전시관 둘러보기</h3>
                         <span>행사 종료 후 추첨을 통하여 경품을 지급해 드립니다.</span>
                         <p><img src={require("../static/img/img_eventin.png")} alt="" /></p>
-                        <Link to="#" className="btin" onClick={secondOpen}>참여하기</Link>
-                        <Link to="#" className="btclose" onClick={nextTime}>다음에</Link>
+                        <Link to="#" className={"btin" + current_pack.css} onClick={secondOpen}>참여하기</Link>
+                        <Link to="#" className={"btclose" + current_pack.css} onClick={nextTime}>다음에</Link>
                     </div>
                 }
                 {/* event2 */}
                 {second &&
-                    <div className="eventtxt">
+                    <div className={"eventtxt" + current_pack.css}>
                         {language === "en" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
                             : language === "cn" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
                                 : language === "jp" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
                                     : <h3 style={{ fontWeight: 'bold' }}>{current_pack.subject}</h3>}
-                        <span className="inf">{current_pack.necessary}</span>
-                        <dl className="fir">
+                        <span className={"inf" + current_pack.css}>{current_pack.necessary}</span>
+                        <dl className={"fir" + current_pack.css}>
                             <dt>{current_pack.name}</dt>
                             <dd>
                                 <input
@@ -218,7 +223,7 @@ const OnlineExhibitionEventContainer = () => {
                                 <input type="text" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
                             </dd>
                         </dl>
-                        <div className="privacy">
+                        <div className={"privacy" + current_pack.css}>
                             <h4>· {current_pack.privacy}</h4>
                             <span>
                                 <strong>{current_pack.privacy}</strong>
@@ -234,16 +239,16 @@ const OnlineExhibitionEventContainer = () => {
                                 </span>
                             <em>
                                 <strong>*</strong>{current_pack.agree}
-                                <input type="checkbox" id="p1" name="" className="leftch" onClick={() => setAgree(true)} />
+                                <input type="checkbox" id="p1" name="" className={"leftch" + current_pack.css} onClick={() => setAgree(true)} />
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>
-                        <Link to="#" className="btin" onClick={inputCheck}>{current_pack.submit} </Link>
+                        <Link to="#" className={"btin" + current_pack.css} onClick={inputCheck}>{current_pack.submit} </Link>
                     </div>
                 }
             </div>
             <Backdrop
-                className={classes.backdrop}
+                className={classes.backdrop + current_pack.css}
                 open={open}
                 onClick={close}
             />

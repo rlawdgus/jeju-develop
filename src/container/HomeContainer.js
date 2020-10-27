@@ -17,24 +17,28 @@ export default () => {
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr:{
+            css: "",
             movie_name: "<제 2회 6차산업제주국제박람회>",
             online_go: "온라인전시관",
             conference_go: "컨퍼런스",
             go: "바로가기"
         },
         en:{
+            css: " language-en",
             movie_name: "<title>",
             online_go: "Online-Exhibition",
             conference_go: "Conference",
             go: "Go"
         },
         cn:{
+            css: " language-cn",
             movie_name: "중국어",
             online_go: "중국어",
             conference_go: "중국어",
             go: "중국어"
         },
         jp:{
+            css: " language-jp",
             movie_name: "일본어",
             online_go: "일본어",
             conference_go: "일본어",
@@ -48,17 +52,17 @@ export default () => {
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
-        <section id="main_container">
-            <div className="main_content">
-                <div className="movie">
+        <section id={"main_container" + current_pack.css}>
+            <div className={"main_content" + current_pack.css}>
+                <div className={"movie" + current_pack.css}>
                     <i></i>
                     <img src={BgMovie} alt="" />
                     <a href="#!"><img src={BtMovieGo} alt="" /></a>
                     <span> {current_pack.movie_name} </span>
                 </div>
-                <div className="right">
+                <div className={"right" + current_pack.css}>
                     <Link to={LANGUAGE_PATH + Paths.exhibition} >
-                        <div className="onlinego">
+                        <div className={"onlinego" + current_pack.css}>
                             <i></i>
                             <img src={BgOnlineGo} alt="" />
                             <h3>{current_pack.online_go}</h3>
@@ -66,7 +70,7 @@ export default () => {
                         </div>
                     </Link>
                     <Link to={LANGUAGE_PATH + Paths.conference} >
-                        <div className="confgo">
+                        <div className={"confgo" + current_pack.css}>
                             <i></i>
                             <img src={BgConfGo} alt="" />
                             <h3>{current_pack.conference_go}</h3>

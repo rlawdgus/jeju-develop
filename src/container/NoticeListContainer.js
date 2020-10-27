@@ -14,6 +14,7 @@ export default ({ page, noticeList }) => {
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
+            css: "",
             title: "공지사항",
             amount: "총",
             amount2: "건의 글이 있습니다.",
@@ -22,6 +23,7 @@ export default ({ page, noticeList }) => {
             go: "보기"
         },
         en: {
+            css: " language-en",
             title: "Notice",
             amount: "There are a total",
             amount2: "articles",
@@ -30,6 +32,7 @@ export default ({ page, noticeList }) => {
             go: "View"
         },
         cn: {
+            css: " language-cn",
             title: "중국어",
             amount: "중국어",
             amount2: "중국어",
@@ -38,6 +41,7 @@ export default ({ page, noticeList }) => {
             go: "중국어"
         },
         jp: {
+            css: " language-jp",
             title: "일본어",
             amount: "일본어",
             amount2: "일본어",
@@ -53,13 +57,13 @@ export default ({ page, noticeList }) => {
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
-        <section id="comm_container">
-            <div className="tab">
+        <section id={"comm_container" + current_pack.css}>
+            <div className={"tab" + current_pack.css}>
                 <ul>
-                    <li><Link to={LANGUAGE_PATH + Paths.notice} className="on">{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.notice} className={"on" + current_pack.css}>{current_pack.title}</Link></li>
                 </ul>
             </div>
-            <div className="noticebox">
+            <div className={"noticebox" + current_pack.css}>
                 <span>{current_pack.amount} <strong>{noticeList.length}</strong> {current_pack.amount2}</span>
                 <table>
                     <caption>공지사항 내용을 보여주는 표</caption>
@@ -79,7 +83,7 @@ export default ({ page, noticeList }) => {
                         <Pagination noticeList={noticeList} currentPage={page} />
                     </tbody>
                 </table>
-                <div className="tnavi">
+                <div className={"tnavi" + current_pack.css}>
                     <ul>
                         <PaginationButton noticeList={noticeList} currentPage={page} />
                     </ul>

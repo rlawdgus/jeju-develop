@@ -12,15 +12,19 @@ export default () => {
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
+            css: "",
             title: "컨퍼런스"
         },
         en: {
+            css: " language-en",
             title: "Conference"
         },
         cn: {
+            css: " language-cn",
             title: "중국어"
         },
         jp: {
+            css: " language-jp",
             title: "일본어"
         }
     }
@@ -28,16 +32,16 @@ export default () => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
-    // const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
-        <section id="main_container">
-            <div className="tab">
+        <section id={"main_container" + current_pack.css}>
+            <div className={"tab" + current_pack.css}>
                 <ul>
-                    <li><Link to={Paths.conference} className="on">{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.conference} className={"on" + current_pack.css}>{current_pack.title}</Link></li>
                 </ul>
             </div>
-            <div className="main_content">
-                <div className="speech">
+            <div className={"main_content" + current_pack.css}>
+                <div className={"speech" + current_pack.css}>
                     <i></i>
                     <img src={require("../static/img/bg_speech.png")} alt="" />
                     <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>

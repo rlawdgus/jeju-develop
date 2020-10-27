@@ -10,24 +10,28 @@ export default () => {
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
+            css: "",
             title: "SNS",
             youtube: "유튜브 바로가기",
             facebook: "페이스북 바로가기",
             instagram: "인스타그램 바로가기"
         },
         en: {
+            css: " language-en",
             title: "SNS",
             youtube: "You Tube Link",
             facebook: "Facebook Link",
             instagram: "Instagram Link"
         },
         cn: {
+            css: " language-cn",
             title: "중국어",
             youtube: "중국어",
             facebook: "중국어",
             instagram: "중국어"
         },
         jp: {
+            css: " language-jp",
             title: "일본어",
             youtube: "일본어",
             facebook: "일본어",
@@ -40,13 +44,13 @@ export default () => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
-        <section id="main_container">
-            <div className="tab">
+        <section id={"main_container" + current_pack.css}>
+            <div className={"tab" + current_pack.css}>
                 <ul>
-                    <li><Link to={LANGUAGE_PATH + Paths.sns} className="on">{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.sns} className={"on" + current_pack.css}>{current_pack.title}</Link></li>
                 </ul>
             </div>
-            <div className="snsbox">
+            <div className={"snsbox" + current_pack.css}>
                 <ul>
                     <li><a rel="noopener noreferrer" href="https://www.youtube.com/channel/UCrVe4zDkzenuAjrH-6ukEjw" target="_blank"><i><img src={require("../static/img/img_youtube.png")} alt="youtube" /></i>{current_pack.youtube}</a></li>
                     <li><a rel="noopener noreferrer" href="https://www.facebook.com/6%EC%B0%A8%EC%82%B0%EC%97%85%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EB%B0%95%EB%9E%8C%ED%9A%8C-112819440075222" target="_blank"><i><img src={require("../static/img/img_facebook.png")} alt="facebook" /></i>{current_pack.facebook}</a></li>

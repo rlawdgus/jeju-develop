@@ -28,6 +28,25 @@ export default ({ noticeList, currentPage }) => {
         else history.push(LANGUAGE_PATH + Paths.notice + '?page=' + page)
     }, [paging, history, LANGUAGE_PATH]);
 
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            css: ""
+        },
+        en: {
+            css: " language-en"
+        },
+        cn: {
+            css: " language-cn"
+        },
+        jp: {
+            css: " language-jp"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
+
     return (
         <>
             <li><div onClick={() => pageLink(1)} ><img src={require("../static/img/ic_first.png")} alt="" /></div></li>
@@ -36,7 +55,7 @@ export default ({ noticeList, currentPage }) => {
             {paginationButton(listLength)}
             {
                 paging.map(item =>
-                    <li key={item} className={item}><div onClick={() => pageLink(item)} className={item === currentPage ? "on" : ""} >{item}</div></li>
+                    <li key={item} className={item + current_pack.css}><div onClick={() => pageLink(item)} className={item === currentPage ? "on" : "" + current_pack.css} >{item}</div></li>
                 )
             }
 

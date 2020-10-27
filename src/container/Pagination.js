@@ -15,13 +15,37 @@ export default ({ noticeList, currentPage }) => {
     
     
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            css: "",
+            go: "바로가기"
+        },
+        en: {
+            css: " language-en",
+            go: "Link"
+        },
+        cn: {
+            css: " language-cn",
+            go: "중국어"
+        },
+        jp: {
+            css: " language-jp",
+            go: "일본어"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
+
     return (
         <>
             {currentList.map(item =>
                 <tr key={item.id}>
                     <td>{dateToYYYYMMDD(item.created_at)}</td>
                     <td><Link to={LANGUAGE_PATH + Paths.notice + '/' + item.id} >{item.title}</Link></td>
-                    <td><Link to={LANGUAGE_PATH + Paths.notice + '/' + item.id} className="go" >바로가기</Link></td>
+                    <td><Link to={LANGUAGE_PATH + Paths.notice + '/' + item.id} className={"go" + current_pack.css} >{current_pack.go}</Link></td>
                 </tr>
             )}
         </>

@@ -99,15 +99,34 @@ const OnlineExhibitionContainer = ({ viewId }) => {
         type.push('일본어')
     }
 
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            css: ""
+        },
+        en: {
+            css: " language-en"
+        },
+        cn: {
+            css: " language-cn"
+        },
+        jp: {
+            css: " language-jp"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
+
     return (
-        <section id="ex_container">
+        <section id={"ex_container" + current_pack.css}>
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
                         : language === 'cn' ? type[2]
                             : language === 'jp' ? type[3]
                                 : type[0]}ㅣ{booth.title}</h2>
-                    <div className="people">
+                    <div className={"people" + current_pack.css}>
                         <span>
                             <img src={PeoLeft} alt="" />
                         </span>
@@ -115,17 +134,17 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                             <img src={PeoRight} alt="" />
                         </span>
                     </div>
-                    <div className="left">
+                    <div className={"left" + current_pack.css}>
                         <img src={A4} alt="" />
                     </div>
-                    <div className="right">
+                    <div className={"right" + current_pack.css}>
                         <img src={A4} alt="" />
                     </div>
-                    <div className="spot">
+                    <div className={"spot" + current_pack.css}>
                         <span>
                             <img src={CenterBooth} alt="" />
                         </span>
-                        <div className="center">
+                        <div className={"center" + current_pack.css}>
                             <iframe
                                 title="youtube"
                                 width="660"
@@ -147,7 +166,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                                 allowFullScreen
                             ></iframe> */}
                         </div>
-                        <button className="buy" onClick={() => window.open(booth.link)}>
+                        <button className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
                                 : language === 'cn' ? "중국어"
                                     : language === 'jp' ? "일본어"

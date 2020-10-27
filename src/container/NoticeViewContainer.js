@@ -40,28 +40,63 @@ export default ({ viewId, near }) => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            css: "",
+            title: "공지사항",
+            list: "목 록",
+            prev: "이전글",
+            next: "다음글"
+        },
+        en: {
+            css: " language-en",
+            title: "Notice",
+            list: "List",
+            prev: "Prev",
+            next: "Next"
+        },
+        cn: {
+            css: " language-cn",
+            title: "중국어",
+            list: "중국어",
+            prev: "중국어",
+            next: "중국어"
+        },
+        jp: {
+            css: " language-jp",
+            title: "일본어",
+            list: "일본어",
+            prev: "일본어",
+            next: "일본어"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
+
     return (
-        <section id="comm_container">
-            <div className="tab">
+        <section id={"comm_container" + current_pack.css}>
+            <div className={"tab" + current_pack.css}>
                 <ul>
                     <li>
-                        <Link to={LANGUAGE_PATH + Paths.notice} className="on">
-                            공지사항
+                        <Link to={LANGUAGE_PATH + Paths.notice} className={"on" + current_pack.css}>
+                            {current_pack.title}
                         </Link>
                     </li>
                 </ul>
             </div>
             {!loading && (
-                <div className="noticeview">
-                    <div className="viewhead">
+                <div className={"noticeview" + current_pack.css}>
+                    <div className={"viewhead" + current_pack.css}>
                         <h3>{noticeView.title}</h3>
                         <ul>
-                            <li>공지사항</li>
+                            <li>{current_pack.title}</li>
                             <li>{dateToYYYYMMDD(noticeView.created_at)}</li>
                             {/* <li>조회수 637</li> */}
                         </ul>
                     </div>
-                    <div className="viewcontent">
+                    <div className={"viewcontent" + current_pack.css}>
                         {noticeView.contents}
                         {/* <strong>「6차산업제주국제박람회 세부운영요령」은 박람회 개최에 필요한 사항으로 숙지하시고, 관련 내용 참고하여
                 다음의 사항을 박람회 사무국으로 기한 내에 반드시 제출하여 주시기 바랍니다.</strong><br />
@@ -81,7 +116,7 @@ export default ({ viewId, near }) => {
                 - 조립식부스 상호간판 신청서<br />
                 - 후면 이미지 파일 : 사이즈 2,920mm *2,460mm 홍보 이미지<br />
                     <img src={require("../static/img/img_noticeview.png")} /> */}
-                        <div className="file">
+                        <div className={"file" + current_pack.css}>
                             <Link to="#">
                                 <img
                                     src={require('../static/img/ic_download.png')}
@@ -94,15 +129,15 @@ export default ({ viewId, near }) => {
                             </span>
                         </div>
                     </div>
-                    <div className="btbox">
-                        <Link to={LANGUAGE_PATH + Paths.notice} className="bk">
-                            목 록
+                    <div className={"btbox" + current_pack.css}>
+                        <Link to={LANGUAGE_PATH + Paths.notice} className={"bk" + current_pack.css}>
+                            {current_pack.list}
                         </Link>
-                        {near.next && <Link to={LANGUAGE_PATH + Paths.notice + '/' + near.next} className="wr">
-                            다음글
+                        {near.next && <Link to={LANGUAGE_PATH + Paths.notice + '/' + near.next} className={"wr" + current_pack.css}>
+                            {current_pack.next}
                         </Link>}
-                        {near.prev && <Link to={LANGUAGE_PATH + Paths.notice + '/' + near.prev} className="wr">
-                            이전글
+                        {near.prev && <Link to={LANGUAGE_PATH + Paths.notice + '/' + near.prev} className={"wr" + current_pack.css}>
+                            {current_pack.prev}
                         </Link>}
                     </div>
                 </div>

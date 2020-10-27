@@ -42,7 +42,7 @@ const App = ({ match }) => {
     const STATE_PATH = state ? `/${state}` : '';
 
     return (
-        <>
+        <div className={language}>
             <Header />
             <Switch>
                 <Route path={STATE_PATH + Paths.index} component={HomePage} exact />
@@ -58,7 +58,7 @@ const App = ({ match }) => {
             {/* ----- 신경 ㄴㄴ ----- */}
             <DialogContainer />
             <LoadingContainer />
-        </>
+        </div>
     );
 };
 
