@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
 import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 
@@ -14,8 +13,6 @@ const Header = () => {
     const location = useLocation();
     const history = useHistory();
 
-    const language = useSelector(state => state.language);
-    // console.log(language);
 
     const selectLanguage = useCallback(e => {
         // 언어 변경
@@ -86,7 +83,7 @@ const Header = () => {
     return (
         <header>
             <HeaderLogo selectLanguage={selectLanguage} setDefault={setDefault} />
-            <HeaderNav language={language.current} navList={navList} selected={selected} />
+            <HeaderNav navList={navList} selected={selected} />
         </header>
     );
 };
