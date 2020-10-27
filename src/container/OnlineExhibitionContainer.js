@@ -119,7 +119,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     //--------------------------------------------------------------------------------------
 
     return (
-        <section id={"ex_container" + current_pack.css}>
+        <section id="ex_container" className={current_pack.css}>
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]

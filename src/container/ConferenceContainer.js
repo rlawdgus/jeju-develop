@@ -3,7 +3,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
-import { Paths } from '../paths';
+
+import { Paths } from '../paths/index'
 
 export default () => {
 
@@ -28,20 +29,20 @@ export default () => {
             title: "일본어"
         }
     }
-
+    
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
-        <section id={"main_container " + current_pack.css}>
+        <section id="main_container" className={current_pack.css}>
             <div className={"tab" + current_pack.css}>
                 <ul>
-                    <li><Link to={LANGUAGE_PATH + Paths.conference} className={"on " + current_pack.css}>{current_pack.title}</Link></li>
+                    <li><Link to={LANGUAGE_PATH + Paths.conference} className={"on" + current_pack.css}>{current_pack.title}</Link></li>
                 </ul>
             </div>
-            <div className={"main_content " + current_pack.css}>
-                <div className={"speech " + current_pack.css}>
+            <div className={"main_content" + current_pack.css}>
+                <div className={"speech" + current_pack.css}>
                     <i></i>
                     <img src={require("../static/img/bg_speech.png")} alt="" />
                     <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>

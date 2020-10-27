@@ -179,19 +179,19 @@ const OnlineExhibitionListContainer = () => {
             search: "부스명 검색"
         },
         en: {
-            css: "language-en",
+            css: " language-en",
             title: "Online Exhibition",
             unit: "",
             search: "Booth name search"
         },
         cn: {
-            css: "language-cn",
+            css: " language-cn",
             title: "중국어",
             unit: "중국어",
             search: "중국어"
         },
         jp: {
-            css: "language-jp",
+            css: " language-jp",
             title: "일본어",
             unit: "일본어",
             search: "일본어"
@@ -202,23 +202,23 @@ const OnlineExhibitionListContainer = () => {
     //--------------------------------------------------------------------------------------
 
     return (
-        <section id={"on_ex_container " + current_pack.css}>
-            <div className={"left_section " + current_pack.css}>
+        <section id="on_ex_container" className={current_pack.css}>
+            <div className={"left_section" + current_pack.css}>
                 <h2>
-                    <input type="checkbox" id="c1" name="" className={"leftch " + current_pack.css} value={0} onClick={listClick} checked={type === 0} readOnly />
+                    <input type="checkbox" id="c1" name="" className={"leftch" + current_pack.css} value={0} onClick={listClick} checked={type === 0} readOnly />
                     <label htmlFor="c1"><span></span>{current_pack.title}</label>
                 </h2>
                 <ul>
                     {leftLists.map(list => (
                         list.num !== 0 &&
                         <li key={list.id}>
-                            <input type="checkbox" id={list.id} name="" className={"leftch " + current_pack.css} value={list.num} onClick={listClick} checked={type === list.num} readOnly />
+                            <input type="checkbox" id={list.id} name="" className={"leftch" + current_pack.css} value={list.num} onClick={listClick} checked={type === list.num} readOnly />
                             <label htmlFor={list.id}><span></span>{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</label>
                         </li>
 
                     ))}
                 </ul>
-                <div className={"search " + current_pack.css}>
+                <div className={"search" + current_pack.css}>
                     <h3>{current_pack.search}</h3>
                     <span>
                         <input type="text" value={search} onChange={onChange} onKeyPress={handleKeyPrress} />
@@ -228,9 +228,9 @@ const OnlineExhibitionListContainer = () => {
                 <p><img src={require("../static/img/img_com.png")} alt="" /></p>
             </div>
             {!loading &&
-                <div className={"right_section " + current_pack.css}>
-                    <div className={"content " + current_pack.css}>
-                        <div className={"subtop menu01 " + current_pack.css}>
+                <div className={"right_section" + current_pack.css}>
+                    <div className={"content" + current_pack.css}>
+                        <div className={"subtop menu01" + current_pack.css}>
                             <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>
                                 : language === 'cn' ? <><strong>{leftLists[type].cn_text}</strong>{current_pack.unit} </>
                                     : language === 'jp' ? <><strong>{leftLists[type].jp_text}</strong>{current_pack.unit} </>
@@ -239,19 +239,19 @@ const OnlineExhibitionListContainer = () => {
                         </div>
 
                         {swiper}
-                        <div className={"bigimg " + current_pack.css}>
+                        <div className={"bigimg" + current_pack.css}>
                             <ul>
                                 {
                                     find.length === 0
                                         ? result.map(res => (
                                             <li key={res.id}>
                                                 <em>{res.title}</em>
-                                                <img className={"bigimgsize " + current_pack.css} src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
+                                                <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                             </li>
                                         ))
                                         : <li>
                                             <em>{find[0].title}</em>
-                                            <img className={"bigimgsize " + current_pack.css} src={URL + find[0].photo_1} onError={imgError} onClick={() => firstOpen(find[0].id)} alt="" />
+                                            <img className={"bigimgsize" + current_pack.css} src={URL + find[0].photo_1} onError={imgError} onClick={() => firstOpen(find[0].id)} alt="" />
                                         </li>
                                 }
                             </ul>

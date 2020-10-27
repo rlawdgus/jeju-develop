@@ -52,7 +52,7 @@ export default () => {
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
-        <section id={"main_container" + current_pack.css}>
+        <section id="main_container" className={current_pack.css}>
             <div className={"main_content" + current_pack.css}>
                 <div className={"movie" + current_pack.css}>
                     <i></i>

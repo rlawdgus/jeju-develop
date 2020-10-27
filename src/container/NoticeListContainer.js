@@ -57,7 +57,7 @@ export default ({ page, noticeList }) => {
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
-        <section id={"comm_container" + current_pack.css}>
+        <section id="comm_container" className={current_pack.css}>
             <div className={"tab" + current_pack.css}>
                 <ul>
                     <li><Link to={LANGUAGE_PATH + Paths.notice} className={"on" + current_pack.css}>{current_pack.title}</Link></li>

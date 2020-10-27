@@ -44,7 +44,7 @@ export default () => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
-        <section id={"main_container" + current_pack.css}>
+        <section id="main_container" className={current_pack.css}>
             <div className={"tab" + current_pack.css}>
                 <ul>
                     <li><Link to={LANGUAGE_PATH + Paths.sns} className={"on" + current_pack.css}>{current_pack.title}</Link></li>

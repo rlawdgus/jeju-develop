@@ -76,7 +76,7 @@ export default ({ viewId, near }) => {
     //--------------------------------------------------------------------------------------
 
     return (
-        <section id={"comm_container" + current_pack.css}>
+        <section id="comm_container" className={current_pack.css}>
             <div className={"tab" + current_pack.css}>
                 <ul>
                     <li>
