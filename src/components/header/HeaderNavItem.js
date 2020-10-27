@@ -2,9 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-export default ({ onClick, item, Language }) => {
+export default ({ onClick, item }) => {
     const selectEffect = item.checked ? 'on' : '';
-    const LANGUAGE_PATH = Language !== '' ? `/${Language}` : '';
     const language = useSelector(state => state.language.current);
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
@@ -25,6 +24,7 @@ export default ({ onClick, item, Language }) => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
     
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
         <li>
             <Link to={LANGUAGE_PATH + item.path} className={selectEffect + current_pack.css} onClick={() => onClick(item.id)}>
