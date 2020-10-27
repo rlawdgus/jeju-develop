@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getDocumentList } from '../api/OnlineExhibitionAPI';
@@ -18,6 +18,7 @@ const OnlineExhibitionListContainer = () => {
     const URL = "http://14.63.174.102:84";
     const history = useHistory();
     const language = useSelector(state => state.language.current);
+    const inputRef = useRef();
 
     const leftLists = [
         {
@@ -109,10 +110,11 @@ const OnlineExhibitionListContainer = () => {
     const [search, setSearch] = useState('');
     const [find, setFind] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [exist, setExist] = useState(false);
 
     const onChange = e => setSearch(e.target.value);
 
-    const listClick = e => { setType(parseInt(e.target.value)); setFind([]); };
+    const listClick = e => { setType(parseInt(e.target.value)); setFind([]); setSearch(''); setExist(false); };
 
     const firstOpen = useCallback((id) => {
         window.scrollTo(0, 0);
@@ -146,21 +148,30 @@ const OnlineExhibitionListContainer = () => {
     }, []);
 
     const findList = useCallback(() => {
-        const findItem = result.filter(item => item.title === search);
-        if (findItem.length !== 0) {
-            setFind(findItem)
-        } else {
-            alert("검색하신 부스가 존재하지 않습니다.");
-            setFind([]);
-            setSearch('');
-        }
-    }, [search, result])
+        // 아무것도 입력 없이 찾기버튼을 눌렀을 때
+        if (search === '') setExist(false);
 
-    const handleKeyPrress = e => {
-        if (e.key === 'Enter') {
-            findList();
+        // 입력이 있을경우 언어별로 판단
+        if (language === 'en') {
+            const findItem = result.filter(item => item.title.toLowerCase().indexOf(search) > -1)
+            if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        } else if (language === 'cn') {
+            const findItem = result.filter(item => item.title.indexOf(search) > -1)
+            if (findItem.length === 0) { alert("중국어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        } else if (language === 'jp') {
+            const findItem = result.filter(item => item.title.indexOf(search) > -1)
+            if (findItem.length === 0) { alert("일본어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        } else {
+            const findItem = result.filter(item => item.title.indexOf(search) > -1)
+            if (findItem.length === 0) { alert("검색하신 부스가 존재하지 않습니다."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
         }
-    }
+    }, [search, result, language])
+
+    const handleKeyPrress = e => { if (e.key === 'Enter') findList(); }
 
     useEffect(() => {
         try {
@@ -221,7 +232,7 @@ const OnlineExhibitionListContainer = () => {
                 <div className={"search" + current_pack.css}>
                     <h3>{current_pack.search}</h3>
                     <span>
-                        <input type="text" value={search} onChange={onChange} onKeyPress={handleKeyPrress} />
+                        <input type="text" value={search} onChange={onChange} onKeyPress={handleKeyPrress} ref={inputRef} />
                         <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
                     </span>
                 </div>
@@ -242,17 +253,20 @@ const OnlineExhibitionListContainer = () => {
                         <div className={"bigimg" + current_pack.css}>
                             <ul>
                                 {
-                                    find.length === 0
-                                        ? result.map(res => (
+                                    !exist ?
+                                        result.map(res => (
                                             <li key={res.id}>
                                                 <em>{res.title}</em>
                                                 <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                             </li>
                                         ))
-                                        : <li>
-                                            <em>{find[0].title}</em>
-                                            <img className={"bigimgsize" + current_pack.css} src={URL + find[0].photo_1} onError={imgError} onClick={() => firstOpen(find[0].id)} alt="" />
-                                        </li>
+                                        :
+                                        find.map(res => (
+                                            <li key={res.id}>
+                                                <em>{res.title}</em>
+                                                <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
+                                            </li>
+                                        ))
                                 }
                             </ul>
                         </div>
