@@ -265,7 +265,8 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                                     title="youtube"
                                     width="660"
                                     height="376"
-                                    src="https://www.youtube.com/KV5xCWgDiZs" //비디오 링크가  cms에 추가하는 것이 없음
+                                    src="https://www.youtube.com/embed/KV5xCWgDiZs" //비디오 링크가  cms에 추가하는 것이 없음
+                                    // src={booth.video_1}
                                     alt=""
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
