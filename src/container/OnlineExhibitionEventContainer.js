@@ -239,7 +239,7 @@ const OnlineExhibitionEventContainer = () => {
                                 </span>
                             <em>
                                 <strong>*</strong>{current_pack.agree}
-                                <input type="checkbox" id="p1" name="" className={"leftch" + current_pack.css} onClick={() => setAgree(true)} />
+                                <input type="checkbox" id="p1" name="" className={"leftch" + current_pack.css} onClick={() => setAgree(!agree)} />
                                 <label htmlFor="p1"><span></span> </label>
                             </em>
                         </div>

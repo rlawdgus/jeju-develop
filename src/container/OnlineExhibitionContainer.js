@@ -36,7 +36,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
             alert('서버에 오류가 발생했습니다.');
         }
     }, [showingDocument]);
-    
+
     const type = []
     if (booth.type === 0) {
         type.push('온라인 전시')
@@ -155,16 +155,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                             ></iframe>
-                            {/* <iframe
-                                title="youtube"
-                                width="660"
-                                height="376"
-                                src="https://www.youtube.com/embed/G9ntaxClfrA"
-                                alt=""
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe> */}
                         </div>
                         <button className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
