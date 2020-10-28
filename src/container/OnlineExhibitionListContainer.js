@@ -153,7 +153,7 @@ const OnlineExhibitionListContainer = () => {
 
         // 입력이 있을경우 언어별로 판단
         if (language === 'en') {
-            const findItem = result.filter(item => item.title.toLowerCase().indexOf(search) > -1)
+            const findItem = result.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
             if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         } else if (language === 'cn') {
