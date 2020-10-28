@@ -12,6 +12,8 @@ import CenterBooth from '../static/img/img_center_booth.png';
 
 const OnlineExhibitionContainer = ({ viewId }) => {
 
+    const URL = "http://14.63.174.102:84";
+
     const [booth, setBooth] = useState({})
 
     const language = useSelector(state => state.language.current);
@@ -120,6 +122,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
+            {console.log(booth.photo_2)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -138,7 +141,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         <img src={A4} alt="" />
                     </div>
                     <div className={"right" + current_pack.css}>
-                        <img src={A4} alt="" />
+                        <img src={URL + booth.photo_2} alt="" />
                     </div>
                     <div className={"spot" + current_pack.css}>
                         <span>
