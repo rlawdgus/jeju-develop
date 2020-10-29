@@ -65,6 +65,7 @@ export default ({ dataSet }) => {
                         navigation
                         watchOverflow
                         loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
+                        delay={300}
                     >
                         {dataSet.map((data) => (
                             <SwiperSlide key={data.id}>
