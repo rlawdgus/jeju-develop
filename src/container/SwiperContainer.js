@@ -22,7 +22,6 @@ export default ({ dataSet }) => {
     const URL = 'http://14.63.174.102:84';
 
     const language = useSelector(state => state.language.current);
-
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
@@ -40,10 +39,11 @@ export default ({ dataSet }) => {
     }
 
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
-    //--------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------
+
 
     return (
-        <>{console.log("스와이퍼 입장이요")}
+        <>
             {dataSet === 'Error' ? (
                 <Swiper>
                     <SwiperSlide>
@@ -55,30 +55,29 @@ export default ({ dataSet }) => {
                     </SwiperSlide>
                 </Swiper>
             ) : (
-                    <>
-                        {console.log(dataSet.length)}
-                        <Swiper
-                            slidesPerView={3} // 보이는 슬라이드 수
-                            slidesPerGroup={3} // 슬라이드 할때 몇개를 슬라이드 할것이냐
-                            loop={dataSet.length > 3 ? true : false}
-                            loopFillGroupWithBlank={true} // 빈공간은 빈 슬라이드로 채움
-                            loopedSlides={3} // 루프를 하면 몇개를 할것인지
-                            initialSlide={0}
-                            navigation
-                            watchOverflow={true} // 슬라이드가 충분하지 않은 경우 탐색 버튼을 숨김
-                            loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
-                        >
-                            {dataSet.map((data) => (
-                                <SwiperSlide key={data.id}>
-                                    <div>
-                                        <em>{data.title}</em>
-                                        <img src={URL + data.photo_1} alt="no_image" />
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    </>
-                )}
+                    <Swiper
+                        slidesPerView={3} // 보이는 슬라이드 수
+                        slidesPerGroup={3} // 슬라이드 할때 몇개를 슬라이드 할것이냐
+                        loop={dataSet.length > 3 ? true : false}
+                        loopFillGroupWithBlank={true} // 빈공간은 빈 슬라이드로 채움
+                        loopedSlides={3} // 루프를 하면 몇개를 할것인지
+                        initialSlide={0}
+                        navigation
+                        watchOverflow={true}
+                        loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
+                        delay={300}
+                    >
+                        {dataSet.map((data) => (
+                            <SwiperSlide key={data.id}>
+                                <div>
+                                    <em>{data.title}</em>
+                                    <img src={URL + data.photo_1} alt="no_image" />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                )
+            }
         </>
     );
 };

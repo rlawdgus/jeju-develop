@@ -130,13 +130,15 @@ const OnlineExhibitionListContainer = ({ type, setType }) => {
         setLoading(true);
         try {
             const res = await getDocumentList(type); // default : 0
-            res.sort(async(a, b) => {
-                return await a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+            res.sort((a, b) => {
+                return a.title < b.title ? -1 : a.title > b.title ? 1 : 0
             })
             setResult(res);
+            setSwiper('');
             setSwiper(<SwiperContainer dataSet={res} />);
         } catch (e) {
             alert('서버에 오류가 발생했습니다.');
+            setSwiper('');
             setSwiper(<SwiperContainer dataSet={"Error"} />)
         }
         setLoading(false);
