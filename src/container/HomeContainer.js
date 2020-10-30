@@ -50,9 +50,18 @@ export default () => {
         <section id="main_container" className={current_pack.css}>
             <div className={"main_content" + current_pack.css}>
                 <div className={"movie" + current_pack.css}>
-                    <i></i>
-                    <img src={`${process.env.PUBLIC_URL}/img/bg_movie.png`} alt="" />
-                    <a href="#!"><img src={`${process.env.PUBLIC_URL}/img/bt_moviego.png`} alt="" /></a>
+                    {/* <i></i>
+                    <img src={`${process.env.PUBLIC_URL}/img/bg_movie.png`} alt="" /> */}
+                    <iframe
+                        title="youtube"
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/KV5xCWgDiZs" //비디오 링크가  cms에 추가하는 것이 없음
+                        alt=""
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
                     <span> {current_pack.movie_name} </span>
                 </div>
                 <div className={"right" + current_pack.css}>
