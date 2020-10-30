@@ -11,28 +11,28 @@ export default () => {
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
-        kr:{
+        kr: {
             css: "",
             title: "환영사",
             title2: "축사",
             name: "이름(소속)",
             name2: "이름(소속)"
         },
-        en:{
+        en: {
             css: " language-en",
             title: "Welcome Address",
             title2: "Congratulatory message",
             name: "name()",
             name2: "name()"
         },
-        cn:{
+        cn: {
             css: " language-cn",
             title: "중국어",
             title2: "중국어",
             name: "중국어",
             name2: "중국어"
         },
-        jp:{
+        jp: {
             css: " language-jp",
             title: "일본어",
             title2: "일본어",
@@ -40,7 +40,7 @@ export default () => {
             name2: "일본어"
         }
     }
-    
+
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
@@ -56,15 +56,15 @@ export default () => {
             <div className={"main_content" + current_pack.css}>
                 <div className={"speech" + current_pack.css}>
                     <i></i>
-                    <img src={require("../static/img/bg_speech.png")} alt="" />
-                    <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>
+                    <img src={`${process.env.PUBLIC_URL}/img/bg_speech.png`} alt="" />
+                    <Link to=""><img src={`${process.env.PUBLIC_URL}/img/bt_moviego.png`} alt="" /></Link>
                     <span> {current_pack.name} </span>
                 </div>
 
                 <div className={"speech" + current_pack.css}>
                     <i></i>
-                    <img src={require("../static/img/bg_speech.png")} alt="" />
-                    <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>
+                    <img src={`${process.env.PUBLIC_URL}/img/bg_speech.png`} alt="" />
+                    <Link to=""><img src={`${process.env.PUBLIC_URL}/img/bt_moviego.png`} alt="" /></Link>
                     <span> {current_pack.name2} </span>
                 </div>
             </div>

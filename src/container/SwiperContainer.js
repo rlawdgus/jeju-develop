@@ -13,8 +13,6 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
-import ErrorImage from '../static/img/ic_check_on.png';
-
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -49,7 +47,7 @@ export default ({ dataSet }) => {
                     <SwiperSlide>
                         <img
                             className={"error" + current_pack.css}
-                            src={ErrorImage}
+                            src={`${process.env.PUBLIC_URL}/img/ic_check_on.png`}
                             alt=""
                         />
                     </SwiperSlide>

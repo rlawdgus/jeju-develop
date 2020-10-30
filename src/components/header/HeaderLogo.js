@@ -2,8 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Logo from '../../static/img/h1_logo.png';
-import LogoText from '../../static/img/h1_logo_txt.png';
 
 export default ({ selectLanguage, setDefault }) => {
     const language = useSelector(state => state.language.current);
@@ -30,8 +28,8 @@ export default ({ selectLanguage, setDefault }) => {
         <>
             <h1>
                 <Link to="/" onClick={setDefault} >
-                    <img src={Logo} alt="" />
-                    <img src={LogoText} alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/img/h1_logo.png`} alt="" />
+                    <img src={`${process.env.PUBLIC_URL}/img/h1_logo_txt.png`} alt="" />
                 </Link>
             </h1>
             <div className={"select" + current_pack.css}>

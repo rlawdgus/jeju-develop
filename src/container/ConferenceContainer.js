@@ -29,7 +29,7 @@ export default () => {
             title: "일본어"
         }
     }
-    
+
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
@@ -44,8 +44,8 @@ export default () => {
             <div className={"main_content" + current_pack.css}>
                 <div className={"speech" + current_pack.css}>
                     <i></i>
-                    <img src={require("../static/img/bg_speech.png")} alt="" />
-                    <Link to=""><img src={require("../static/img/bt_moviego.png")} alt="" /></Link>
+                    <img src={`${process.env.PUBLIC_URL}/img/bg_speech.png`} alt="" />
+                    <Link to=""><img src={`${process.env.PUBLIC_URL}/img/bt_movie.png`} alt="" /></Link>
                     {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
                 </div>
             </div>

@@ -116,16 +116,18 @@ const OnlineExhibitionListContainer = () => {
 
     const listClick = e => { setType(parseInt(e.target.value)); setFind([]); setSearch(''); setExist(false); };
 
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+
     const firstOpen = useCallback((id) => {
         window.scrollTo(0, 0);
         dispatch(setID(id));
         const TOKEN = localStorage.getItem('token');
         if (TOKEN) {
-            history.push(Paths.exhibition + '/' + id);
+            history.push(LANGUAGE_PATH + Paths.exhibition + '/' + id);
         } else {
             dispatch(firstModalOpen());
         }
-    }, [dispatch, history]);
+    }, [dispatch, history, LANGUAGE_PATH]);
 
     const callGetDocumentList = useCallback(async () => {
         setLoading(true);
@@ -233,10 +235,10 @@ const OnlineExhibitionListContainer = () => {
                     <h3>{current_pack.search}</h3>
                     <span>
                         <input type="text" value={search} onChange={onChange} onKeyPress={handleKeyPrress} ref={inputRef} />
-                        <button type="submit"><img src={require("../static/img/ic_search.png")} alt="" onClick={findList} /></button>
+                        <button type="submit"><img src={`${process.env.PUBLIC_URL}/img/ic_search.png`} alt="" onClick={findList} /></button>
                     </span>
                 </div>
-                <p><img src={require("../static/img/img_com.png")} alt="" /></p>
+                <p><img src={`${process.env.PUBLIC_URL}/img/img_com.png`} alt="" /></p>
             </div>
             {!loading &&
                 <div className={"right_section" + current_pack.css}>
