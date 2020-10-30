@@ -82,29 +82,67 @@ const Header = () => {
     // const setDefault = () => setNavList(navList.map(item => ({ ...item, checked: false })))
 
     return (
-        <header> 
-        <h1>
-            <Link to={Paths.index}>
-                <img src={require("../../static/img/h1_logo.png")} alt="" />
-                <img src={require("../../static/img/h1_logo_txt.png")} alt="" />
-            </Link>
-        </h1>
-        <nav role="navigation">
-            <div id="menuToggle">
-              <input type="checkbox" ref={autoClose} />
-                <span></span>
-                <span></span>
-                <span></span>
-            <ul id="menu" >
-                <li><Link to={Paths.session} onClick={() => autoClose.current.click()}>오프닝세션</Link></li>
-                <li><Link to={Paths.conference} onClick={() => autoClose.current.click()}>컨퍼런스</Link></li>
-                <li><Link to={Paths.exhibition} onClick={() => autoClose.current.click()}>온라인전시관</Link></li>
-                <li><Link to={Paths.notice} onClick={() => autoClose.current.click()}>공지 및 이벤트</Link></li>
-                <li><Link to={Paths.sns} onClick={() => autoClose.current.click()}>SNS</Link></li>
-            </ul>
-           </div>
-          </nav>
-    </header>
+        <header>
+            <h1>
+                <Link to={Paths.index}>
+                    <img src={require('../../static/img/h1_logo.png')} alt="" />
+                    <img
+                        src={require('../../static/img/h1_logo_txt.png')}
+                        alt=""
+                    />
+                </Link>
+            </h1>
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox" ref={autoClose} />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <li>
+                            <Link
+                                to={Paths.session}
+                                onClick={() => autoClose.current.click()}
+                            >
+                                오프닝세션
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to={Paths.conference}
+                                onClick={() => autoClose.current.click()}
+                            >
+                                컨퍼런스
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to={Paths.exhibition}
+                                onClick={() => autoClose.current.click()}
+                            >
+                                온라인전시관
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to={Paths.notice}
+                                onClick={() => autoClose.current.click()}
+                            >
+                                공지 및 이벤트
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to={Paths.sns}
+                                onClick={() => autoClose.current.click()}
+                            >
+                                SNS
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     );
 };
 
