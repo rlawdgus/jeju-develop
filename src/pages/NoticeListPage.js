@@ -42,8 +42,8 @@ export default ({ match, location, history }) => {
     const getNearFromList = useCallback(id => {
         const idx = noticeList.findIndex(item => item.id === id)
         if (idx !== -1) {
-            const prev = idx !== 0 ? noticeList[idx - 1].id : null;
-            const next = idx !== noticeList.length - 1 ? noticeList[idx + 1].id : null;
+            const prev = idx !== noticeList.length - 1 ? noticeList[idx + 1].id : null;
+            const next = idx !== 0 ? noticeList[idx - 1].id : null;
             return { prev, next };
         } else {
             return { prev: null, next: null}; // 에러

@@ -10,6 +10,8 @@ import PeoRight from '../static/img/img_peo_right.png';
 import A4 from '../static/img/img_a4.jpg';
 import CenterBooth from '../static/img/img_center_booth.png';
 
+import ErrorImage from '../static/img/ic_check_on.png';
+
 const OnlineExhibitionContainer = ({ viewId }) => {
 
     const URL = "http://14.63.174.102:84";
@@ -120,9 +122,52 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
+    const vType = ["ASF", "AVI", "BIK", "FLV", "MKV", "MOV", "MP4", "MPEG", "Ogg", "SKM", "TS", "WebM", "WMV",
+                    "asf", "avi", "bik", "flv", "mkv", "mov", "mp4", "mpeg", "ogg", "skm", "ts", "webm", "wmv"]
+
+    // const [isVideo, SetisVideo] = useState(false)
+
+    const videoType = (file, link) => {
+        const FILE = new String(file)
+        const LINK = new String(link)
+
+        console.log(LINK)
+
+        const dot = FILE.lastIndexOf('.')
+        for(let i = 0; i < vType.length; i++){  //파일로 넘어오는 경우
+            if(FILE.substring(dot + 1, FILE.length) === vType[i]){
+                console.log("find")
+                return <embed 
+                src={URL + file}
+                width="660"
+                height="376"
+                />
+            }
+        }
+
+        if(LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
+            return <iframe
+            title="youtube"
+            width="660"
+            height="376"
+            src={link} //비디오 링크가  cms에 추가하는 것이 없음
+            alt=""
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+        ></iframe>
+        }
+        else if(LINK.length !== 0){  //유튜브 링크로 넘어오는 경우
+            return <a href={link} target="_blank" rel="noopener noreferrer" width="660" height="376" >VIDEO LINK</a>
+        }
+        else {  //파일, 링크 두 가지 다 없는 경우 => 
+            return <img src={ErrorImage} alt="" width="660" height="376" />
+        }
+    }
+
     return (
         <section id="ex_container" className={current_pack.css}>
-            {console.log(booth.photo_2)}
+            {console.log(booth)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -148,16 +193,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                             <img src={CenterBooth} alt="" />
                         </span>
                         <div className={"center" + current_pack.css}>
-                            <iframe
-                                title="youtube"
-                                width="660"
-                                height="376"
-                                src={booth.video_1}
-                                alt=""
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
+                            {videoType(booth.file_1, booth.link)}
                         </div>
                         <button className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
