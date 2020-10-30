@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 // import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
@@ -24,53 +25,45 @@ const Header = () => {
     //     history.push(`/${e.target.value}` + pathbase + location.search);
     // }, [location, history]);
 
-    // const [navList, setNavList] = useState([
-    //     {
-    //         id: 1,
-    //         kr: "오프닝세션",
-    //         en: "Opening-Session",
-    //         cn: "중국어",
-    //         jp: "일본어",
-    //         path: Paths.session,
-    //         checked: false
-    //     },
-    //     {
-    //         id: 2,
-    //         kr: "컨퍼런스",
-    //         en: "Conference",
-    //         cn: "중국어",
-    //         jp: "일본어",
-    //         path: Paths.conference,
-    //         checked: false
-    //     },
-    //     {
-    //         id: 3,
-    //         kr: "온라인전시관",
-    //         en: "Online-Exhibition",
-    //         cn: "중국어",
-    //         jp: "일본어",
-    //         path: Paths.exhibition,
-    //         checked: false
-    //     },
-    //     {
-    //         id: 4,
-    //         kr: "공지 및 이벤트",
-    //         en: "Notice",
-    //         cn: "중국어",
-    //         jp: "일본어",
-    //         path: Paths.notice,
-    //         checked: false
-    //     },
-    //     {
-    //         id: 5,
-    //         kr: "SNS",
-    //         en: "SNS",
-    //         cn: "중국어",
-    //         jp: "일본어",
-    //         path: Paths.sns,
-    //         checked: false
-    //     }
-    // ])
+    const language = useSelector(state => state.language.current);
+    //--------------------------------------------------------------------------------------
+    const LANGUAGE_PACK = {
+        kr: {
+            css: "",
+            title: "오프닝세션",
+            title2: "컨퍼런스",
+            title3: "온라인전시관",
+            title4: "공지 및 이벤트",
+            title5: "SNS"
+        },
+        en: {
+            css: " language-en",
+            title: "Opening-Session",
+            title2: "Conference",
+            title3: "Online-Exhibition",
+            title4: "Notice",
+            title5: "SNS"
+        },
+        cn: {
+            css: " language-cn",
+            title: "중국어",
+            title2: "중국어",
+            title3: "중국어",
+            title4: "중국어",
+            title5: "중국어"
+        },
+        jp: {
+            css: " language-jp",
+            title: "일본어",
+            title2: "일본어",
+            title3: "일본어",
+            title4: "일본어",
+            title5: "일본어"
+        }
+    }
+
+    const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    //--------------------------------------------------------------------------------------
 
     // const selected = useCallback(id => {
     //     setNavList(
@@ -105,7 +98,7 @@ const Header = () => {
                                 to={Paths.session}
                                 onClick={() => autoClose.current.click()}
                             >
-                                오프닝세션
+                                {current_pack.title}
                             </Link>
                         </li>
                         <li>
@@ -113,7 +106,7 @@ const Header = () => {
                                 to={Paths.conference}
                                 onClick={() => autoClose.current.click()}
                             >
-                                컨퍼런스
+                                {current_pack.title2}
                             </Link>
                         </li>
                         <li>
@@ -121,7 +114,7 @@ const Header = () => {
                                 to={Paths.exhibition}
                                 onClick={() => autoClose.current.click()}
                             >
-                                온라인전시관
+                                {current_pack.title3}
                             </Link>
                         </li>
                         <li>
@@ -129,7 +122,7 @@ const Header = () => {
                                 to={Paths.notice}
                                 onClick={() => autoClose.current.click()}
                             >
-                                공지 및 이벤트
+                                {current_pack.title4}
                             </Link>
                         </li>
                         <li>
@@ -137,7 +130,7 @@ const Header = () => {
                                 to={Paths.sns}
                                 onClick={() => autoClose.current.click()}
                             >
-                                SNS
+                                {current_pack.title5}
                             </Link>
                         </li>
                     </ul>
