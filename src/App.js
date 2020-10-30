@@ -17,7 +17,6 @@ import Header from './components/header/Header'
 
 import { Paths } from './paths';
 
-import './static/stylesheets/App.css';
 import { useDispatch } from 'react-redux';
 import { setLanguage } from './store/language';
 
@@ -40,9 +39,12 @@ const App = ({ match }) => {
 
 
     const STATE_PATH = state ? `/${state}` : '';
-
+    const CSS_PATH = state ? `${state}` : 'kr';
+    
     return (
         <div className={language}>
+            <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/app.css`} />
+            <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/header.css`} />
             <Header />
             <Switch>
                 <Route path={STATE_PATH + Paths.index} component={HomePage} exact />

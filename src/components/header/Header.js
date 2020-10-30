@@ -2,8 +2,6 @@ import React, { useCallback, useState } from 'react';
 import HeaderLogo from './HeaderLogo';
 import HeaderNav from './HeaderNav';
 
-import '../../static/stylesheets/Header.css';
-
 import { Paths } from '../../paths/index'
 import { useHistory, useLocation } from 'react-router-dom';
 
