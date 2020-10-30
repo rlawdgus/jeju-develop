@@ -43,8 +43,6 @@ const App = ({ match }) => {
 
     return (
         <div className={language}>
-            <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/app.css`} />
-            <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/header.css`} />
             <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/common.css`} />
             <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/mobile.css`} />
             <Header />

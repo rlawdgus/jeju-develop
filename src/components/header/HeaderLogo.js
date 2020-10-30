@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Logo from '../../static/img/h1_logo.png';
-import LogoText from '../../static/img/h1_logo_txt.png';
+import Logo from `${process.env.PUBLIC_URL}/img/h1_logo.png`;
+import LogoText from `${process.env.PUBLIC_URL}/img/h1_logo_txt.png`;
 
 export default ({ selectLanguage, setDefault }) => {
     const language = useSelector(state => state.language.current);

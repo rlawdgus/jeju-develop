@@ -9,10 +9,10 @@ import { Paths } from '../paths/index'
 import { useHistory } from 'react-router-dom';
 
 
-import CenterBooth from '../static/img/img_center_booth.png';
-
 
 const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
+    const URL = "http://14.63.174.102:84";
+
     const history = useHistory();
 
     const [booth, setBooth] = useState({})
@@ -213,6 +213,49 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
 
     const listClick = (num) => { setType(parseInt(num)); history.push(LANGUAGE_PATH + Paths.exhibition); };
 
+    const vType = ["ASF", "AVI", "BIK", "FLV", "MKV", "MOV", "MP4", "MPEG", "Ogg", "SKM", "TS", "WebM", "WMV",
+                    "asf", "avi", "bik", "flv", "mkv", "mov", "mp4", "mpeg", "ogg", "skm", "ts", "webm", "wmv"]
+
+    // const [isVideo, SetisVideo] = useState(false)
+
+    const videoType = (file, link) => {
+        const FILE = new String(file)
+        const LINK = new String(link)
+
+        console.log(LINK)
+
+        const dot = FILE.lastIndexOf('.')
+        for(let i = 0; i < vType.length; i++){  //파일로 넘어오는 경우
+            if(FILE.substring(dot + 1, FILE.length) === vType[i]){
+                console.log("find", FILE, LINK, URL)
+                return <embed 
+                src={URL + file}
+                width="100%"
+                height="300"
+                />
+            }
+        }
+
+        if(LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
+            return <iframe
+            title="youtube"
+            width="100%"
+            height="300"
+            src={link} //비디오 링크가  cms에 추가하는 것이 없음
+            alt=""
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+        ></iframe>
+        }
+        else if(LINK.length !== 0){  //유튜브 링크로 넘어오는 경우
+            return <a href={link} target="_blank" rel="noopener noreferrer" width="100%" height="300" >VIDEO LINK</a>
+        }
+        else {  //파일, 링크 두 가지 다 없는 경우 => 
+            return <img src={(`${process.env.PUBLIC_URL}/img/ic_check_on.png`)} alt="" width="100%" height="300" />
+        }
+    }
+
     return (
         <section id="on_ex_container" className={current_pack.css}>
             {!loading &&
@@ -247,7 +290,7 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                             </li>
                             <li>{booth.title}</li>
                         </ul>
-                        <span><button type="submit"><img src={require("../static/img/ic_mo_search.png")} alt="" /></button></span>
+                        <span><button type="submit"><img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" /></button></span>
                     </div>
 
                     <section id="ex_container" className={current_pack}>
@@ -258,20 +301,10 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
 
                         <div className={"spot" + current_pack.css}>
                             <span>
-                                <img src={CenterBooth} alt="" />
+                                <img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)} alt="" />
                             </span>
                             <div className={"center" + current_pack.css}>
-                                <iframe
-                                    title="youtube"
-                                    width="660"
-                                    height="376"
-                                    src="https://www.youtube.com/embed/KV5xCWgDiZs" //비디오 링크가  cms에 추가하는 것이 없음
-                                    // src={booth.video_1}
-                                    alt=""
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
+                                {videoType(booth.file_1, booth.link)}
                             </div>
                             <div className={"mobuy" + current_pack.css}>
                                 <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
@@ -281,7 +314,7 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                                                 : "구매하러 가기"} {'>'}
                                 </button>
                             </div>
-                            <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={require("../static/img/bg_mo_welcome.png")} alt="" /></a></div>
+                            <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={(`${process.env.PUBLIC_URL}/img/bg_mo_welcome.png`)} alt="" /></a></div>
                         </div>
 
                     </section>

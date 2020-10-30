@@ -236,7 +236,7 @@ const OnlineExhibitionListContainer = ({ type, setType }) => {
                         </div>
                     </li>
                 </ul>
-                <span><button type="submit"><img src={require("../static/img/ic_mo_search.png")} alt="" /></button></span>
+                <span><button type="submit"><img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" /></button></span>
             </div>
             <div className={"content" + current_pack.css}>
                 <div className={"subtop menu01" + current_pack.css}>

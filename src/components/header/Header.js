@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom'
 
 import { Paths } from '../../paths/index'
+
 // import { useHistory, useLocation } from 'react-router-dom';
 
 // const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
@@ -85,9 +86,9 @@ const Header = () => {
         <header>
             <h1>
                 <Link to={Paths.index}>
-                    <img src={require('../../static/img/h1_logo.png')} alt="" />
+                    <img src={(`${process.env.PUBLIC_URL}/img/h1_logo.png`)} alt="" />
                     <img
-                        src={require('../../static/img/h1_logo_txt.png')}
+                        src={(`${process.env.PUBLIC_URL}/img/h1_logo_txt.png`)}
                         alt=""
                     />
                 </Link>

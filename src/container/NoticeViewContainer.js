@@ -99,7 +99,7 @@ export default ({ viewId, near }) => {
                         <div className={"file" + current_pack.css}>
                             <Link to="#">
                                 <img
-                                    src={require('../static/img/ic_download.png')}
+                                    src={(`${process.env.PUBLIC_URL}/img/ic_download.png`)}
                                     alt="download"
                                 />
                             </Link>

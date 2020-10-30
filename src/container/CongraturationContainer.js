@@ -56,14 +56,14 @@ export default () => {
                 <h3 className={"h3tit pt20" + current_pack.css}>축사</h3>
                 <div className={"movie wr" + current_pack.css}>
                     <i></i>
-                    <img src={require("../static/img/bg_mo_movie.png")} alt="" />
-                    <a href="https://youtu.be/KV5xCWgDiZs"><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
+                    <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt="" />
+                    <a href="https://youtu.be/KV5xCWgDiZs"><img src={(`${process.env.PUBLIC_URL}/img/bt_moviego.png`)} alt="" /></a>
                     <span> {'<'}이름{'('}소속{')>'} </span>
                 </div>
                 <div className={"movie wr" + current_pack.css}>
                     <i></i>
-                    <img src={require("../static/img/bg_mo_movie.png")} alt="" />
-                    <a href="https://youtu.be/KV5xCWgDiZs"><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
+                    <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt="" />
+                    <a href="https://youtu.be/KV5xCWgDiZs"><img src={(`${process.env.PUBLIC_URL}/img/bt_moviego.png`)} alt="" /></a>
                     <span> {'<'}이름{'('}소속{')>'} </span>
                 </div>
             </div>

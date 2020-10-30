@@ -1,8 +1,8 @@
 import React from 'react'
 
-import YouTube from '../../static/img/ic_youtube.png'
-import Facebook from '../../static/img/ic_facebook.png'
-import Instagram from '../../static/img/ic_instagram.png'
+import YouTube from `${process.env.PUBLIC_URL}/img/ic_youtube.png`
+import Facebook from `${process.env.PUBLIC_URL}/img/ic_facebook.png`
+import Instagram from `${process.env.PUBLIC_URL}/img/ic_instagram.png`
 import HeaderNavItem from './HeaderNavItem'
 import { useSelector } from 'react-redux'
 

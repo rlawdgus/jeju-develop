@@ -176,7 +176,7 @@ const OnlineExhibitionEventContainer = () => {
                     <div className={"eventin" + current_pack.css}>
                         <h3><strong>이벤트 참여 후</strong>전시관 둘러보기</h3>
                         <span>행사 종료 후 추첨을 통하여 경품을 지급해 드립니다.</span>
-                        <p><img src={require("../static/img/img_eventin.png")} alt="" /></p>
+                        <p><img src={(`${process.env.PUBLIC_URL}/img/img_eventin.png`)} alt="" /></p>
                         <Link to="#" className={"btin" + current_pack.css} onClick={secondOpen}>참여하기</Link>
                         <Link to="#" className={"btclose" + current_pack.css} onClick={nextTime}>다음에</Link>
                     </div>

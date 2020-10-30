@@ -50,15 +50,15 @@ export default () => {
         <div className={"main_content" + current_pack.css}>
           <div className={"movie" + current_pack.css}>
               <i></i>
-              <img src={require("../static/img/bg_mo_movie.png")} alt="" />
-              <a href="https://youtu.be/KV5xCWgDiZs"><img src={require("../static/img/bt_moviego.png")} alt="" /></a>
+              <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt="" />
+              <a href="https://youtu.be/KV5xCWgDiZs"><img src={(`${process.env.PUBLIC_URL}/img/bt_moviego.png`)} alt="" /></a>
               <span> {current_pack.movie_name} </span>
           </div>
           <div className={"right" + current_pack.css}>
            
               <div className={"onlinego" + current_pack.css}>
                 <i></i>
-                <img src={require("../static/img/bg_onlinego.png")} alt="" />
+                <img src={(`${process.env.PUBLIC_URL}/img/bg_onlinego.png`)} alt="" />
                 <h3>{current_pack.online_go}</h3>
                 <span><Link to={LANGUAGE_PATH + Paths.exhibition}>{current_pack.go}  {'>'}</Link></span>
               </div>
@@ -66,7 +66,7 @@ export default () => {
            
               <div className={"confgo" + current_pack.css}>
                 <i></i>
-                <img src={require("../static/img/bg_confgo.png")} alt="" />
+                <img src={(`${process.env.PUBLIC_URL}/img/bg_confgo.png`)} alt="" />
                 <h3>{current_pack.conference_go}</h3>
                 <span><Link to={LANGUAGE_PATH + Paths.conference}>{current_pack.go}  {'>'}</Link></span>
               </div>
