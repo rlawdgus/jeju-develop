@@ -219,8 +219,8 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
     // const [isVideo, SetisVideo] = useState(false)
 
     const videoType = (file, link) => {
-        const FILE = new String(file)
-        const LINK = new String(link)
+        const FILE = String(file)
+        const LINK = String(link)
 
         console.log(LINK)
 
