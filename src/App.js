@@ -57,7 +57,6 @@ const App = ({ match }) => {
             </Switch>
 
             <OnlineExhibitionEventContainer />
-            {/* ----- 신경 ㄴㄴ ----- */}
             <DialogContainer />
             <LoadingContainer />
         </div>
