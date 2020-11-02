@@ -383,7 +383,7 @@ a.btclose{background:#757575}
 .tab{position:relative;margin:0 auto;text-align:center;}
 .tab ul{padding:0px;margin:0px;margin-bottom:30px;}
 .tab ul li{display:inline-block;margin:0 5px;}
-.tab ul li a{display:block;color:#7c7c7c;background:#d7d7d7;border-radius:100em;line-height:37px;padding:0 20px;font-size:19px;font-weight:bold;}
+.tab ul li a{display:block;color:#7c7c7c;background:#d7d7d7;border-radius:100em;line-height:37px;padding:0 20pxfont-size:19px;font-weight:bold;}
 .tab ul li a:hover,
 .tab ul li a.on,
 .tab ul li a:active{color:#fff;background:#228ba8;}
