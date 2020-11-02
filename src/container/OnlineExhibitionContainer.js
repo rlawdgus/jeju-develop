@@ -314,7 +314,7 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                                                 : "구매하러 가기"} {'>'}
                                 </button>
                             </div>
-                            <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_2" /></a></div>
+                            <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
                         </div>
 
                     </section>
