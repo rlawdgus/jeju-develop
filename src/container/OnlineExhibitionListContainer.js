@@ -137,13 +137,13 @@ const OnlineExhibitionListContainer = () => {
                 return a.title < b.title ? -1 : a.title > b.title ? 1 : 0
             })
             setResult(res);
-            setSwiper(<SwiperContainer dataSet={res} />);
+            setSwiper(<SwiperContainer dataSet={res} firstOpen={firstOpen} />);
         } catch (e) {
             alert('서버에 오류가 발생했습니다.');
             setSwiper(<SwiperContainer dataSet={"Error"} />)
         }
         setLoading(false);
-    }, [type]);
+    }, [type, firstOpen]);
 
     const imgError = useCallback((e) => {
         e.target.src = URL + "/data/uploaded/documents-photo_1-882.jpeg?v=1602807638";

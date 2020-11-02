@@ -16,7 +16,7 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 // install Swiper components
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-export default ({ dataSet }) => {
+export default ({ dataSet, firstOpen }) => {
     const URL = 'http://14.63.174.102:84';
 
     const language = useSelector(state => state.language.current);
@@ -69,7 +69,7 @@ export default ({ dataSet }) => {
                             <SwiperSlide key={data.id}>
                                 <div>
                                     <em>{data.title}</em>
-                                    <img src={URL + data.photo_1} alt="no_image" />
+                                    <img src={URL + data.photo_1} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
                             </SwiperSlide>
                         ))}
