@@ -447,3 +447,11 @@ a.btclose{background:#757575}
   z-index: 3000;
   background-color: skyblue;
 }
+
+@media screen and (max-width: 1500px) {
+  header #lnb{overflow:hidden;}
+  header #lnb > span{left:1.5% !important;}
+  header #lnb ul{width:80%  !important;float:right;position:relative;overflow:hidden;}
+  .main_content div.speech{width:100%;}
+  header .select{right:5% !important;}
+}
