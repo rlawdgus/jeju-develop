@@ -119,8 +119,8 @@ const OnlineExhibitionContainer = ({ viewId }) => {
         "asf", "avi", "bik", "flv", "mkv", "mov", "mp4", "mpeg", "ogg", "skm", "ts", "webm", "wmv"]
 
     const videoType = (file, link) => {
-        const FILE = new String(file)
-        const LINK = new String(link)
+        const FILE = String(file)
+        const LINK = String(link)
         const dot = FILE.lastIndexOf('.')
         for (let i = 0; i < vType.length; i++) {  //파일로 넘어오는 경우
             if (FILE.substring(dot + 1, FILE.length) === vType[i]) {
