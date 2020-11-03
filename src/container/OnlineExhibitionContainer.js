@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
+const OnlineExhibitionContainer = ({ viewId, type }) => {
     const URL = "http://14.63.174.102:84";
 
     const history = useHistory();
@@ -225,22 +225,22 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
-    const listClick = (num) => { setType(parseInt(num)); history.push(LANGUAGE_PATH + Paths.exhibition); };
+    const listClick = (num) => { history.push(LANGUAGE_PATH + Paths.exhibition + '?type=' + parseInt(num)); };
 
     const videoType = (link) => {
         const LINK = String(link)
 
-        if(LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
+        if (LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
             return <iframe
-            title="youtube"
-            width="100%"
-            height="300"
-            src={link} //비디오 링크가  cms에 추가하는 것이 없음
-            alt=""
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-        ></iframe>
+                title="youtube"
+                width="100%"
+                height="300"
+                src={link} //비디오 링크가  cms에 추가하는 것이 없음
+                alt=""
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            ></iframe>
         }
         else if (LINK.length !== 0) {  //유튜브 링크로 넘어오는 경우
             const lastSlash = LINK.lastIndexOf('/')
