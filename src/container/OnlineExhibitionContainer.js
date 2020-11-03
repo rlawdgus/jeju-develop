@@ -108,6 +108,14 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
         },
         {
             num: 8,
+            id: "c11",
+            kr_text: "유제품",
+            en_text: "Dairy products",
+            cn_text: "중국어",
+            jp_text: "일본어"
+        },
+        {
+            num: 9,
             id: "c9",
             kr_text: "천연염색",
             en_text: "Dyed products",
@@ -115,18 +123,10 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
             jp_text: "일본어"
         },
         {
-            num: 9,
+            num: 10,
             id: "c5",
             kr_text: "마을공동체",
             en_text: "Local community",
-            cn_text: "중국어",
-            jp_text: "일본어"
-        },
-        {
-            num: 10,
-            id: "c11",
-            kr_text: "유제품",
-            en_text: "Dairy products",
             cn_text: "중국어",
             jp_text: "일본어"
         }
@@ -305,24 +305,24 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                                     : type2[0]}ㅣ{booth.title}</h2>
 
                         <div className={"spot" + current_pack.css}>
-                            <i style={{position:"absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign:"center", left: "0px", zIndex:"30"}}>
-                                <img src={URL + booth.photo_1} style={{display: "block", maxWidth: "120px", maxHeight: "65px", margin: "0 auto", textAlign: "center"}} alt=""/>
+                            <i style={{ position: "absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
+                                <img src={URL + booth.photo_1} style={{ display: "block", maxWidth: "120px", maxHeight: "65px", margin: "0 auto", textAlign: "center" }} alt="" />
                             </i>
-                            <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)} alt=""/></span>
+                            <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)} alt="" /></span>
                             <div className={"center" + current_pack.css}>
                                 {videoType(booth.youtube_link)}
                             </div>
-                            
+
                         </div>
                         <div className={"mobuy" + current_pack.css}>
-                                <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
-                                    {language === 'en' ? "Purchase"
-                                        : language === 'cn' ? "중국어"
-                                            : language === 'jp' ? "일본어"
-                                                : "구매하러 가기"} {'>'}
-                                </button>
-                            </div>
-                            <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
+                            <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
+                                {language === 'en' ? "Purchase"
+                                    : language === 'cn' ? "중국어"
+                                        : language === 'jp' ? "일본어"
+                                            : "구매하러 가기"} {'>'}
+                            </button>
+                        </div>
+                        <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
 
                     </section>
 
