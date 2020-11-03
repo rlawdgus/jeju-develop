@@ -102,16 +102,20 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
-            css: ""
+            css: "",
+            download: "카탈로그 다운로드"
         },
         en: {
-            css: " language-en"
+            css: " language-en",
+            download: "Catalog Download"
         },
         cn: {
-            css: " language-cn"
+            css: " language-cn",
+            download: ""
         },
         jp: {
-            css: " language-jp"
+            css: " language-jp",
+            download: ""
         }
     }
 
@@ -153,6 +157,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
+            <a className="catalog" href={URL + booth.file_1} download target="_blank" rel="noopener noreferrer">{current_pack.download}</a>
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -170,6 +175,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                     </div>
                     <div className={"left" + current_pack.css}>
                         {booth.photo_4 && <img src={URL + booth.photo_4} alt="" />}
+                        
                     </div>
                     <div className={"right" + current_pack.css}>
                         {booth.photo_4 && <img src={URL + booth.photo_3} alt="" />}

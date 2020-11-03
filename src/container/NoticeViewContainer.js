@@ -100,14 +100,14 @@ export default ({ viewId, near }) => {
                     <div className={"viewcontent" + current_pack.css}>
                         {noticeView.contents}
                         <div className={"file" + current_pack.css}>
-                            <Link to="#">
+                            <a href={noticeView.file_1} download>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/img/ic_download.png`}
                                     alt="download"
                                 />
-                            </Link>
+                            </a>
                             <span>
-                                {noticeView.file_1}
+                                <a href={noticeView.file_1} download>{noticeView.file_1}</a>
                                 <em>334kb</em>
                             </span>
                         </div>
