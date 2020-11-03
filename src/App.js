@@ -39,7 +39,7 @@ const App = ({ match }) => {
     }, [reduxDispatch, state]);
 
     useEffect(() => {
-        if(isMobile()) {
+        if(isMobile() && process.env.NODE_ENV === 'production') {
             window.location.href = 'm.6farming-plus-jeju.com';
         }
     });
