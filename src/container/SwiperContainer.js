@@ -71,7 +71,7 @@ export default ({ dataSet, firstOpen }) => {
                             <SwiperSlide key={data.id}>
                                 <div>
                                     <em>{data.title}</em>
-                                    <img src={URL + data.photo_1} alt="no_image" onClick={() => firstOpen(data.id)} />
+                                    <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
                             </SwiperSlide>
                         ))}

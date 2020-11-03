@@ -121,6 +121,14 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
             en_text: "Local community",
             cn_text: "중국어",
             jp_text: "일본어"
+        },
+        {
+            num: 10,
+            id: "c11",
+            kr_text: "유제품",
+            en_text: "Dairy products",
+            cn_text: "중국어",
+            jp_text: "일본어"
         }
     ]
 
@@ -185,6 +193,12 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
         type2.push('중국어')
         type2.push('일본어')
     }
+    else if (booth.type === 10) {
+        type2.push('유제품')
+        type2.push('Dairy products')
+        type2.push('중국어')
+        type2.push('일본어')
+    }
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
@@ -213,28 +227,8 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
 
     const listClick = (num) => { setType(parseInt(num)); history.push(LANGUAGE_PATH + Paths.exhibition); };
 
-    const vType = ["ASF", "AVI", "BIK", "FLV", "MKV", "MOV", "MP4", "MPEG", "Ogg", "SKM", "TS", "WebM", "WMV",
-                    "asf", "avi", "bik", "flv", "mkv", "mov", "mp4", "mpeg", "ogg", "skm", "ts", "webm", "wmv"]
-
-    // const [isVideo, SetisVideo] = useState(false)
-
-    const videoType = (file, link) => {
-        const FILE = String(file)
+    const videoType = (link) => {
         const LINK = String(link)
-
-        console.log(LINK)
-
-        const dot = FILE.lastIndexOf('.')
-        for(let i = 0; i < vType.length; i++){  //파일로 넘어오는 경우
-            if(FILE.substring(dot + 1, FILE.length) === vType[i]){
-                console.log("find", FILE, LINK, URL)
-                return <embed 
-                src={URL + file}
-                width="100%"
-                height="300"
-                />
-            }
-        }
 
         if(LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
             return <iframe
@@ -248,8 +242,19 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
             allowFullScreen
         ></iframe>
         }
-        else if(LINK.length !== 0){  //유튜브 링크로 넘어오는 경우
-            return <a href={link} target="_blank" rel="noopener noreferrer" width="100%" height="300" >VIDEO LINK</a>
+        else if (LINK.length !== 0) {  //유튜브 링크로 넘어오는 경우
+            const lastSlash = LINK.lastIndexOf('/')
+            const videoID = LINK.slice(lastSlash, LINK.length)
+            return <iframe
+                title="youtube"
+                width="660"
+                height="376"
+                src={`https://www.youtube.com/embed${videoID}`}
+                alt=""
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            ></iframe>
         }
         else {  //파일, 링크 두 가지 다 없는 경우 => 
             return <img src={(`${process.env.PUBLIC_URL}/img/ic_check_on.png`)} alt="" width="100%" height="300" />
@@ -304,7 +309,7 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                                 <img src={URL + booth.photo_1} alt="" />
                             </span>
                             <div className={"center" + current_pack.css}>
-                                {videoType(booth.file_1, booth.link)}
+                                {videoType(booth.youtube_link)}
                             </div>
                             <div className={"mobuy" + current_pack.css}>
                                 <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>

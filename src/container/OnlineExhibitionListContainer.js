@@ -99,6 +99,14 @@ const OnlineExhibitionListContainer = ({ type, setType }) => {
             en_text: "Local community",
             cn_text: "중국어",
             jp_text: "일본어"
+        },
+        {
+            num: 10,
+            id: "c11",
+            kr_text: "유제품",
+            en_text: "Dairy products",
+            cn_text: "중국어",
+            jp_text: "일본어"
         }
     ]
 
@@ -255,14 +263,14 @@ const OnlineExhibitionListContainer = ({ type, setType }) => {
                                     result.map(res => (
                                         <li key={res.id}>
                                             <em>{res.title}</em>
-                                            <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
+                                            <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_2} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                         </li>
                                     ))
                                     :
                                     find.map(res => (
                                         <li key={res.id}>
                                             <em>{res.title}</em>
-                                            <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_1} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
+                                            <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_2} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                         </li>
                                     ))
                             }
