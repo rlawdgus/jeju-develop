@@ -263,6 +263,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
 
     return (
         <section id="on_ex_container" className={current_pack.css}>
+            {console.log(booth)}
             {!loading &&
                 <>
                     <div className={"subnavi" + current_pack.css}>
