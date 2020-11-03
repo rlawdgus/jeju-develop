@@ -57,7 +57,6 @@ export default ({ dataSet, firstOpen }) => {
                         slidesPerView={5} // 보이는 슬라이드 수
                         slidesPerGroup={5} // 슬라이드 할때 몇개를 슬라이드 할것이냐
                         loop={dataSet.length > 5 ? true : false}
-                        loopFillGroupWithBlank={true} // 빈공간은 빈 슬라이드로 채움
                         loopedSlides={5} // 루프를 하면 몇개를 할것인지
                         initalslide={0}
                         navigation

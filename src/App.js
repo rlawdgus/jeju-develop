@@ -40,7 +40,7 @@ const App = ({ match }) => {
 
     useEffect(() => {
         if(isMobile() && process.env.NODE_ENV === 'production') {
-            window.location.href = 'http://m.6farming-plus-jeju.com';
+            window.location.href = 'm.6farming-plus-jeju.com';
         }
     });
 

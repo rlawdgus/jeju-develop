@@ -149,12 +149,14 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
+            {console.log(booth)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
                         : language === 'cn' ? type[2]
                             : language === 'jp' ? type[3]
-                                : type[0]}ㅣ{booth.title}</h2>
+                                : type[0]}ㅣ{language === 'en' ? booth.contents_en
+                                                                : booth.contents}</h2>
                     <div className={"people" + current_pack.css}>
                         <span>
                             <img src={`${process.env.PUBLIC_URL}/img/img_peo_left.png`} alt="" />
@@ -171,9 +173,9 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                     </div>
                     <div className={"spot" + current_pack.css}>
                         <i
-                            style={{ position: "absolute", bottom: "250px",  width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
+                            style={{ position: "absolute", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
                             <img
-                                style={{ display: "block", maxWidth: "650px", maxHeight: "160px", margin: "0 auto", textAlign: "center" }}
+                                style={{ display: "block", maxWidth: "100%", margin: "0 auto", textAlign: "center" }}
                                 src={URL + booth.photo_1}
                                 alt=""
                             />
