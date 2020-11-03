@@ -108,6 +108,14 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
         },
         {
             num: 8,
+            id: "c11",
+            kr_text: "유제품",
+            en_text: "Dairy products",
+            cn_text: "중국어",
+            jp_text: "일본어"
+        },
+        {
+            num: 9,
             id: "c9",
             kr_text: "천연염색",
             en_text: "Dyed products",
@@ -115,18 +123,10 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
             jp_text: "일본어"
         },
         {
-            num: 9,
+            num: 10,
             id: "c5",
             kr_text: "마을공동체",
             en_text: "Local community",
-            cn_text: "중국어",
-            jp_text: "일본어"
-        },
-        {
-            num: 10,
-            id: "c11",
-            kr_text: "유제품",
-            en_text: "Dairy products",
             cn_text: "중국어",
             jp_text: "일본어"
         }
@@ -269,7 +269,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                         <ul>
                             <li>{current_pack.navTitle}</li>
                             <li>
-                                <label for="touch">{language === 'en' ? <><strong>{language === 'en' ? type2[1]
+                                <label htmlFor="touch">{language === 'en' ? <><strong>{language === 'en' ? type2[1]
                                     : language === 'cn' ? type2[2]
                                         : language === 'jp' ? type2[3]
                                             : type2[0]}</strong>{current_pack.unit} </>
@@ -289,7 +289,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                                 <div className={"submenu" + current_pack.css}>
                                     {leftLists.map(list => (
                                         list.num !== 0 &&
-                                        <div onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
+                                        <div key={list.id} onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
                                     ))}
                                 </div>
                             </li>
@@ -306,7 +306,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
 
                         <div className={"spot" + current_pack.css}>
                             <i style={{ position: "absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
-                                <img src={URL + booth.photo_1} style={{ display: "block", maxWidth: "120px", margin: "0 auto", textAlign: "center" }} alt="" />
+                                <img src={URL + booth.photo_1} style={{ display: "block", maxWidth: "120px", maxHeight: "65px", margin: "0 auto", textAlign: "center" }} alt="" />
                             </i>
                             <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)} alt="" /></span>
                             <div className={"center" + current_pack.css}>
