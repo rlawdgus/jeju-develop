@@ -36,8 +36,8 @@ export default ({ selectLanguage, setDefault }) => {
                 <select onChange={selectLanguage} value={language} className={"select-option" + current_pack.css}>
                     <option value="kr">한국어</option>
                     <option value="en">english</option>
-                    <option value="cn">china</option>
-                    <option value="jp">japan</option>
+                    {/* <option value="cn">china</option>
+                    <option value="jp">japan</option> */}
                 </select>
                 <div className={"select__arrow" + current_pack.css}></div>
             </div>
