@@ -175,7 +175,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                             style={{ position: "absolute", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
                             <img
                                 style={{ display: "block", maxWidth: "100%", margin: "0 auto", textAlign: "center" }}
-                                src={`${process.env.PUBLIC_URL}/img/img_tablelogo.png`}
+                                src={URL + booth.photo_1}
                                 alt=""
                             />
                         </i>
