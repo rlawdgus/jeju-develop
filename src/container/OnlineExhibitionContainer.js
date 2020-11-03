@@ -154,7 +154,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
-            {console.log(booth)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]

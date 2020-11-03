@@ -1,19 +1,12 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { getDocumentList } from '../api/OnlineExhibitionAPI';
+import { useSelector } from 'react-redux';
 
 import Loading from '../components/assets/Loading';
-
-import { firstModalOpen } from '../store/modal';
-import { setID } from '../store/exhibition';
-
-import SwiperContainer from './SwiperContainer'
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
 
 
-const OnlineExhibitionListContainer = () => {
+const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen }) => {
 
     const URL = "http://14.63.174.102:84";
     const history = useHistory();
@@ -101,49 +94,18 @@ const OnlineExhibitionListContainer = () => {
             jp_text: "일본어"
         }
     ]
-
-    const [type, setType] = useState(0);
-    const dispatch = useDispatch();
-
-    const [swiper, setSwiper] = useState('');
     const [result, setResult] = useState([]);
     const [search, setSearch] = useState('');
     const [find, setFind] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [exist, setExist] = useState(false);
 
     const onChange = e => setSearch(e.target.value);
-
-    const listClick = e => { setType(parseInt(e.target.value)); setFind([]); setSearch(''); setExist(false); };
-
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
-    const firstOpen = useCallback((id) => {
-        window.scrollTo(0, 0);
-        dispatch(setID(id));
-        const TOKEN = localStorage.getItem('token');
-        if (TOKEN) {
-            history.push(LANGUAGE_PATH + Paths.exhibition + '/' + id);
-        } else {
-            dispatch(firstModalOpen());
-        }
-    }, [dispatch, history, LANGUAGE_PATH]);
-
-    const callGetDocumentList = useCallback(async () => {
-        setLoading(true);
-        try {
-            const res = await getDocumentList(type); // default : 0
-            res.sort((a, b) => {
-                return a.title < b.title ? -1 : a.title > b.title ? 1 : 0
-            })
-            setResult(res);
-            setSwiper(<SwiperContainer dataSet={res} firstOpen={firstOpen} />);
-        } catch (e) {
-            alert('서버에 오류가 발생했습니다.');
-            setSwiper(<SwiperContainer dataSet={"Error"} />)
-        }
-        setLoading(false);
-    }, [type, firstOpen]);
+    const listClick = e => {
+        setFind([]); setSearch(''); setExist(false);
+        history.push(LANGUAGE_PATH + Paths.exhibition + '?type=' + parseInt(e.target.value));
+    };
 
     const imgError = useCallback((e) => {
         e.target.src = URL + "/data/uploaded/documents-photo_1-882.jpeg?v=1602807638";
@@ -155,33 +117,32 @@ const OnlineExhibitionListContainer = () => {
 
         // 입력이 있을경우 언어별로 판단
         if (language === 'en') {
-            const findItem = result.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
+            const findItem = items.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
             if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         } else if (language === 'cn') {
-            const findItem = result.filter(item => item.title.indexOf(search) > -1)
+            const findItem = items.filter(item => item.title.indexOf(search) > -1)
             if (findItem.length === 0) { alert("중국어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         } else if (language === 'jp') {
-            const findItem = result.filter(item => item.title.indexOf(search) > -1)
+            const findItem = items.filter(item => item.title.indexOf(search) > -1)
             if (findItem.length === 0) { alert("일본어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         } else {
-            const findItem = result.filter(item => item.title.indexOf(search) > -1)
+            const findItem = items.filter(item => item.title.indexOf(search) > -1)
             if (findItem.length === 0) { alert("검색하신 부스가 존재하지 않습니다."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         }
-    }, [search, result, language])
+    }, [search, language, items])
 
     const handleKeyPrress = e => { if (e.key === 'Enter') findList(); }
 
     useEffect(() => {
-        try {
-            callGetDocumentList();
-        } catch (e) {
-            alert('서버에 오류가 발생했습니다.');
+        if (!loading) {
+            if (type === 0) { setResult([]); setResult(items); }
+            else { setResult([]); setResult(items.filter(item => item.type === type)); }
         }
-    }, [callGetDocumentList]);
+    }, [loading, type, items]);
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
@@ -250,7 +211,6 @@ const OnlineExhibitionListContainer = () => {
                                         : <><strong>{leftLists[type].kr_text}</strong>{current_pack.unit} </>}
                             </h3>
                         </div>
-
                         {swiper}
                         <div className={"bigimg" + current_pack.css}>
                             <ul>

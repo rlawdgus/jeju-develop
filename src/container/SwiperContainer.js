@@ -59,7 +59,7 @@ export default ({ dataSet, firstOpen }) => {
                         loop={dataSet.length > 5 ? true : false}
                         loopFillGroupWithBlank={true} // 빈공간은 빈 슬라이드로 채움
                         loopedSlides={5} // 루프를 하면 몇개를 할것인지
-                        initslide={0}
+                        initalslide={0}
                         navigation
                         watchOverflow
                         loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
@@ -69,7 +69,7 @@ export default ({ dataSet, firstOpen }) => {
                             <SwiperSlide key={data.id}>
                                 <div>
                                     <em>{data.title}</em>
-                                    <img src={URL + data.photo_1} alt="no_image" onClick={() => firstOpen(data.id)} />
+                                    <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
                             </SwiperSlide>
                         ))}
