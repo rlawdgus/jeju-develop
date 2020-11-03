@@ -101,14 +101,14 @@ export default ({ viewId, near }) => {
                     <div className={"viewcontent" + current_pack.css}>
                         {noticeView.contents}
                         <div className={"file" + current_pack.css}>
-                            {noticeView.file_1 && <a href={URL + noticeView.file_1} target="_blank" download>
+                            {noticeView.file_1 && <a href={URL + noticeView.file_1} rel="noopener noreferrer" target="_blank" download>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/img/ic_download.png`}
                                     alt="download"
                                 />
                             </a>}
                             <span>
-                                {noticeView.file_1 && <a href={URL + noticeView.file_1} target="_blank" download>{noticeView.file_1}</a>}
+                                {noticeView.file_1 && <a href={URL + noticeView.file_1} rel="noopener noreferrer" target="_blank" download>{noticeView.file_1}</a>}
                                 <em>334kb</em>
                             </span>
                         </div>

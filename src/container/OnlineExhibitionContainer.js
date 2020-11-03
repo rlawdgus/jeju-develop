@@ -86,15 +86,21 @@ const OnlineExhibitionContainer = ({ viewId }) => {
         type.push('중국어')
         type.push('일본어')
     }
-    else if (booth.type === 8) {
+    else if (booth.type === 9) {
         type.push('천연염색')
         type.push('Dyed products')
         type.push('중국어')
         type.push('일본어')
     }
-    else if (booth.type === 9) {
+    else if (booth.type === 8) {
         type.push('마을공동체')
         type.push('Local community')
+        type.push('중국어')
+        type.push('일본어')
+    }
+    else if (booth.type === 10) {
+        type.push('유제품')
+        type.push('Dairy products')
         type.push('중국어')
         type.push('일본어')
     }
@@ -175,7 +181,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                     </div>
                     <div className={"left" + current_pack.css}>
                         {booth.photo_4 && <img src={URL + booth.photo_4} alt="" />}
-                        
+
                     </div>
                     <div className={"right" + current_pack.css}>
                         {booth.photo_4 && <img src={URL + booth.photo_3} alt="" />}
