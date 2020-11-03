@@ -436,7 +436,7 @@ a.btclose{background:#757575}
 .snsbox ul li:after{content:'';position:absolute;background:url(/img/ic_sns_go.png) no-repeat center top;width:13px;height:90px;right:20px;top:36%;z-index:10;}
 
 
-.swiper-slide-active em{white-space: nowrap;text-overflow: ellipsis;overflow:hidden;width:100%;}
+html body .swiper-container .swiper-wrapper .swiper-slide-active em{white-space: nowrap;text-overflow: ellipsis;}
 
 
 
