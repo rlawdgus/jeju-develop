@@ -166,6 +166,11 @@ const OnlineExhibitionEventContainer = () => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
+    const closeModal = useCallback(() => {
+        dispatch(modalClose());
+        history.goBack()
+    }, [dispatch, history]);
+
     return (
         <>
 
@@ -183,6 +188,7 @@ const OnlineExhibitionEventContainer = () => {
                 {/* event2 */}
                 {second &&
                     <div className={"eventtxt" + current_pack.css}>
+                        <img src={`${process.env.PUBLIC_URL}/icon/close.svg`} alt="" style={{position: "absolute", top: "20px", right: "30px"}} onClick={closeModal} />
                         {language === "en" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
                             : language === "cn" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
                                 : language === "jp" ? <><h3>{current_pack.subject}</h3><p /><div>{current_pack.subject2}</div></>
