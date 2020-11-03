@@ -18,3 +18,9 @@ export const onlyNumber = value => /[0-9]/.test(value) || value.length > 1;
 export const onlyNumberListener = e => !onlyNumber(e.key) && e.preventDefault();
 
 export const isEmpty = param => Object.keys(param).length === 0;
+
+export const isMobile = () => {
+    const UserAgent = navigator.userAgent;
+    return UserAgent.match(/iPhone|iPod|iPad|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null
+    || UserAgent.match(/LG|SAMSUNG|Samsung/) != null;
+}
