@@ -14,6 +14,7 @@ export default () => {
             css: "",
             title: "환영사",
             title2: "축사",
+            catagory: "오프닝세션",
             name: "이름(소속)",
             name2: "이름(소속)"
         },
@@ -21,6 +22,7 @@ export default () => {
             css: " language-en",
             title: "Welcome Address",
             title2: "Congratulatory message",
+            catagory: "OpeningSession",
             name: "name()",
             name2: "name()"
         },
@@ -28,6 +30,7 @@ export default () => {
             css: " language-cn",
             title: "중국어",
             title2: "중국어",
+            catagory: "",
             name: "중국어",
             name2: "중국어"
         },
@@ -35,6 +38,7 @@ export default () => {
             css: " language-jp",
             title: "일본어",
             title2: "일본어",
+            catagory: "",
             name: "일본어",
             name2: "일본어"
         }
@@ -48,12 +52,12 @@ export default () => {
         <section id="main_container" className={current_pack.css}>
             <div className={"subnavi" + current_pack.css}>
                 <ul>
-                    <li>오프닝세션</li>
-                    <li>축사</li>
+                    <li>{current_pack.catagory}</li>
+                    <li>{current_pack.title2}</li>
                 </ul>
             </div>
             <div className={"main_content" + current_pack.css}>
-                <h3 className={"h3tit pt20" + current_pack.css}>축사</h3>
+                <h3 className={"h3tit pt20" + current_pack.css}>{current_pack.title2}</h3>
                 <div className={"movie wr" + current_pack.css}>
                     {/* <i></i>
                     <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt="" /> */}
@@ -61,7 +65,7 @@ export default () => {
                         title="youtube"
                         width="100%"
                         height="220px"
-                        src="https://www.youtube.com/embed/KV5xCWgDiZs" //비디오 링크가  cms에 추가하는 것이 없음
+                        src="https://www.youtube.com/embed/soh63_83t-c" //비디오 링크가  cms에 추가하는 것이 없음
                         alt=""
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -76,7 +80,7 @@ export default () => {
                         title="youtube"
                         width="100%"
                         height="220px"
-                        src="https://www.youtube.com/embed/KV5xCWgDiZs" //비디오 링크가  cms에 추가하는 것이 없음
+                        src="https://www.youtube.com/embed/Mww9zKhOKTY" //비디오 링크가  cms에 추가하는 것이 없음
                         alt=""
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

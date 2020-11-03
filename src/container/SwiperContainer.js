@@ -69,7 +69,7 @@ export default ({ dataSet, firstOpen }) => {
                         {dataSet.map((data) => (
                             <SwiperSlide key={data.id}>
                                 <div>
-                                    <em>{data.title}</em>
+                                    <em>{language === 'en' ? data.contents_en : data.contents}</em>
                                     <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
                             </SwiperSlide>

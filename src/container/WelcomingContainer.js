@@ -13,24 +13,28 @@ export default () => {
             css: "",
             title: "환영사",
             title2: "축사",
+            catagory: "오프닝세션",
             name: "이름(소속)"
         },
         en: {
             css: " language-en",
             title: "Welcome Address",
             title2: "Congratulatory message",
+            catagory: "OpeningSession",
             name: "name()"
         },
         cn: {
             css: " language-cn",
             title: "중국어",
             title2: "중국어",
+            catagory: "",
             name: "중국어"
         },
         jp: {
             css: " language-jp",
             title: "일본어",
             title2: "일본어",
+            catagory: "",
             name: "일본어"
         }
     }
@@ -44,12 +48,12 @@ export default () => {
         <section id="main_container" className={current_pack.css}>
         <div className={"subnavi" + current_pack.css}>
             <ul>
-                <li>오프닝세션</li>
-                <li>환영사</li>
+                <li>{current_pack.catagory}</li>
+                <li>{current_pack.title}</li>
             </ul>
         </div>
         <div className={"main_content" + current_pack.css}>
-            <h3 className={"h3tit" + current_pack.css}>환영사</h3>
+            <h3 className={"h3tit" + current_pack.css}>{current_pack.title}</h3>
             <div className={"movie wr" + current_pack.css}>
                 {/* <i></i>
                 <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt=""/> */}
