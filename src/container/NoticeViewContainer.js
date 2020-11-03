@@ -19,7 +19,6 @@ export default ({ viewId, near }) => {
         // api 요청할 때는 로딩 중이 필요하다
         try {
             const res = await getShowDocument(viewId);
-            console.log(res);
             if (res) {
                 setNoticeView(res);
             }
@@ -80,7 +79,7 @@ export default ({ viewId, near }) => {
             <div className={"subnavi" + current_pack.css}>
                 <ul>
                     <li>
-                            {current_pack.title}
+                        {current_pack.title}
                     </li>
                 </ul>
             </div>
@@ -97,12 +96,12 @@ export default ({ viewId, near }) => {
                     <div className={"viewcontent" + current_pack.css}>
                         {noticeView.contents}
                         <div className={"file" + current_pack.css}>
-                            <Link to="#">
+                            {noticeView.file_1 && <a href={URL + noticeView.file_1} download>
                                 <img
-                                    src={(`${process.env.PUBLIC_URL}/img/ic_download.png`)}
+                                    src={`${process.env.PUBLIC_URL}/img/ic_download.png`}
                                     alt="download"
                                 />
-                            </Link>
+                            </a>}
                             <span>
                                 {noticeView.file_1}
                                 <em>334kb</em>
