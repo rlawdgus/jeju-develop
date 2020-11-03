@@ -40,6 +40,7 @@ const OnlineExhibitionPage = ({ match, location }) => {
         if (TOKEN) {
             history.push(LANGUAGE_PATH + Paths.exhibition + '/' + id);
         } else {
+            localStorage.setItem('token', true);
             dispatch(firstModalOpen());
         }
     }, [dispatch, history, LANGUAGE_PATH]);
