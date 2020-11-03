@@ -108,6 +108,14 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
         },
         {
             num: 8,
+            id: "c11",
+            kr_text: "유제품",
+            en_text: "Dairy products",
+            cn_text: "중국어",
+            jp_text: "일본어"
+        },
+        {
+            num: 9,
             id: "c9",
             kr_text: "천연염색",
             en_text: "Dyed products",
@@ -115,18 +123,10 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
             jp_text: "일본어"
         },
         {
-            num: 9,
+            num: 10,
             id: "c5",
             kr_text: "마을공동체",
             en_text: "Local community",
-            cn_text: "중국어",
-            jp_text: "일본어"
-        },
-        {
-            num: 10,
-            id: "c11",
-            kr_text: "유제품",
-            en_text: "Dairy products",
             cn_text: "중국어",
             jp_text: "일본어"
         }
