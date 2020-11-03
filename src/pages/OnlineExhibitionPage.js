@@ -48,7 +48,7 @@ const OnlineExhibitionPage = ({ match, location }) => {
         setLoading(true);
         try {
             const res = await getDocumentList(0); // default : 0
-            res.sort((a, b) => { return a.title < b.title ? -1 : a.title > b.title ? 1 : 0; });
+            res.sort((a, b) => { return (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0; });
 
             const swiperItem = res.filter(item => item.type === 8 || item.type === 9);
             swiperItem.sort((a, b) => { return a.title < b.title ? -1 : a.title > b.title ? 1 : 0; });
