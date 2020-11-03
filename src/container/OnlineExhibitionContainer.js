@@ -177,7 +177,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                                 style="display:block;max-width:100%;margin:0 auto;text-align:center"></i>
                             <span><img src="../img/img_center_booth.png"></span> */}
                         <i
-                            style={{ position: "absoulte", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
+                            style={{ position: "absolute", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
                             <img
                                 style={{ display: "block", maxWidth: "100%", margin: "0 auto", textAlign: "center" }}
                                 src={`${process.env.PUBLIC_URL}/img/img_tablelogo.png`}
