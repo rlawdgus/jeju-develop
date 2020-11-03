@@ -174,7 +174,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         <i
                             style={{ position: "absolute", bottom: "250px",  width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
                             <img
-                                style={{ display: "block", maxWidth: "650px", margin: "0 auto", textAlign: "center" }}
+                                style={{ display: "block", maxWidth: "650px", maxHeight: "160px", margin: "0 auto", textAlign: "center" }}
                                 src={URL + booth.photo_1}
                                 alt=""
                             />
