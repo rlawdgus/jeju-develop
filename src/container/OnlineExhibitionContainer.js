@@ -115,22 +115,9 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
-    const vType = ["ASF", "AVI", "BIK", "FLV", "MKV", "MOV", "MP4", "MPEG", "Ogg", "SKM", "TS", "WebM", "WMV",
-        "asf", "avi", "bik", "flv", "mkv", "mov", "mp4", "mpeg", "ogg", "skm", "ts", "webm", "wmv"]
-
-    const videoType = (file, link) => {
-        const FILE = String(file)
+    const videoType = (link) => {
         const LINK = String(link)
-        const dot = FILE.lastIndexOf('.')
-        for (let i = 0; i < vType.length; i++) {  //파일로 넘어오는 경우
-            if (FILE.substring(dot + 1, FILE.length) === vType[i]) {
-                return <embed
-                    src={URL + file}
-                    width="660"
-                    height="376"
-                />
-            }
-        }
+        console.log(LINK)
 
         if (LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
             return <iframe
@@ -145,10 +132,22 @@ const OnlineExhibitionContainer = ({ viewId }) => {
             ></iframe>
         }
         else if (LINK.length !== 0) {  //유튜브 링크로 넘어오는 경우
-            return <a href={link} target="_blank" rel="noopener noreferrer" width="660" height="376" >VIDEO LINK</a>
+            const lastSlash = LINK.lastIndexOf('/')
+            const videoID = LINK.slice(lastSlash, LINK.length)
+            console.log(videoID)
+            return <iframe
+                title="youtube"
+                width="660"
+                height="376"
+                src={`https://www.youtube.com/embed${videoID}`}
+                alt=""
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            ></iframe>
         }
         else {  //파일, 링크 두 가지 다 없는 경우 => 
-            return <img src={`${process.env.PUBLIC_URL}/img/ic_check_on.png`} alt="" width="660" height="376" />
+            return <img src={`${process.env.PUBLIC_URL}/img/ic_check_on.png`} alt="" width="660" height="376" />    //에러 이미지
         }
     }
 
@@ -180,7 +179,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                             <img src={URL + booth.photo_1} alt="" />
                         </span>
                         <div className={"center" + current_pack.css}>
-                            {videoType(booth.file_1, booth.link)}
+                            {videoType(booth.youtube_link)}
                         </div>
                         <button className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
                             {language === 'en' ? "Purchase"
