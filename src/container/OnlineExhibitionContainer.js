@@ -171,11 +171,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         <img src={URL + booth.photo_3} alt="" />
                     </div>
                     <div className={"spot" + current_pack.css}>
-                        {/* <i
-                            style="position:absolute;bottom:250px;width:100%;margin:0 auto;text-align:center;left:0px;z-index:30;"><img
-                                src="../img/img_tablelogo.png"
-                                style="display:block;max-width:100%;margin:0 auto;text-align:center"></i>
-                            <span><img src="../img/img_center_booth.png"></span> */}
                         <i
                             style={{ position: "absolute", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
                             <img
