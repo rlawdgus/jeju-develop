@@ -76,7 +76,7 @@ h3.h3tit.pt20{padding-top:25px;}
 .subnavi span button{border:none;background:transparent}
 .subnavi span button img{max-width:20px}
 
-.subnavi label {position:relative;cursor : pointer;display: block;font-style:normal;width:130px;}
+.subnavi label {position:relative;cursor : pointer;display: block;font-style:normal;width:100px;}
 .subnavi label:after {position:absolute;right:5px; content: "▼";font-size:11px;margin-top:3px;}
 .submenu {
  position:absolute;top:27px;z-index:99;
@@ -276,9 +276,9 @@ h3.h3tit.pt20{padding-top:25px;}
 .bigimg ul{padding:0px;margin:0px;}
 .bigimg ul li{float:left;margin:0 auto;position:relative;text-align:center;height:200px;width:50%;padding-bottom:40px;}
 .bigimg ul li:after{content:'';width:80%;left:10%;position:absolute;margin:0 auto;top:15%;height:1px;text-align:center;background:#bebdbd;z-index:0}
-.bigimg ul li em{position:relative;margin:0 auto;font-style:normal;font-weight:bold;font-size:12px;padding:15px 0px;box-sizing:border-box;overflow:hidden;display:block;white-space: nowrap;text-overflow: ellipsis;width:90%;}
+.bigimg ul li em{position:relative;margin:0 auto;font-style:normal;font-weight:bold;font-size:12px;padding:15px 20px;}
 .bigimg ul li img{display:block;margin:0 auto;margin-top:30px;max-width: 100%;}
-.bigimg .bigimgsize{max-width:70%; }
+.bigimg .bigimgsize{max-width:100%; width:180px; height:140px;}
 
 /* 모달창 */
 .modalbg{position:fixed;width:100%;margin:0 auto;text-align:center;height:100%;z-index:99;background:rgba(0,0,0,0.5);}
@@ -371,7 +371,8 @@ button.buy{display:block;margin:0 auto;border-radius:10px;text-align:center;font
 
 
 
+
 .swiper-slide div{}
-.swiper-slide div em{display:block;white-space: nowrap;text-overflow: ellipsis;overflow:hidden;width:80%;margin:0 auto;box-sizing:border-box;}
+.swiper-slide div em{display:block;box-shadow: 3px 5px 7px rgba(0,0,0,0.2) !important;white-space: nowrap;text-overflow: ellipsis;overflow:hidden;width:170px;margin:0 auto;box-sizing:border-box;}
 .swiper-slide div:after{display:none;}
 .swiper-slide img{max-width:100%;}
