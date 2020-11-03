@@ -269,7 +269,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                         <ul>
                             <li>{current_pack.navTitle}</li>
                             <li>
-                                <label for="touch">{language === 'en' ? <><strong>{language === 'en' ? type2[1]
+                                <label htmlFor="touch">{language === 'en' ? <><strong>{language === 'en' ? type2[1]
                                     : language === 'cn' ? type2[2]
                                         : language === 'jp' ? type2[3]
                                             : type2[0]}</strong>{current_pack.unit} </>
@@ -289,7 +289,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                                 <div className={"submenu" + current_pack.css}>
                                     {leftLists.map(list => (
                                         list.num !== 0 &&
-                                        <div onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
+                                        <div key={list.id} onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
                                     ))}
                                 </div>
                             </li>
