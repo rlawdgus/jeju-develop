@@ -86,13 +86,13 @@ const OnlineExhibitionContainer = ({ viewId }) => {
         type.push('중국어')
         type.push('일본어')
     }
-    else if (booth.type === 9) {
+    else if (booth.type === 8) {
         type.push('천연염색')
         type.push('Dyed products')
         type.push('중국어')
         type.push('일본어')
     }
-    else if (booth.type === 8) {
+    else if (booth.type === 9) {
         type.push('마을공동체')
         type.push('Local community')
         type.push('중국어')
