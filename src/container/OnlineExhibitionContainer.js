@@ -149,7 +149,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
-            {console.log(booth)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -166,19 +165,19 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         </span>
                     </div>
                     <div className={"left" + current_pack.css}>
-                        <img src={URL + booth.photo_4} alt="" />
+                        {booth.photo_4 && <img src={URL + booth.photo_4} alt="" />}
                     </div>
                     <div className={"right" + current_pack.css}>
-                        <img src={URL + booth.photo_3} alt="" />
+                        {booth.photo_4 && <img src={URL + booth.photo_3} alt="" />}
                     </div>
                     <div className={"spot" + current_pack.css}>
                         <i
                             style={{ position: "absolute", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
-                            <img
+                            {booth.photo_1 && <img
                                 style={{ display: "block", maxWidth: "100%", margin: "0 auto", textAlign: "center" }}
                                 src={URL + booth.photo_1}
                                 alt=""
-                            />
+                            />}
                         </i>
                         <span><img src={`${process.env.PUBLIC_URL}/img/img_center_booth.png`} alt="" /></span>
                         <div className={"center" + current_pack.css}>
