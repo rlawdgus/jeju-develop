@@ -157,7 +157,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         : language === 'cn' ? type[2]
                             : language === 'jp' ? type[3]
                                 : type[0]}ㅣ{language === 'en' ? booth.contents_en
-                                            : booth.contents}</h2>
+                                                                : booth.contents}</h2>
                     <div className={"people" + current_pack.css}>
                         <span>
                             <img src={`${process.env.PUBLIC_URL}/img/img_peo_left.png`} alt="" />
