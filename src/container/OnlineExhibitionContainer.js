@@ -181,6 +181,12 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
         type2.push('중국어')
         type2.push('일본어')
     }
+    else if (booth.type === 8) {
+        type2.push('유제품')
+        type2.push('Dairy products')
+        type2.push('중국어')
+        type2.push('일본어')
+    }
     else if (booth.type === 9) {
         type2.push('천연염색')
         type2.push('Dyed products')
@@ -190,12 +196,6 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
     else if (booth.type === 10) {
         type2.push('마을공동체')
         type2.push('Local community')
-        type2.push('중국어')
-        type2.push('일본어')
-    }
-    else if (booth.type === 8) {
-        type2.push('유제품')
-        type2.push('Dairy products')
         type2.push('중국어')
         type2.push('일본어')
     }
@@ -304,7 +304,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                             : language === 'cn' ? type2[2]
                                 : language === 'jp' ? type2[3]
                                     : type2[0]}ㅣ{language === 'en' ? booth.contents_en
-                                                                    : booth.contents}</h2>
+                                        : booth.contents}</h2>
 
                         <div className={"spot" + current_pack.css}>
                             <i style={{ position: "absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
@@ -317,12 +317,18 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
 
                         </div>
                         <div className={"mobuy" + current_pack.css}>
-                            <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
+                            <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open("http://" + booth.link, '_blank')}>
                                 {language === 'en' ? "Purchase"
                                     : language === 'cn' ? "중국어"
                                         : language === 'jp' ? "일본어"
                                             : "구매하러 가기"} {'>'}
                             </button>
+                            <a href={URL + booth.file_1} className={"buy" + current_pack.css} download={booth.contents + booth.file_1} rel="noopener noreferrer" target="_blank">
+                                {language === 'en' ? "Catalog Download"
+                                    : language === 'cn' ? "중국어"
+                                        : language === 'jp' ? "일본어"
+                                            : "카탈로그 다운로드"} {'>'}
+                            </a>
                         </div>
                         <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
 
