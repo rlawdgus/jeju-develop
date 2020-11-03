@@ -79,7 +79,6 @@ const OnlineExhibitionEventContainer = () => {
             } catch (e) {
                 alert('서버에 오류가 발생했습니다.');
             }
-            localStorage.setItem('token', true);
             dispatch(modalClose());
             history.push(Paths.exhibition + '/' + viewId);
         }
@@ -169,7 +168,7 @@ const OnlineExhibitionEventContainer = () => {
 
     return (
         <>
-        
+
             <div className={"modal" + current_pack.css}>
                 {/* event1 */}
                 {first &&
