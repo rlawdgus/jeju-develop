@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 import Loading from '../components/assets/Loading'
 
 import { getShowDocument } from '../api/OnlineExhibitionAPI'
+import { useHistory } from 'react-router-dom';
 
 const OnlineExhibitionContainer = ({ viewId }) => {
 
     const URL = "http://14.63.174.102:84";
+    const history = useHistory()
 
     const [booth, setBooth] = useState({})
 
@@ -22,9 +24,10 @@ const OnlineExhibitionContainer = ({ viewId }) => {
             setBooth(res)
         } catch (e) {
             alert('찾으시는 부스가 존재하지 않습니다.')
+            history.goBack()
         }
         setLoading(false);
-    }, [viewId])
+    }, [viewId, history])
 
     useEffect(() => {
         try {
@@ -185,7 +188,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         <div className={"center" + current_pack.css}>
                             {videoType(booth.youtube_link)}
                         </div>
-                        <button className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
+                        <button className={"buy" + current_pack.css} onClick={() => window.open("http://" + booth.link, '_blank')}>
                             {language === 'en' ? "Purchase"
                                 : language === 'cn' ? "중국어"
                                     : language === 'jp' ? "일본어"

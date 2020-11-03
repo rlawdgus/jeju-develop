@@ -61,5 +61,3 @@ export default () => {
         </section>
     )
 }
-
-//width:53.7%;height:551px;
