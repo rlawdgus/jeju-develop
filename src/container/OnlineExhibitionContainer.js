@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Loading from '../components/assets/Loading';
+import { getShowDocument } from '../api/OnlineExhibitionAPI';
 
 import Loading from '../components/assets/Loading'
 
@@ -11,7 +13,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     const URL = "http://14.63.174.102:84";
     const history = useHistory()
 
-    const [booth, setBooth] = useState({})
+    const [booth, setBooth] = useState({});
 
     const language = useSelector(state => state.language.current);
 
@@ -20,8 +22,8 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     const showingDocument = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await getShowDocument(viewId)
-            setBooth(res)
+            const res = await getShowDocument(viewId);
+            setBooth(res);
         } catch (e) {
             alert('찾으시는 부스가 존재하지 않습니다.')
             history.goBack()
@@ -37,7 +39,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
         }
     }, [showingDocument]);
 
-    const type = []
+    const type = [];
     if (booth.type === 0) {
         type.push('온라인 전시')
         type.push('Online-Exhibition')
@@ -130,7 +132,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-            ></iframe>
+            />
         }
         else if (LINK.length !== 0) {  //유튜브 링크로 넘어오는 경우
             const lastSlash = LINK.lastIndexOf('/')
@@ -139,12 +141,12 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                 title="youtube"
                 width="660"
                 height="376"
-                src={`https://www.youtube.com/embed${videoID}`}
+                src={"https://www.youtube.com/embed" + videoID}
                 alt=""
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-            ></iframe>
+            />
         }
         else {  //파일, 링크 두 가지 다 없는 경우 => 
             return <img src={`${process.env.PUBLIC_URL}/img/ic_check_on.png`} alt="" width="660" height="376" />    //에러 이미지
@@ -153,7 +155,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
-            {console.log(booth)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -170,19 +171,19 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         </span>
                     </div>
                     <div className={"left" + current_pack.css}>
-                        <img src={URL + booth.photo_4} alt="" />
+                        {booth.photo_4 && <img src={URL + booth.photo_4} alt="" />}
                     </div>
                     <div className={"right" + current_pack.css}>
-                        <img src={URL + booth.photo_3} alt="" />
+                        {booth.photo_4 && <img src={URL + booth.photo_3} alt="" />}
                     </div>
                     <div className={"spot" + current_pack.css}>
                         <i
                             style={{ position: "absolute", bottom: "250px", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
-                            <img
+                            {booth.photo_1 && <img
                                 style={{ display: "block", maxWidth: "100%", margin: "0 auto", textAlign: "center" }}
                                 src={URL + booth.photo_1}
                                 alt=""
-                            />
+                            />}
                         </i>
                         <span><img src={`${process.env.PUBLIC_URL}/img/img_center_booth.png`} alt="" /></span>
                         <div className={"center" + current_pack.css}>
@@ -197,7 +198,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                     </div>
                 </>
             }
-
             <Loading open={loading} />
         </section >
     );
