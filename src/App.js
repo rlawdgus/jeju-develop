@@ -19,6 +19,7 @@ import { Paths } from './paths';
 
 import { useDispatch } from 'react-redux';
 import { setLanguage } from './store/language';
+import { isMobile } from './lib/formatChecker';
 
 const LANGUAGE_LIST = ['kr', 'cn', 'en', 'jp'];
 
@@ -36,6 +37,12 @@ const App = ({ match }) => {
             reduxDispatch(setLanguage(state));
         }
     }, [reduxDispatch, state]);
+
+    useEffect(() => {
+        if(isMobile()) {
+            window.location.href = 'm.6farming-plus-jeju.com';
+        }
+    });
 
 
     const STATE_PATH = state ? `/${state}` : '';

@@ -154,6 +154,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
+            {console.log(booth)}
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -169,14 +170,14 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         </span>
                     </div>
                     <div className={"left" + current_pack.css}>
-                        <img src={`${process.env.PUBLIC_URL}/img/img_a4.jpg`} alt="" />
+                        <img src={URL + booth.photo_4} alt="" />
                     </div>
                     <div className={"right" + current_pack.css}>
-                        <img src={URL + booth.photo_2} alt="" />
+                        <img src={URL + booth.photo_3} alt="" />
                     </div>
                     <div className={"spot" + current_pack.css}>
                         <span>
-                            <img src={`${process.env.PUBLIC_URL}/img/img_center_booth.png`} alt="" />
+                            <img src={URL + booth.photo_1} alt="" />
                         </span>
                         <div className={"center" + current_pack.css}>
                             {videoType(booth.file_1, booth.link)}
