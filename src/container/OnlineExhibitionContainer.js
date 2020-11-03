@@ -163,6 +163,7 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
+            {console.log(booth)}
             <a className="catalog" href={URL + booth.file_1} download target="_blank" rel="noopener noreferrer">{current_pack.download}</a>
             {!loading &&
                 <>

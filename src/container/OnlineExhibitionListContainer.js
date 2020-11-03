@@ -151,8 +151,10 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
             if (type === 0) { setResult([]); setResult(items); }
             else if (type === 8) {
                 setResult([]); setResult(items.filter(item => item.type === 10));
-            } else if (type === 10) {
+            } else if (type === 9) {
                 setResult([]); setResult(items.filter(item => item.type === 8));
+            } else if (type === 10) {
+                setResult([]); setResult(items.filter(item => item.type === 9));
             } else { setResult([]); setResult(items.filter(item => item.type === type)); }
         }
     }, [loading, type, items]);
