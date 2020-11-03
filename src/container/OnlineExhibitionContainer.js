@@ -306,9 +306,9 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
 
                         <div className={"spot" + current_pack.css}>
                             <i style={{position:"absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign:"center", left: "0px", zIndex:"30"}}>
-                                <img src={URL + booth.photo_1} style={{display: "block", maxWidth: "120px", margin: "0 auto", textAlign: "center"}} />
+                                <img src={URL + booth.photo_1} style={{display: "block", maxWidth: "120px", margin: "0 auto", textAlign: "center"}} alt=""/>
                             </i>
-                            <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)}/></span>
+                            <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)} alt=""/></span>
                             <div className={"center" + current_pack.css}>
                                 {videoType(booth.youtube_link)}
                             </div>
