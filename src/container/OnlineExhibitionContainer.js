@@ -247,8 +247,8 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
             const videoID = LINK.slice(lastSlash, LINK.length)
             return <iframe
                 title="youtube"
-                width="660"
-                height="376"
+                width="100%"
+                height="300"
                 src={`https://www.youtube.com/embed${videoID}`}
                 alt=""
                 frameBorder="0"
@@ -306,13 +306,15 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
 
                         <div className={"spot" + current_pack.css}>
                             <i style={{position:"absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign:"center", left: "0px", zIndex:"30"}}>
-                                <img src={(`${process.env.PUBLIC_URL}/img/img_tablelogo.png`)} style={{display: "block", maxWidth: "120px", margin: "0 auto", textAlign: "center"}} />
+                                <img src={URL + booth.photo_1} style={{display: "block", maxWidth: "120px", margin: "0 auto", textAlign: "center"}} />
                             </i>
                             <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)}/></span>
                             <div className={"center" + current_pack.css}>
                                 {videoType(booth.youtube_link)}
                             </div>
-                            <div className={"mobuy" + current_pack.css}>
+                            
+                        </div>
+                        <div className={"mobuy" + current_pack.css}>
                                 <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
                                     {language === 'en' ? "Purchase"
                                         : language === 'cn' ? "중국어"
@@ -321,7 +323,6 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                                 </button>
                             </div>
                             <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
-                        </div>
 
                     </section>
 
