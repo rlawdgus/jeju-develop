@@ -76,6 +76,7 @@ export default ({ viewId, near }) => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
+    const URL = "http://14.63.174.102:84"
     return (
         <section id="comm_container" className={current_pack.css}>
             <div className={"tab" + current_pack.css}>
@@ -100,14 +101,14 @@ export default ({ viewId, near }) => {
                     <div className={"viewcontent" + current_pack.css}>
                         {noticeView.contents}
                         <div className={"file" + current_pack.css}>
-                            <a href={noticeView.file_1} download>
+                            {noticeView.file_1 && <a href={URL + noticeView.file_1} download>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/img/ic_download.png`}
                                     alt="download"
                                 />
-                            </a>
+                            </a>}
                             <span>
-                                <a href={noticeView.file_1} download>{noticeView.file_1}</a>
+                                <a href={URL + noticeView.file_1} download>{noticeView.file_1}</a>
                                 <em>334kb</em>
                             </span>
                         </div>
