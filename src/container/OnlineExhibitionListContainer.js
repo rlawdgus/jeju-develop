@@ -203,7 +203,7 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                         <div className={"submenu" + current_pack.css}>
                             {leftLists.map(list => (
                                 list.num !== 0 &&
-                                <div onClick={() => listClick(list.num)} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
+                                <div key={list.id} onClick={() => listClick(list.num)} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
                             ))}
                         </div>
                     </li>
