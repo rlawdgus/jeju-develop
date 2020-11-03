@@ -305,9 +305,10 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                                     : type2[0]}ㅣ{booth.title}</h2>
 
                         <div className={"spot" + current_pack.css}>
-                            <span>
-                                <img src={URL + booth.photo_1} alt="" />
-                            </span>
+                            <i style={{position:"absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign:"center", left: "0px", zIndex:"30"}}>
+                                <img src={(`${process.env.PUBLIC_URL}/img/img_tablelogo.png`)} style={{display: "block", maxWidth: "120px", margin: "0 auto", textAlign: "center"}} />
+                            </i>
+                            <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)}/></span>
                             <div className={"center" + current_pack.css}>
                                 {videoType(booth.youtube_link)}
                             </div>
