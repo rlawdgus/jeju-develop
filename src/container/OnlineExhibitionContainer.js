@@ -316,17 +316,17 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
 
                         </div>
                         <div className={"mobuy" + current_pack.css}>
-                            <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open("http://" + booth.link, '_blank')}>
+                            <a href={"http://" + booth.link} target="_blank" type="submit" rel="noopener noreferrer" className={"buy" + current_pack.css}>
                                 {language === 'en' ? "Purchase"
                                     : language === 'cn' ? "중국어"
                                         : language === 'jp' ? "일본어"
                                             : "구매하러 가기"} {'>'}
-                            </button>
+                            </a>
                             <a href={URL + booth.file_1} className={"buy" + current_pack.css} download={booth.contents + booth.file_1} rel="noopener noreferrer" target="_blank">
-                                {language === 'en' ? "Catalog Download"
+                                {language === 'en' ? "Catalog"
                                     : language === 'cn' ? "중국어"
                                         : language === 'jp' ? "일본어"
-                                            : "카탈로그 다운로드"} {'>'}
+                                            : "카탈로그 보기"} {'>'}
                             </a>
                         </div>
                         <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
