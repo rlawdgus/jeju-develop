@@ -1,13 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { Paths } from '../../paths/index'
 
 // const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
 
 const Header = () => {
-    const autoClose = useRef()
+    const autoClose = useRef();
+    const location = useLocation();
     // const history = useHistory();
 
     // const language = useSelector(state => state.language);
@@ -73,8 +74,14 @@ const Header = () => {
     //     )
     // }, [navList])
 
+    useEffect(() => {
+        if (autoClose.current) {
+            autoClose.current.checked = false;
+        }
+    }, [location]);
+
     // const setDefault = () => setNavList(navList.map(item => ({ ...item, checked: false })))
-    const LANGUAGE_PATH = language !== '' ? `/${language}` : ''
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
         <header>
@@ -97,7 +104,6 @@ const Header = () => {
                         <li>
                             <Link
                                 to={LANGUAGE_PATH + Paths.session}
-                                onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title}
                             </Link>
@@ -105,7 +111,6 @@ const Header = () => {
                         <li>
                             <Link
                                 to={LANGUAGE_PATH + Paths.conference}
-                                onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title2}
                             </Link>
@@ -113,7 +118,6 @@ const Header = () => {
                         <li>
                             <Link
                                 to={LANGUAGE_PATH + Paths.exhibition}
-                                onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title3}
                             </Link>
@@ -121,7 +125,6 @@ const Header = () => {
                         <li>
                             <Link
                                 to={LANGUAGE_PATH + Paths.notice}
-                                onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title4}
                             </Link>
@@ -129,7 +132,6 @@ const Header = () => {
                         <li>
                             <Link
                                 to={LANGUAGE_PATH + Paths.sns}
-                                onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title5}
                             </Link>
