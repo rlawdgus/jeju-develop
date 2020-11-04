@@ -57,8 +57,8 @@ export default ({ dataSet, firstOpen }) => {
             ) : (
                     <Swiper
                         slidesPerView={3} // 보이는 슬라이드 수
-                        slidesPerGroup={3} // 슬라이드 할때 몇개를 슬라이드 할것이냐
-                        loop={dataSet.length > 3 ? true : false}
+                        slidesPerGroup={1} // 슬라이드 할때 몇개를 슬라이드 할것이냐
+                        loop={dataSet.length > 3}
                         loopedSlides={3} // 루프를 하면 몇개를 할것인지
                         initialSlide={0}
                         navigation
