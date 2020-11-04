@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
+const OnlineExhibitionContainer = ({ viewId, type }) => {
     const URL = "http://14.63.174.102:84";
 
     const history = useHistory();
@@ -108,6 +108,14 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
         },
         {
             num: 8,
+            id: "c11",
+            kr_text: "유제품",
+            en_text: "Dairy products",
+            cn_text: "중국어",
+            jp_text: "일본어"
+        },
+        {
+            num: 9,
             id: "c9",
             kr_text: "천연염색",
             en_text: "Dyed products",
@@ -115,7 +123,7 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
             jp_text: "일본어"
         },
         {
-            num: 9,
+            num: 10,
             id: "c5",
             kr_text: "마을공동체",
             en_text: "Local community",
@@ -185,6 +193,12 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
         type2.push('중국어')
         type2.push('일본어')
     }
+    else if (booth.type === 10) {
+        type2.push('유제품')
+        type2.push('Dairy products')
+        type2.push('중국어')
+        type2.push('일본어')
+    }
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
@@ -211,45 +225,36 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
-    const listClick = (num) => { setType(parseInt(num)); history.push(LANGUAGE_PATH + Paths.exhibition); };
+    const listClick = (num) => { history.push(LANGUAGE_PATH + Paths.exhibition + '?type=' + parseInt(num)); };
 
-    const vType = ["ASF", "AVI", "BIK", "FLV", "MKV", "MOV", "MP4", "MPEG", "Ogg", "SKM", "TS", "WebM", "WMV",
-                    "asf", "avi", "bik", "flv", "mkv", "mov", "mp4", "mpeg", "ogg", "skm", "ts", "webm", "wmv"]
-
-    // const [isVideo, SetisVideo] = useState(false)
-
-    const videoType = (file, link) => {
-        const FILE = String(file)
+    const videoType = (link) => {
         const LINK = String(link)
 
-        console.log(LINK)
-
-        const dot = FILE.lastIndexOf('.')
-        for(let i = 0; i < vType.length; i++){  //파일로 넘어오는 경우
-            if(FILE.substring(dot + 1, FILE.length) === vType[i]){
-                console.log("find", FILE, LINK, URL)
-                return <embed 
-                src={URL + file}
+        if (LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
+            return <iframe
+                title="youtube"
                 width="100%"
                 height="300"
-                />
-            }
+                src={link} //비디오 링크가  cms에 추가하는 것이 없음
+                alt=""
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            ></iframe>
         }
-
-        if(LINK.lastIndexOf("embed") !== -1) {    //유튜브 embed링크로 넘어오는 경우
+        else if (LINK.length !== 0) {  //유튜브 링크로 넘어오는 경우
+            const lastSlash = LINK.lastIndexOf('/')
+            const videoID = LINK.slice(lastSlash, LINK.length)
             return <iframe
-            title="youtube"
-            width="100%"
-            height="300"
-            src={link} //비디오 링크가  cms에 추가하는 것이 없음
-            alt=""
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-        ></iframe>
-        }
-        else if(LINK.length !== 0){  //유튜브 링크로 넘어오는 경우
-            return <a href={link} target="_blank" rel="noopener noreferrer" width="100%" height="300" >VIDEO LINK</a>
+                title="youtube"
+                width="100%"
+                height="300"
+                src={`https://www.youtube.com/embed${videoID}`}
+                alt=""
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            ></iframe>
         }
         else {  //파일, 링크 두 가지 다 없는 경우 => 
             return <img src={(`${process.env.PUBLIC_URL}/img/ic_check_on.png`)} alt="" width="100%" height="300" />
@@ -264,7 +269,7 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                         <ul>
                             <li>{current_pack.navTitle}</li>
                             <li>
-                                <label for="touch">{language === 'en' ? <><strong>{language === 'en' ? type2[1]
+                                <label htmlFor="touch">{language === 'en' ? <><strong>{language === 'en' ? type2[1]
                                     : language === 'cn' ? type2[2]
                                         : language === 'jp' ? type2[3]
                                             : type2[0]}</strong>{current_pack.unit} </>
@@ -284,38 +289,50 @@ const OnlineExhibitionContainer = ({ viewId, type, setType }) => {
                                 <div className={"submenu" + current_pack.css}>
                                     {leftLists.map(list => (
                                         list.num !== 0 &&
-                                        <div onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
+                                        <div key={list.id} onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
                                     ))}
                                 </div>
                             </li>
                             <li>{booth.title}</li>
                         </ul>
-                        <span><button type="submit"><img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" /></button></span>
                     </div>
 
                     <section id="ex_container" className={current_pack}>
                         <h2>{language === 'en' ? type2[1]
                             : language === 'cn' ? type2[2]
                                 : language === 'jp' ? type2[3]
-                                    : type2[0]}ㅣ{booth.title}</h2>
+                                    : type2[0]}ㅣ{language === 'en' ? booth.title_en
+                                        : booth.title}</h2>
 
                         <div className={"spot" + current_pack.css}>
-                            <span>
-                                <img src={URL + booth.photo_1} alt="" />
-                            </span>
+                            <i style={{ position: "absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
+                                <img src={URL + booth.photo_1} style={{ display: "block", maxWidth: "120px", maxHeight: "65px", margin: "0 auto", textAlign: "center" }} alt="" />
+                            </i>
+                            <span><img src={(`${process.env.PUBLIC_URL}/img/img_center_booth.png`)} alt="" /></span>
                             <div className={"center" + current_pack.css}>
-                                {videoType(booth.file_1, booth.link)}
+                                {videoType(booth.youtube_link)}
                             </div>
-                            <div className={"mobuy" + current_pack.css}>
-                                <button type="submit" className={"buy" + current_pack.css} onClick={() => window.open(booth.link)}>
-                                    {language === 'en' ? "Purchase"
-                                        : language === 'cn' ? "중국어"
-                                            : language === 'jp' ? "일본어"
-                                                : "구매하러 가기"} {'>'}
-                                </button>
-                            </div>
-                            <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
+
                         </div>
+                        {console.log(booth.link)}
+                        <div className={"mobuy" + current_pack.css}>
+                            <a href={booth.link ?
+                                (booth.link.indexOf("http") !== -1) ?
+                                booth.link : "http://" + booth.link
+                                : ""} target={booth.link ? "_blank" : ""} type="submit" rel="noopener noreferrer" className={"buy" + current_pack.css}>
+                                {language === 'en' ? "Purchase"
+                                    : language === 'cn' ? "중국어"
+                                        : language === 'jp' ? "일본어"
+                                            : "구매하러 가기"} {'>'}
+                            </a>
+                            <a href={URL + booth.file_1} className={"buy" + current_pack.css} rel="noopener noreferrer" target="_blank">
+                                {language === 'en' ? "Catalog"
+                                    : language === 'cn' ? "중국어"
+                                        : language === 'jp' ? "일본어"
+                                            : "카탈로그 보기"} {'>'}
+                            </a>
+                        </div>
+                        <div className={"mowelcome" + current_pack.css}><a href="#!"><img src={URL + booth.photo_3} alt="no photo_3" /></a></div>
 
                     </section>
 

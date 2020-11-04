@@ -42,7 +42,7 @@ export default ({ noticeList, currentPage }) => {
     return (
         <>
             {currentList.map(item =>
-                <li><Link to={LANGUAGE_PATH + Paths.notice + '/' + item.id} ><strong>{item.title}</strong><span>{dateToYYYYMMDD(item.created_at)} | 공지사항</span></Link></li>
+                <li key={item.id}><Link to={LANGUAGE_PATH + Paths.notice + '/' + item.id} ><strong>{item.title}</strong><span>{dateToYYYYMMDD(item.created_at)} | 공지사항</span></Link></li>
             )}
         </>
     );

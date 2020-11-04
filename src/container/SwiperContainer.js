@@ -57,9 +57,8 @@ export default ({ dataSet, firstOpen }) => {
             ) : (
                     <Swiper
                         slidesPerView={3} // 보이는 슬라이드 수
-                        slidesPerGroup={3} // 슬라이드 할때 몇개를 슬라이드 할것이냐
-                        loop={dataSet.length > 3 ? true : false}
-                        loopFillGroupWithBlank={true} // 빈공간은 빈 슬라이드로 채움
+                        slidesPerGroup={1} // 슬라이드 할때 몇개를 슬라이드 할것이냐
+                        loop={dataSet.length > 3}
                         loopedSlides={3} // 루프를 하면 몇개를 할것인지
                         initialSlide={0}
                         navigation
@@ -70,8 +69,8 @@ export default ({ dataSet, firstOpen }) => {
                         {dataSet.map((data) => (
                             <SwiperSlide key={data.id}>
                                 <div>
-                                    <em>{data.title}</em>
-                                    <img src={URL + data.photo_1} alt="no_image" onClick={() => firstOpen(data.id)} />
+                                    <em>{language === 'en' ? data.title_en : data.title}</em>
+                                    <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
                             </SwiperSlide>
                         ))}

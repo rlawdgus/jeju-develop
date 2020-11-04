@@ -20,6 +20,8 @@ import { Paths } from './paths';
 import { useDispatch } from 'react-redux';
 import { setLanguage } from './store/language';
 
+import './static/stylesheets/search.scss'
+
 const LANGUAGE_LIST = ['kr', 'cn', 'en', 'jp'];
 
 const App = ({ match }) => {
@@ -42,24 +44,26 @@ const App = ({ match }) => {
     const CSS_PATH = state ? `${state}` : 'kr';
 
     return (
-        <div className={language}>
+        <>
             <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/common.css`} />
             <link rel="stylesheet" type="text/css" href={`${process.env.PUBLIC_URL}/stylesheets/${CSS_PATH}/mobile.css`} />
-            <Header />
-            <Switch>
-                <Route path={STATE_PATH + Paths.index} component={HomePage} exact />
-                <Route path={STATE_PATH + Paths.exhibition + '/:index?'} component={OnlineExhibitionPage} />
-                <Route path={STATE_PATH + Paths.conference} component={ConferencePage} />
-                <Route path={STATE_PATH + Paths.session + '/:mode?'} component={WelcomingPage} />
-                <Route path={STATE_PATH + Paths.notice + '/:index?'} component={NoticeListPage} />
-                <Route path={STATE_PATH + Paths.sns} component={SNSPage} />
-                <Route component={ErrorPage} />
-            </Switch>
+            <div className={language}>
+                <Header />
+                <Switch>
+                    <Route path={STATE_PATH + Paths.index} component={HomePage} exact />
+                    <Route path={STATE_PATH + Paths.exhibition + '/:index?'} component={OnlineExhibitionPage} />
+                    <Route path={STATE_PATH + Paths.conference} component={ConferencePage} />
+                    <Route path={STATE_PATH + Paths.session + '/:mode?'} component={WelcomingPage} />
+                    <Route path={STATE_PATH + Paths.notice + '/:index?'} component={NoticeListPage} />
+                    <Route path={STATE_PATH + Paths.sns} component={SNSPage} />
+                    <Route component={ErrorPage} />
+                </Switch>
 
-            <OnlineExhibitionEventContainer />
-            <DialogContainer />
-            <LoadingContainer />
-        </div>
+                <OnlineExhibitionEventContainer />
+                <DialogContainer />
+                <LoadingContainer />
+            </div>
+        </>
     );
 };
 
