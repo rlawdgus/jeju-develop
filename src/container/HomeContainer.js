@@ -50,7 +50,7 @@ export default () => {
             <div className={"main_content" + current_pack.css}>
                 <div className={"movie" + current_pack.css}>
                     {/* <i></i>
-              <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt="" /> */}
+                    <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt="" /> */}
                     <iframe
                         title="youtube"
                         width="100%"
@@ -61,7 +61,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    <span> {current_pack.movie_name} </span>
+                    {/* <span> {current_pack.movie_name} </span> */}
                 </div>
                 <div className={"right" + current_pack.css}>
 
