@@ -319,8 +319,8 @@ a.btclose{background:#757575}
 #ex_container .spot .center{display:block;margin:0 auto;text-align:center;padding-bottom:100px;}
 #ex_container .spot .center iframe{display:block;width:95%;margin:0 auto;border:8px solid #a4a5a7;box-sizing:border-box;}
 #ex_container .mobuy{position:relative;display:block;background:url(../../img/bg_mo_buy.png) no-repeat; background-size:cover;min-height:350px;padding:40% 0;box-sizing:border-box;}
-button.buy{display:block;margin:0 auto;border-radius:10px;text-align:center;font-size:16px;color:#fff;border:3px solid #fff;background:rgba(0,0,0,0.5);padding:10px 20px;}
-a.buy{display:inline-block;margin:0 auto;margin-top:10px;border-radius:10px;text-align:center;font-size:16px;color:#fff;border:3px solid #fff;background:rgba(0,0,0,0.5);padding:10px 20px; cursor: pointer;}
+button.buy{width: 220px; display:block;margin:0 auto;border-radius:10px;text-align:center;font-size:16px;color:#fff;border:3px solid #fff;background:rgba(0,0,0,0.5);padding:10px 20px;}
+a.buy{width: 220px; display:block;margin:0 auto;margin-top:10px;border-radius:10px;text-align:center;font-size:16px;color:#fff;border:3px solid #fff;background:rgba(0,0,0,0.5);padding:10px 20px; cursor: pointer;}
 #ex_container .mowelcome{display:block;padding:25px 0;background:#fff;}
 #ex_container .mowelcome img{max-width:100%;}
 

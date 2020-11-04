@@ -1,17 +1,16 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { Paths } from '../../paths/index'
 
-const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
+// const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
 
 const Header = () => {
     const autoClose = useRef()
-    const history = useHistory();
+    // const history = useHistory();
 
     // const language = useSelector(state => state.language);
-    // console.log(language);
 
     // const selectLanguage = useCallback(e => {
     //     // 언어 변경
@@ -20,22 +19,8 @@ const Header = () => {
     //     }, location.pathname);
     //     history.push(`/${e.target.value}` + pathbase + location.search);
     // }, [location, history]);
-    const location = useLocation();
+    // const location = useLocation();
     const language = useSelector(state => state.language.current);
-
-    const selectLanguage = useCallback(() => {
-        // 언어 변경
-        const pathbase = LANGUAGE_URL_LIST.reduce((prev, cur) => {
-            return prev.replace(cur, '');
-        }, location.pathname);
-        history.push('en/SNS');
-        console.log(pathbase)
-        console.log(language)
-        console.log((language === 'en' ? '' : '/en') + pathbase + location.search);
-        // history.push((language === 'en' ? '' : '/en') + pathbase + location.search);
-        
-        autoClose.current.click()
-    }, [location, history, language]);
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
@@ -146,14 +131,6 @@ const Header = () => {
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title5}
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to=""
-                                onClick={selectLanguage}
-                            >
-                                {current_pack.title6}
                             </Link>
                         </li>
                     </ul>
