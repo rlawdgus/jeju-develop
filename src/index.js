@@ -15,7 +15,6 @@ import { Provider } from 'react-redux';
 import rootReducer  from './store';
 /* Redux */
 
-
 const store = createStore(
     rootReducer
 );

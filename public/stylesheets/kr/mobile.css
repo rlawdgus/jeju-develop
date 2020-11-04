@@ -281,7 +281,14 @@ h3.h3tit.pt20{padding-top:25px;}
   .bigimg ul{padding:0px;margin:0px;}
   .bigimg ul li{float:left;margin:0 auto;position:relative;text-align:center;height:200px;width:50%;padding-bottom:40px;}
   .bigimg ul li:after{content:'';width:80%;left:10%;position:absolute;margin:0 auto;top:15%;height:1px;text-align:center;background:#bebdbd;z-index:0}
-  .bigimg ul li em{position:relative;margin:0 auto;font-style:normal;font-weight:bold;font-size:12px;padding:15px 0px;box-sizing:border-box;overflow:hidden;display:block;white-space: nowrap;text-overflow: ellipsis;width:90%;}
+  .bigimg ul li em {
+    position:relative;
+    margin:0 auto;font-style:normal;font-weight:bold;font-size:12px;padding:15px 0px;box-sizing:border-box;
+    overflow:hidden;display:block;
+    /* white-space: nowrap;text-overflow: ellipsis; */
+    
+    width:90%;
+  }
   .bigimg ul li img{display:block;margin:0 auto;margin-top:30px;max-width: 100%;}
   .bigimg .bigimgsize{max-width:70%; }
 
