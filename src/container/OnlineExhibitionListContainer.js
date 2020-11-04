@@ -218,7 +218,7 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
             </div>
             {!loading &&
                 <div className={"right_section" + current_pack.css}>
-                    <div className={"content" + current_pack.css}>ㄴ
+                    <div className={"content" + current_pack.css}>
                         <div className={"subtop menu01" + current_pack.css}>
                             <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>
                                 : language === 'cn' ? <><strong>{leftLists[type].cn_text}</strong>{current_pack.unit} </>
