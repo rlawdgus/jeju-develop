@@ -109,7 +109,7 @@ export default ({ viewId, near }) => {
                             </a>}
                             <span>
                                 {noticeView.file_1 && <a href={URL + noticeView.file_1} rel="noopener noreferrer" target="_blank" download>{noticeView.file_1}</a>}
-                                <em>334kb</em>
+                                {/* <em>334kb</em> */}
                             </span>
                         </div>
                     </div>
