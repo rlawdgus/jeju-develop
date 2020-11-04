@@ -126,7 +126,7 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
 
         // 입력이 있을경우 언어별로 판단
         if (language === 'en') {
-            const findItem = items.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
+            const findItem = items.filter(item => item.title_en.toLowerCase().indexOf(search.toLowerCase()) > -1)
             if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         } else if (language === 'cn') {
@@ -229,7 +229,6 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                         {swiper}
                         <div className={"bigimg" + current_pack.css}>
                             <ul>
-                                {console.log(result)}
                                 {
                                     !exist ?
                                         result.map(res => (

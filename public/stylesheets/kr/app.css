@@ -88,7 +88,22 @@ a:hover, a:focus, a:active {text-decoration:none;}
 #ex_container .spot .center embed{border:8px solid #a4a5a7; position: relative; z-index: 1000;}
 #ex_container .spot .center a{border:8px solid #a4a5a7; position: relative; z-index: 1000;}
 #ex_container .spot .center img{border:8px solid #a4a5a7; position: relative; z-index: 1000;}
-button.buy{border-radius:100em;display:block;margin:0 auto;text-align:center;font-size:26px;color:#fff;border:3px solid #fff;background:#777777;padding:15px 25px; position: relative; z-index: 100;}
+.button-area {
+  display:block;
+  margin:0 auto;
+}
+button.buy{ 
+  border-radius:100em;
+  text-align:center;
+  font-size:26px;
+  color:#fff;
+  border:3px solid #fff;
+  background:#777777;
+  padding:15px 25px;
+  position: relative;
+  z-index: 100;
+  margin: 0 30px;
+}
 #ex_container .left{position:absolute;left:0px;width:25%;top:0px;min-height:990px;z-index:70;margin-top:-90px;box-sizing:border-box;
   border-left:400px solid #fcb720;
   border-top:60px solid transparent;

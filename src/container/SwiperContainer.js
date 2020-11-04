@@ -55,12 +55,12 @@ export default ({ dataSet, firstOpen }) => {
             ) : (
                     <Swiper
                         slidesPerView={5} // 보이는 슬라이드 수
-                        slidesPerGroup={5} // 슬라이드 할때 몇개를 슬라이드 할것이냐
-                        loop={dataSet.length > 5 ? true : false}
-                        loopedSlides={5} // 루프를 하면 몇개를 할것인지
+                        slidesPerGroup={1} // 슬라이드 할때 몇개를 슬라이드 할것이냐
+                        loop={dataSet.length > 5}
                         initalslide={0}
+                        loopFillGroupWithBlank
                         navigation
-                        watchOverflow
+                        // watchOverflow
                         loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
                         delay={300}
                     >

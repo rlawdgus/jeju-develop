@@ -109,11 +109,11 @@ const OnlineExhibitionContainer = ({ viewId }) => {
     const LANGUAGE_PACK = {
         kr: {
             css: "",
-            download: "카탈로그 다운로드"
+            download: "카탈로그 보기"
         },
         en: {
             css: " language-en",
-            download: "Catalog Download"
+            download: "View Catalog"
         },
         cn: {
             css: " language-cn",
@@ -163,8 +163,6 @@ const OnlineExhibitionContainer = ({ viewId }) => {
 
     return (
         <section id="ex_container" className={current_pack.css}>
-            {console.log(booth)}
-            <a className="catalog" href={URL + booth.file_1} download target="_blank" rel="noopener noreferrer">{current_pack.download}</a>
             {!loading &&
                 <>
                     <h2>{language === 'en' ? type[1]
@@ -200,12 +198,21 @@ const OnlineExhibitionContainer = ({ viewId }) => {
                         <div className={"center" + current_pack.css}>
                             {videoType(booth.youtube_link)}
                         </div>
-                        <button className={"buy" + current_pack.css} onClick={() => window.open("http://" + booth.link, '_blank')}>
-                            {language === 'en' ? "Purchase"
-                                : language === 'cn' ? "중국어"
-                                    : language === 'jp' ? "일본어"
-                                        : "구매하러 가기"} {'>'}
-                        </button>
+                        <div className={"button-area"}>
+                            <button className={"buy" + current_pack.css} onClick={booth.link ?
+                                (booth.link.indexOf("http") !== -1) ?
+                                () => window.open(booth.link, '_blank') : () => window.open("http://" + booth.link, '_blank')
+                                : () => {}}
+                            
+                            >
+                                
+                                {language === 'en' ? "Purchase"
+                                    : language === 'cn' ? "중국어"
+                                        : language === 'jp' ? "일본어"
+                                            : "구매하러 가기"} {'>'}
+                            </button>
+                            <button className={"buy" + current_pack.css} onClick={() => window.open(URL + booth.file_1, '_blank')}>{current_pack.download} {'>'}</button>
+                        </div>
                     </div>
                 </>
             }
