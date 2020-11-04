@@ -19,7 +19,7 @@ const OnlineExhibitionPage = ({ match, location }) => {
     const query = qs.parse(location.search, {
         ignoreQueryPrefix: true,
     });
-    const type = query.type ? query.type : "1";
+    const type = query.type ? query.type : "0";
     const t = parseInt(type);
 
     const dispatch = useDispatch();

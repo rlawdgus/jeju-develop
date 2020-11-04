@@ -98,8 +98,8 @@ h3.h3tit.pt20{padding-top:25px;}
 .submenu a {display:block;padding :10px 15px;color:#fff;font-size:13px;text-align:left;border-bottom:1px solid rgba(256,256,256,0.2)}
 .submenu a:last-child{border:none;}
 #touch {position: absolute; opacity: 0; max-height: 0px;}
-#touch:checked + .submenu {max-height: 400px;}
-#touch:checked + .sm {max-height: 70px;}
+#touch:checked + .submenu {max-height: 600px;}
+#touch:checked + .sm {max-height: 170px;} 
 
 
 #on_ex_container{position:relative;overflow:hidden;width:100%;height:100%;margin:0 auto;text-align:center;}

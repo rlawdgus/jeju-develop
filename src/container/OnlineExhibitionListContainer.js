@@ -17,6 +17,7 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
     const leftLists = [
         {
             num: 0,
+            id: "c1",
             kr_text: "온라인 전시",
             en_text: "Online-Exhibition",
             cn_text: "중국어",
@@ -184,7 +185,8 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
 
     useEffect(() => {
         if (!loading) {
-            if (type === 8) {
+            if (type === 0) { setResult([]); setResult(items); }
+            else if (type === 8) {
                 setResult([]); setResult(items.filter(item => item.type === 10));
             } else if (type === 9) {
                 setResult([]); setResult(items.filter(item => item.type === 8));
@@ -194,13 +196,13 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
         }
     }, [loading, type, items]);
 
-    const [searchOn, setSearchOn] = useState(false)
-    const searchClass = searchOn ? "on" : ''
+    const [searchOn, setSearchOn] = useState(false);
+    const searchClass = searchOn ? "on" : '';
 
     return (
         <section id="on_ex_container" className={current_pack.css}>
             <div className={"subnavi" + current_pack.css}>
-            <input type="text" className={"search-text " + searchClass} value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
+                <input type="text" className={"search-text " + searchClass} value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
                 <ul>
                     <li>{current_pack.title}</li>
                     <li>
@@ -211,7 +213,6 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                         <input type="checkbox" id="touch" ref={autoClick} />
                         <div className={"submenu" + current_pack.css}>
                             {leftLists.map(list => (
-                                list.num !== 0 &&
                                 <div key={list.id} onClick={() => listClick(list.num)} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
                             ))}
                         </div>
