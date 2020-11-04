@@ -125,10 +125,10 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
     const findList = useCallback(() => {                 // 검색 기능 구현시 필요
         // 아무것도 입력 없이 찾기버튼을 눌렀을 때
         if (search === '') setExist(false);
-
+        console.log(language);
         // 입력이 있을경우 언어별로 판단
         if (language === 'en') {
-            const findItem = items.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
+            const findItem = items.filter(item => item.title_en.toLowerCase().indexOf(search.toLowerCase()) > -1)
             if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
             else { setExist(true); setFind(findItem); }
         } else if (language === 'cn') {
@@ -216,7 +216,7 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                 </ul>
                 <span>
                     <button type="submit">
-                        <img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" />
+                        <img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" onClick={findList} />
                     </button>
                 </span>
             </div>
