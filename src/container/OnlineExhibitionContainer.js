@@ -302,8 +302,8 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                         <h2>{language === 'en' ? type2[1]
                             : language === 'cn' ? type2[2]
                                 : language === 'jp' ? type2[3]
-                                    : type2[0]}ㅣ{language === 'en' ? booth.contents_en
-                                        : booth.contents}</h2>
+                                    : type2[0]}ㅣ{language === 'en' ? booth.title_en
+                                        : booth.title}</h2>
 
                         <div className={"spot" + current_pack.css}>
                             <i style={{ position: "absolute", bottom: "15%", width: "100%", margin: "0 auto", textAlign: "center", left: "0px", zIndex: "30" }}>
