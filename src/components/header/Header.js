@@ -1,18 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-// import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useHistory } from 'react-router-dom'
 
 import { Paths } from '../../paths/index'
 
-// import { useHistory, useLocation } from 'react-router-dom';
-
-// const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
+const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
 
 const Header = () => {
     const autoClose = useRef()
-    // const location = useLocation();
-    // const history = useHistory();
+    const history = useHistory();
 
     // const language = useSelector(state => state.language);
     // console.log(language);
@@ -24,8 +20,19 @@ const Header = () => {
     //     }, location.pathname);
     //     history.push(`/${e.target.value}` + pathbase + location.search);
     // }, [location, history]);
-
+    const location = useLocation();
     const language = useSelector(state => state.language.current);
+
+    const selectLanguage = useCallback(() => {
+        // 언어 변경
+        const pathbase = LANGUAGE_URL_LIST.reduce((prev, cur) => {
+            return prev.replace(cur, '');
+        }, location.pathname);
+        console.log(language)
+        history.push('/' + language + pathbase + location.search);
+        autoClose.current.click()
+    }, [location, history, language]);
+
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
         kr: {
@@ -34,7 +41,8 @@ const Header = () => {
             title2: "컨퍼런스",
             title3: "온라인전시관",
             title4: "공지 및 이벤트",
-            title5: "SNS"
+            title5: "SNS",
+            title6: "한국어"
         },
         en: {
             css: " language-en",
@@ -42,7 +50,8 @@ const Header = () => {
             title2: "Conference",
             title3: "Online-Exhibition",
             title4: "Notice",
-            title5: "SNS"
+            title5: "SNS",
+            title6: "english"
         },
         cn: {
             css: " language-cn",
@@ -50,7 +59,8 @@ const Header = () => {
             title2: "중국어",
             title3: "중국어",
             title4: "중국어",
-            title5: "중국어"
+            title5: "중국어",
+            title6: "중국어"
         },
         jp: {
             css: " language-jp",
@@ -58,7 +68,8 @@ const Header = () => {
             title2: "일본어",
             title3: "일본어",
             title4: "일본어",
-            title5: "일본어"
+            title5: "일본어",
+            title6: "일본어"
         }
     }
 
@@ -131,6 +142,22 @@ const Header = () => {
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title5}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to={Paths.sns}
+                                onClick={() => autoClose.current.click()}
+                            >
+                                {current_pack.title5}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to=""
+                                onClick={selectLanguage}
+                            >
+                                {current_pack.title6}
                             </Link>
                         </li>
                     </ul>
