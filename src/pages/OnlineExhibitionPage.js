@@ -52,7 +52,6 @@ const OnlineExhibitionPage = ({ match, location }) => {
             res.sort((a, b) => { return (a.title < b.title) ? -1 : (a.title > b.title) ? 1 : 0; });
 
             const swiperItem = res.filter(item => item.type === 8 || item.type === 9);
-            console.log(swiperItem)
             swiperItem.sort((a, b) => { return a.title < b.title ? -1 : a.title > b.title ? 1 : 0; });
             setSwiper(<SwiperContainer dataSet={swiperItem} firstOpen={firstOpen} />);
             setItems(res);

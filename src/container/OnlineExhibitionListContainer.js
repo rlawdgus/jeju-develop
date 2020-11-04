@@ -229,18 +229,19 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                         {swiper}
                         <div className={"bigimg" + current_pack.css}>
                             <ul>
+                                {console.log(result)}
                                 {
                                     !exist ?
                                         result.map(res => (
                                             <li key={res.id}>
-                                                <em>{language === 'en' ? res.contents_en : res.contents}</em>
+                                                <em>{language === 'en' ? res.title_en : res.title}</em>
                                                 <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_2} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                             </li>
                                         ))
                                         :
                                         find.map(res => (
                                             <li key={res.id}>
-                                                <em>{language === 'en' ? res.contents_en : res.contents}</em>
+                                                <em>{language === 'en' ? res.title_en : res.title}</em>
                                                 <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_2} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                             </li>
                                         ))
