@@ -125,7 +125,6 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
     const findList = useCallback(() => {                 // 검색 기능 구현시 필요
         // 아무것도 입력 없이 찾기버튼을 눌렀을 때
         if (search === '') setExist(false);
-        console.log(language);
         // 입력이 있을경우 언어별로 판단
         if (language === 'en') {
             const findItem = items.filter(item => item.title_en.toLowerCase().indexOf(search.toLowerCase()) > -1)
@@ -215,12 +214,13 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                     </li>
                 </ul>
                 <span>
+                <input type="text" className="search_text" value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
                     <button type="submit">
                         <img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" onClick={findList} />
                     </button>
                 </span>
             </div>
-            <input type="text" className="search_text" value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
+
             <div className={"content" + current_pack.css}>
                 <div className={"subtop menu01" + current_pack.css}>
                     <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>

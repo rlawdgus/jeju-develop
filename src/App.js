@@ -20,6 +20,8 @@ import { Paths } from './paths';
 import { useDispatch } from 'react-redux';
 import { setLanguage } from './store/language';
 
+import './static/stylesheets/search.scss'
+
 const LANGUAGE_LIST = ['kr', 'cn', 'en', 'jp'];
 
 const App = ({ match }) => {

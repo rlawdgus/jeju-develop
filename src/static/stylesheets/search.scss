@@ -1,0 +1,20 @@
+#on_ex_container > div.subnavi > span > input {
+    font-size: 14px;
+    width: 100px;
+    position: relative;
+    top: 1px;
+    right: 10px;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    background-color: transparent;
+    outline: none;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 320px) {
+    #on_ex_container > div.subnavi > span > input{
+        width: 60px;
+    }
+}
