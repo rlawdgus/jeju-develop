@@ -1,20 +1,19 @@
-#on_ex_container > div.subnavi > span > input {
-    font-size: 14px;
-    width: 100px;
-    position: relative;
-    top: 1px;
-    right: 10px;
-    border: none;
-    border-bottom: 2px solid white;
-    color: white;
-    background-color: transparent;
-    outline: none;
-    padding: 2px;
+#on_ex_container > div.subnavi > input {
     box-sizing: border-box;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 85%;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-bottom: 1px solid white;
+    background-color: #289ab9;
+    color: white;
+    outline: none;
+    z-index: -1;
 }
 
-@media (max-width: 320px) {
-    #on_ex_container > div.subnavi > span > input{
-        width: 60px;
-    }
+.on{
+    z-index: 100 !important;
 }

@@ -314,7 +314,6 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                             </div>
 
                         </div>
-                        {console.log(booth.link)}
                         <div className={"mobuy" + current_pack.css}>
                             <a href={booth.link ?
                                 (booth.link.indexOf("http") !== -1) ?

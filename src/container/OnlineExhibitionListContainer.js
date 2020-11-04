@@ -194,9 +194,13 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
         }
     }, [loading, type, items]);
 
+    const [searchOn, setSearchOn] = useState(false)
+    const searchClass = searchOn ? "on" : ''
+
     return (
         <section id="on_ex_container" className={current_pack.css}>
             <div className={"subnavi" + current_pack.css}>
+            <input type="text" className={"search-text " + searchClass} value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
                 <ul>
                     <li>{current_pack.title}</li>
                     <li>
@@ -214,9 +218,8 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                     </li>
                 </ul>
                 <span>
-                <input type="text" className="search_text" value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
                     <button type="submit">
-                        <img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" onClick={findList} />
+                        <img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} onClick={() => setSearchOn(!searchOn)} alt="" />
                     </button>
                 </span>
             </div>
