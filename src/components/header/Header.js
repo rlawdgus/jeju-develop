@@ -74,6 +74,7 @@ const Header = () => {
     // }, [navList])
 
     // const setDefault = () => setNavList(navList.map(item => ({ ...item, checked: false })))
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : ''
 
     return (
         <header>
@@ -95,7 +96,7 @@ const Header = () => {
                     <ul id="menu">
                         <li>
                             <Link
-                                to={Paths.session}
+                                to={LANGUAGE_PATH + Paths.session}
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title}
@@ -103,7 +104,7 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                to={Paths.conference}
+                                to={LANGUAGE_PATH + Paths.conference}
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title2}
@@ -111,7 +112,7 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                to={Paths.exhibition}
+                                to={LANGUAGE_PATH + Paths.exhibition}
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title3}
@@ -119,7 +120,7 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                to={Paths.notice}
+                                to={LANGUAGE_PATH + Paths.notice}
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title4}
@@ -127,7 +128,7 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                to={Paths.sns}
+                                to={LANGUAGE_PATH + Paths.sns}
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title5}
