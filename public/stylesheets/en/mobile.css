@@ -287,7 +287,7 @@ h3.h3tit.pt20{padding-top:25px;}
   margin:0 auto;font-style:normal;font-weight:bold;font-size:12px;padding:15px 0px;box-sizing:border-box;
   overflow:hidden;display:block;
   /* white-space: nowrap;text-overflow: ellipsis; */
-  
+  word-break: keep-all;
   width:90%;
 }
 .bigimg ul li img{display:block;margin:0 auto;margin-top:30px;max-width: 100%;}
