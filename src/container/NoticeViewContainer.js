@@ -104,7 +104,7 @@ export default ({ viewId, near }) => {
                             </a>}
                             <span>
                                 {noticeView.file_1}
-                                <em>334kb</em>
+                                {/* <em>334kb</em> */}
                             </span>
                         </div>
                     </div>
