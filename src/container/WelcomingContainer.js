@@ -76,7 +76,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    <span> {'<'}이름{'('}소속{')>'} </span>
+                    {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
                 </div>
             </div>
         </section>
