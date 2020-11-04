@@ -28,9 +28,10 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
             setBooth(res)
         } catch (e) {
             alert('찾으시는 부스가 존재하지 않습니다.')
+            history.goBack();
         }
         setLoading(false);
-    }, [viewId])
+    }, [viewId, history])
 
 
 
@@ -45,6 +46,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
     const leftLists = [
         {
             num: 0,
+            id: "c1",
             kr_text: "온라인 전시",
             en_text: "Online-Exhibition",
             cn_text: "중국어",
@@ -288,7 +290,6 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                                 <input type="checkbox" id="touch" />
                                 <div className={"submenu" + current_pack.css}>
                                     {leftLists.map(list => (
-                                        list.num !== 0 &&
                                         <div key={list.id} onClick={() => { listClick(list.num); }} id={list.id} >{language === 'en' ? list.en_text : language === 'cn' ? list.cn_text : language === 'jp' ? list.jp_text : list.kr_text}</div>
                                     ))}
                                 </div>
@@ -317,7 +318,7 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                         <div className={"mobuy" + current_pack.css}>
                             <a href={booth.link ?
                                 (booth.link.indexOf("http") !== -1) ?
-                                booth.link : "http://" + booth.link
+                                    booth.link : "http://" + booth.link
                                 : ""} target={booth.link ? "_blank" : ""} type="submit" rel="noopener noreferrer" className={"buy" + current_pack.css}>
                                 {language === 'en' ? "Purchase"
                                     : language === 'cn' ? "중국어"
