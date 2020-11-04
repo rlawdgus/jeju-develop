@@ -1,26 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 
 import { Paths } from '../../paths/index'
 
-// const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
+const LANGUAGE_URL_LIST = ['/kr', '/en', '/cn', '/jp'];
 
 const Header = () => {
     const autoClose = useRef();
     const location = useLocation();
-    // const history = useHistory();
+    const history = useHistory();
 
-    // const language = useSelector(state => state.language);
-
-    // const selectLanguage = useCallback(e => {
-    //     // 언어 변경
-    //     const pathbase = LANGUAGE_URL_LIST.reduce((prev, cur) => {
-    //         return prev.replace(cur, '');
-    //     }, location.pathname);
-    //     history.push(`/${e.target.value}` + pathbase + location.search);
-    // }, [location, history]);
-    // const location = useLocation();
+    const selectLanguage = useCallback(e => {
+        // 언어 변경
+        const pathbase = LANGUAGE_URL_LIST.reduce((prev, cur) => {
+            return prev.replace(cur, '');
+        }, location.pathname);
+        history.push(`/${e.target.value}` + pathbase + location.search);
+    }, [location, history]);
     const language = useSelector(state => state.language.current);
 
     //--------------------------------------------------------------------------------------
@@ -66,21 +63,12 @@ const Header = () => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
-    // const selected = useCallback(id => {
-    //     setNavList(
-    //         navList.map(item =>
-    //             item.id === id ? { ...item, checked: true } : { ...item, checked: false }
-    //         )
-    //     )
-    // }, [navList])
-
     useEffect(() => {
         if (autoClose.current) {
             autoClose.current.checked = false;
         }
     }, [location]);
 
-    // const setDefault = () => setNavList(navList.map(item => ({ ...item, checked: false })))
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     return (
@@ -139,6 +127,13 @@ const Header = () => {
                     </ul>
                 </div>
             </nav>
+            <div className={"select" + current_pack.css}>
+                <select onChange={selectLanguage} value={language} className={"select-option" + current_pack.css}>
+                    <option value="kr">kr</option>
+                    <option value="en">en</option>
+                </select>
+                <div className={"select__arrow" + current_pack.css}></div>
+            </div>
         </header>
     );
 };

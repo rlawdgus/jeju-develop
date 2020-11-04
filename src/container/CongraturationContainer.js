@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-// import { Paths } from '../paths/index'
+import { Paths } from '../paths/index'
 
 export default () => {
 
@@ -47,13 +48,20 @@ export default () => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
-    // const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
+    const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
     return (
         <section id="main_container" className={current_pack.css}>
             <div className={"subnavi" + current_pack.css}>
                 <ul>
                     <li>{current_pack.catagory}</li>
-                    <li>{current_pack.title2}</li>
+                    <li>
+                        <label for="touch">{current_pack.title2}</label>
+                        <input type="checkbox" id="touch"/> 
+                        <div class="submenu sm">
+                            <Link to={LANGUAGE_PATH + Paths.session}>{current_pack.title}</Link>
+                            <Link to={LANGUAGE_PATH + Paths.session + "/congraturation"}>{current_pack.title2}</Link>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div className={"main_content" + current_pack.css}>
