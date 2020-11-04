@@ -63,7 +63,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    <span> {current_pack.name} </span>
+                    {/* <span> {current_pack.name} </span> */}
                 </div>
             </div>
         </section>
