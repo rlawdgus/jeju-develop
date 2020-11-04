@@ -372,7 +372,6 @@ a.buy{width: 220px; display:block;margin:0 auto;margin-top:10px;border-radius:10
 
 
 
-.swiper-slide div{}
 .swiper-slide div em{display:block;white-space: nowrap;text-overflow: ellipsis;overflow:hidden;width:80%;margin:0 auto;box-sizing:border-box;}
 .swiper-slide div:after{display:none;}
 .swiper-slide img{max-width:100%;}

@@ -11,7 +11,7 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
     const URL = "http://14.63.174.102:84";
     const history = useHistory();
     const language = useSelector(state => state.language.current);
-    // const inputRef = useRef();                // 검색 기능 구현시 필요
+    const inputRef = useRef();                // 검색 기능 구현시 필요
     const autoClick = useRef()
 
     const leftLists = [
@@ -105,52 +105,52 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
     ]
 
     const [result, setResult] = useState([]);
-    // const [search, setSearch] = useState('');                // 검색 기능 구현시 필요
+    const [search, setSearch] = useState('');                // 검색 기능 구현시 필요
     const [find, setFind] = useState([]);
     const [exist, setExist] = useState(false);
 
-    // const onChange = e => setSearch(e.target.value);         // 검색 기능 구현시 필요
+    const onChangeSearch = e => setSearch(e.target.value);         // 검색 기능 구현시 필요
 
     const LANGUAGE_PATH = language !== '' ? `/${language}` : '';
 
     const listClick = (num) => {
         history.push(LANGUAGE_PATH + Paths.exhibition + '?type=' + parseInt(num));
-        setFind([]); /*setSearch('');*/ setExist(false); autoClick.current.click();
+        setFind([]); setSearch(''); setExist(false); autoClick.current.click();
     };
 
     const imgError = useCallback((e) => {
         e.target.src = URL + "/data/uploaded/documents-photo_1-882.jpeg?v=1602807638";
     }, []);
 
-    // const findList = useCallback(() => {                 // 검색 기능 구현시 필요
-    //     // 아무것도 입력 없이 찾기버튼을 눌렀을 때
-    //     if (search === '') setExist(false);
+    const findList = useCallback(() => {                 // 검색 기능 구현시 필요
+        // 아무것도 입력 없이 찾기버튼을 눌렀을 때
+        if (search === '') setExist(false);
 
-    //     // 입력이 있을경우 언어별로 판단
-    //     if (language === 'en') {
-    //         const findItem = items.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
-    //         if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
-    //         else { setExist(true); setFind(findItem); }
-    //     } else if (language === 'cn') {
-    //         const findItem = items.filter(item => item.title.indexOf(search) > -1)
-    //         if (findItem.length === 0) { alert("중국어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
-    //         else { setExist(true); setFind(findItem); }
-    //     } else if (language === 'jp') {
-    //         const findItem = items.filter(item => item.title.indexOf(search) > -1)
-    //         if (findItem.length === 0) { alert("일본어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
-    //         else { setExist(true); setFind(findItem); }
-    //     } else {
-    //         const findItem = items.filter(item => item.title.indexOf(search) > -1)
-    //         if (findItem.length === 0) { alert("검색하신 부스가 존재하지 않습니다."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
-    //         else { setExist(true); setFind(findItem); }
-    //     }
-    // }, [search, items, language])
+        // 입력이 있을경우 언어별로 판단
+        if (language === 'en') {
+            const findItem = items.filter(item => item.title.toLowerCase().indexOf(search.toLowerCase()) > -1)
+            if (findItem.length === 0) { alert("The booth does not exist."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        } else if (language === 'cn') {
+            const findItem = items.filter(item => item.title.indexOf(search) > -1)
+            if (findItem.length === 0) { alert("중국어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        } else if (language === 'jp') {
+            const findItem = items.filter(item => item.title.indexOf(search) > -1)
+            if (findItem.length === 0) { alert("일본어"); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        } else {
+            const findItem = items.filter(item => item.title.indexOf(search) > -1)
+            if (findItem.length === 0) { alert("검색하신 부스가 존재하지 않습니다."); setFind([]); setSearch(''); setExist(false); inputRef.current.focus(); }
+            else { setExist(true); setFind(findItem); }
+        }
+    }, [search, items, language])
 
-    // const handleKeyPrress = e => {           // 검색 기능 구현시 필요
-    //     if (e.key === 'Enter') {
-    //         findList();
-    //     }
-    // }
+    const handleKeyPrress = e => {           // 검색 기능 구현시 필요
+        if (e.key === 'Enter') {
+            findList();
+        }
+    }
 
     //--------------------------------------------------------------------------------------
     const LANGUAGE_PACK = {
@@ -214,8 +214,13 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                         </div>
                     </li>
                 </ul>
-                <span><button type="submit"><img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" /></button></span>
+                <span>
+                    <button type="submit">
+                        <img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" />
+                    </button>
+                </span>
             </div>
+            <input type="text" className="search_text" value={search} onChange={onChangeSearch} onKeyPress={handleKeyPrress} ref={inputRef}></input>
             <div className={"content" + current_pack.css}>
                 <div className={"subtop menu01" + current_pack.css}>
                     <h3>{language === 'en' ? <><strong>{leftLists[type].en_text}</strong>{current_pack.unit} </>

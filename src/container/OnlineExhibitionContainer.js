@@ -295,7 +295,6 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                             </li>
                             <li>{booth.title}</li>
                         </ul>
-                        <span><button type="submit"><img src={(`${process.env.PUBLIC_URL}/img/ic_mo_search.png`)} alt="" /></button></span>
                     </div>
 
                     <section id="ex_container" className={current_pack}>
