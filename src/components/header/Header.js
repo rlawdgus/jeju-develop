@@ -28,8 +28,12 @@ const Header = () => {
         const pathbase = LANGUAGE_URL_LIST.reduce((prev, cur) => {
             return prev.replace(cur, '');
         }, location.pathname);
+        history.push('en/SNS');
+        console.log(pathbase)
         console.log(language)
-        history.push('/' + language + pathbase + location.search);
+        console.log((language === 'en' ? '' : '/en') + pathbase + location.search);
+        // history.push((language === 'en' ? '' : '/en') + pathbase + location.search);
+        
         autoClose.current.click()
     }, [location, history, language]);
 
@@ -134,14 +138,6 @@ const Header = () => {
                                 onClick={() => autoClose.current.click()}
                             >
                                 {current_pack.title4}
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to={Paths.sns}
-                                onClick={() => autoClose.current.click()}
-                            >
-                                {current_pack.title5}
                             </Link>
                         </li>
                         <li>
