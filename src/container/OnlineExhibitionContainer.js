@@ -314,14 +314,18 @@ const OnlineExhibitionContainer = ({ viewId, type }) => {
                             </div>
 
                         </div>
+                        {console.log(booth.link)}
                         <div className={"mobuy" + current_pack.css}>
-                            <a href={"http://" + booth.link} target="_blank" type="submit" rel="noopener noreferrer" className={"buy" + current_pack.css}>
+                            <a href={booth.link ?
+                                (booth.link.indexOf("http") !== -1) ?
+                                booth.link : "http://" + booth.link
+                                : ""} target={booth.link ? "_blank" : ""} type="submit" rel="noopener noreferrer" className={"buy" + current_pack.css}>
                                 {language === 'en' ? "Purchase"
                                     : language === 'cn' ? "중국어"
                                         : language === 'jp' ? "일본어"
                                             : "구매하러 가기"} {'>'}
                             </a>
-                            <a href={URL + booth.file_1} className={"buy" + current_pack.css} download={booth.contents + booth.file_1} rel="noopener noreferrer" target="_blank">
+                            <a href={URL + booth.file_1} className={"buy" + current_pack.css} rel="noopener noreferrer" target="_blank">
                                 {language === 'en' ? "Catalog"
                                     : language === 'cn' ? "중국어"
                                         : language === 'jp' ? "일본어"

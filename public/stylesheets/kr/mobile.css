@@ -371,9 +371,15 @@ a.buy{width: 220px; display:block;margin:0 auto;margin-top:10px;border-radius:10
 .snsbox ul li:after{content:'';position:absolute;background:url(../../img/ic_sns_go.png) no-repeat center top;width:8px;height:30px;background-size:7px auto;right:20px;top:36%;z-index:10;}
 
 
-
-
-/* .swiper-slide div{} */
-.swiper-slide div em{display:block;white-space: nowrap;text-overflow: ellipsis;overflow:hidden;width:80%;margin:0 auto;box-sizing:border-box;}
+.swiper-slide div em{
+  display:block;
+  /* white-space: nowrap;
+  text-overflow: ellipsis; */
+  word-break: keep-all;
+  overflow:hidden;
+  width:80%;
+  margin:0 auto;
+  box-sizing:border-box;
+}
 .swiper-slide div:after{display:none;}
 .swiper-slide img{max-width:100%;}
