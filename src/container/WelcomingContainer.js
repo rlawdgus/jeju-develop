@@ -15,28 +15,28 @@ export default () => {
             title: "개회사",
             title2: "축사",
             name: "제주특별자치도지사 원희룡",
-            name2: "농어업농어촌특별위원회 위원장 정현찬"
+            name2: "대통령직속농어업농어촌특별위원회 위원장 정현찬"
         },
         en: {
             css: " language-en",
             title: "Welcome Address",
             title2: "Congratulatory message",
             name: "제주특별자치도지사 원희룡",
-            name2: "농어업농어촌특별위원회 위원장 정현찬"
+            name2: "대통령직속농어업농어촌특별위원회 위원장 정현찬"
         },
         cn: {
             css: " language-cn",
             title: "중국어",
             title2: "중국어",
             name: "제주특별자치도지사 원희룡",
-            name2: "농어업농어촌특별위원회 위원장 정현찬"
+            name2: "대통령직속농어업농어촌특별위원회 위원장 정현찬"
         },
         jp: {
             css: " language-jp",
             title: "일본어",
             title2: "일본어",
             name: "제주특별자치도지사 원희룡",
-            name2: "농어업농어촌특별위원회 위원장 정현찬"
+            name2: "대통령직속농어업농어촌특별위원회 위원장 정현찬"
         }
     }
 
