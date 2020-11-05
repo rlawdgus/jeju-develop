@@ -391,11 +391,11 @@ a.btclose{background:#757575}
 
 .main_content div.right{float:right;width:46%;overflow:hidden;}
 .main_content div.right .confgo,
-.main_content div.right .onlinego{display:block;position: relative;width:100%;margin:0 auto;text-align:center;margin-bottom: 7px;max-height:345px;}
+.main_content div.right .onlinego{display:block;position: relative;width:100%;margin:0 auto;text-align:center;margin-bottom: 7px;max-height:345px;overflow: hidden;}/*20201106*/
 .main_content div.right .onlinego i,
 .main_content div.right .confgo i{position:absolute;left:0px;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:10}
 .main_content div.right .onlinego img,
-.main_content div.right .confgo img{position:relative;z-index:0;left:0;}
+.main_content div.right .confgo img{position:relative;z-index:0;left:0;width:100%;}/*20201106*/
 .main_content div.right .onlinego span,
 .main_content div.right .confgo span {position:absolute;display:block;margin:0 auto;left:37%;z-index:20;color:#fff;border-radius:100em;border:1px solid #fff;top:50%;padding:13px 30px;font-size:28px;}
 .main_content div.right .onlinego h3,
