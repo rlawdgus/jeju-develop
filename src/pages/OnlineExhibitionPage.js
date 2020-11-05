@@ -12,6 +12,7 @@ import { firstModalOpen } from '../store/modal';
 import { setID } from '../store/exhibition';
 import { Paths } from '../paths';
 import SwiperContainer from '../container/SwiperContainer';
+import { getCookie, setCookie } from '../lib/cookie';
 
 const OnlineExhibitionPage = ({ match, location }) => {
     const { index } = match.params;
@@ -35,11 +36,13 @@ const OnlineExhibitionPage = ({ match, location }) => {
     const firstOpen = useCallback((id) => {
         window.scrollTo(0, 0);
         dispatch(setID(id));
-        const TOKEN = localStorage.getItem('token');
+        // const TOKEN = localStorage.getItem('token');
+        const TOKEN = getCookie('token');
         if (TOKEN) {
             history.push(LANGUAGE_PATH + Paths.exhibition + '/' + id);
         } else {
-            localStorage.setItem('token', true);
+            // localStorage.setItem('token', true);
+            setCookie('token', true, 1);
             dispatch(firstModalOpen());
         }
     }, [dispatch, history, LANGUAGE_PATH]);

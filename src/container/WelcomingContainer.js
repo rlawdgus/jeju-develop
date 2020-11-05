@@ -13,7 +13,7 @@ export default () => {
     const LANGUAGE_PACK = {
         kr: {
             css: "",
-            title: "환영사",
+            title: "개회사",
             title2: "축사",
             catagory: "오프닝세션",
             name: "이름(소속)"
@@ -76,7 +76,22 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
+                    <span>제주특별자치도지사 원희룡</span>
+                </div>
+                <div className={"movie wr" + current_pack.css}>
+                    {/* <i></i>
+                <img src={(`${process.env.PUBLIC_URL}/img/bg_mo_movie.png`)} alt=""/> */}
+                    <iframe
+                        title="youtube"
+                        width="100%"
+                        height="220px"
+                        src="https://www.youtube.com/embed/35nf0HYGMQw" //비디오 링크가  cms에 추가하는 것이 없음
+                        alt=""
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                    <span> 농어업농어촌특별위원회 위원장 정현찬 </span>
                 </div>
             </div>
         </section>

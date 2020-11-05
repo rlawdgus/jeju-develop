@@ -13,7 +13,7 @@ export default () => {
     const LANGUAGE_PACK = {
         kr: {
             css: "",
-            title: "환영사",
+            title: "개회사",
             title2: "축사",
             catagory: "오프닝세션",
             name: "이름(소속)",
@@ -79,7 +79,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
+                    <span>제주특별자치도의회 좌남수 의원</span>
                 </div>
                 <div className={"movie wr" + current_pack.css}>
                     {/* <i></i>
@@ -94,7 +94,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
+                    <span> 더불어민주당 위성곤 의원</span>
                 </div>
             </div>
         </section>
