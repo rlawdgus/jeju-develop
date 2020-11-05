@@ -420,7 +420,7 @@ a.btclose{background:#757575}
 .tab ul li a{display:block;color:#7c7c7c;background:#d7d7d7;border-radius:100em;line-height:37px;width:130px;font-size:19px;font-weight:bold;}
 .tab ul li a:hover,
 .tab ul li a.on,
-.tab ul li a:active{color:#fff;background:#fff;}
+.tab ul li a:active{color:#fff;background:#228ba8;}
 
 #comm_container{position:relative;margin:0 auto;width:100%;height: 100%;padding:60px 0;overflow:hidden;box-sizing:border-box}
 .noticebox{display:block;margin:0 auto;max-width:1072px;padding-top:40px;}
