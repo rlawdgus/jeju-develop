@@ -9,7 +9,7 @@ import { Backdrop } from '@material-ui/core';
 import { postUserEvent } from '../api/UserAPI';
 import { useHistory } from 'react-router-dom';
 import { Paths } from '../paths';
-import { isCellPhoneForm, isEmailForm } from '../lib/formatChecker';
+import { isCellPhoneForm, isEmailForm, onlyNumberListener } from '../lib/formatChecker';
 /* Redux */
 
 function reducer(state, action) {
@@ -217,16 +217,16 @@ const OnlineExhibitionEventContainer = () => {
                         </dl>
                         <dl>
                             <dt>{current_pack.mobile} </dt>
-                            <dd><input type="text" style={{ width: '100%' }} name="phone" value={phone} onChange={onChange} /></dd>
+                            <dd><input type="tel" style={{ width: '100%' }} name="phone" value={phone} onChange={onChange} onKeyDown={onlyNumberListener} /></dd>
                         </dl>
                         <dl>
                             <dt>{current_pack.phone} </dt>
-                            <dd><input type="text" style={{ width: '100%' }} name="tel" value={tel} onChange={onChange} /></dd>
+                            <dd><input type="tel" style={{ width: '100%' }} name="tel" value={tel} onChange={onChange} onKeyDown={onlyNumberListener} /></dd>
                         </dl>
                         <dl>
                             <dt>{current_pack.email} </dt>
                             <dd>
-                                <input type="text" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
+                                <input type="email" style={{ width: '100%' }} name="email" value={email} onChange={onChange} />
                             </dd>
                         </dl>
                         <div className={"privacy" + current_pack.css}>
