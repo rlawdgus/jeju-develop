@@ -49,14 +49,21 @@ export default () => {
                         title="youtube"
                         width="100%"
                         height="551px"
-                        src="http://www.jejusoritv.net/p/index.asp" //비디오 링크가  cms에 추가하는 것이 없음
+                        // src="http://www.jejusoritv.net/p/index.asp" //비디오 링크가  cms에 추가하는 것이 없음
+                        src="https://i.ytimg.com/vi_webp/RIweUEaE2xw/sddefault.webp" //비디오 링크가  cms에 추가하는 것이 없음 //추가 수정됨
                         alt=""
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
                     {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
+                    <a href="./Conference.pdf" 
+                color="#000"
+                background="#000"
+             
+                >컨퍼런스 자료집</a>
                 </div>
+               
             </div>
         </section>
     )
