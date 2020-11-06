@@ -42,41 +42,76 @@ export default ({ dataSet, firstOpen }) => {
     //-------------------------------------------------------------------------------------
 
 
+    if (dataSet[0].id != 114) {
+        const push_obj = {
+            "id": 114,
+            "module_id": 1,
+            "title": "(강원)정선아라리한과농원(영)",
+            "contents": "사단법인 제주관광문화산업진흥원_자연본색",
+            "photo_1": "/data/uploaded/documents-photo_1-116.png?v=1604392471",
+            "photo_1_thumb": "/data/uploaded/documents-photo_1-116-thumb.png?v=1604392471",
+            "photo_2": "/data/uploaded/documents-photo_2-114.png?v=1604576068",
+            "photo_2_thumb": "/data/uploaded/documents-photo_2-114-thumb.png?v=1604576068",
+            "photo_3": "/data/uploaded/documents-photo_3-116.png?v=1604481147",
+            "photo_3_thumb": "/data/uploaded/documents-photo_3-116-thumb.png?v=1604481147",
+            "photo_4": "/data/uploaded/documents-photo_4-116.png?v=1604481491",
+            "photo_4_thumb": "/data/uploaded/documents-photo_4-116-thumb.png?v=1604481491",
+            "photo_5": "",
+            "photo_5_thumb": "",
+            "created_at": "2020-11-02 14:58:04",
+            "updated_at": "2020-11-06 06:24:41",
+            "video_1": "",
+            "photo_1_width": "533",
+            "photo_2_width": "300",
+            "photo_3_width": "400",
+            "photo_4_width": "400",
+            "photo_5_width": "",
+            "photo_1_height": "94",
+            "photo_2_height": "201",
+            "type": 6,
+            "title_en": "Jeongseon Arari Hangwa Farming Asso"
+        }
+        dataSet.splice(0, 0, push_obj)
+    }
+
+
     return (
-        <>
-            {dataSet === 'Error' ? (
-                <Swiper>
-                    <SwiperSlide>
-                        <img
-                            className={"error" + current_pack.css}
-                            src={(`${process.env.PUBLIC_URL}/img/ic_check_on.png`)}
-                            alt=""
-                        />
-                    </SwiperSlide>
-                </Swiper>
+            <>
+
+    {dataSet === 'Error' ? (
+            <Swiper>
+    <SwiperSlide>
+        <img
+            className={"error" + current_pack.css}
+            src={(`${process.env.PUBLIC_URL}/img/ic_check_on.png`)}
+            alt=""
+            />
+    </SwiperSlide>
+</Swiper>
             ) : (
-                    <Swiper
-                        slidesPerView={3} // 보이는 슬라이드 수
-                        slidesPerGroup={1} // 슬라이드 할때 몇개를 슬라이드 할것이냐
-                        loop={dataSet.length > 3}
-                        loopedSlides={3} // 루프를 하면 몇개를 할것인지
-                        initialSlide={0}
-                        navigation
-                        watchOverflow={true}
-                        loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
-                        delay={300}
-                    >
-                        {dataSet.map((data) => (
-                            <SwiperSlide key={data.id}>
-                                <div>
-                                    <em>{language === 'en' ? data.title_en : data.title}</em>
-                                    <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                )
-            }
-        </>
-    );
+            <Swiper
+    slidesPerView={3} // 보이는 슬라이드 수
+    slidesPerGroup={1} // 슬라이드 할때 몇개를 슬라이드 할것이냐
+    loop={dataSet.length > 3}
+    loopedSlides={3} // 루프를 하면 몇개를 할것인지
+    initialSlide={0}
+    navigation
+    watchOverflow={true}
+    loopPreventsSlide // 활성화되면 전환이 이미 진행 중일 때 스 와이퍼 슬라이드 이전 / 다음 전환을 방지
+    delay={300}
+    >
+    {dataSet.map((data) => (
+                    <SwiperSlide key={data.id}>
+        <div>
+            <em>{language === 'en' ? data.title_en : data.title}</em>
+            <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
+        </div>
+    </SwiperSlide>
+                    ))}
+</Swiper>
+            )
+}
+    
+</>
+);
 };

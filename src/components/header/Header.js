@@ -129,6 +129,7 @@ const Header = () => {
             </nav>
             <div className={"select" + current_pack.css}>
                 <select onChange={selectLanguage} value={language} className={"select-option" + current_pack.css}>
+                    <option value="">lang</option>
                     <option value="kr">kr</option>
                     <option value="en">en</option>
                 </select>
