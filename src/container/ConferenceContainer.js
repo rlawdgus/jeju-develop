@@ -57,11 +57,10 @@ export default () => {
                         allowFullScreen
                     ></iframe>
                     {/* <span> {'<'}이름{'('}소속{')>'} </span> */}
-                    <a href="../Conference.pdf" /*수정 중 *********** */
-                color="#000"
-                background="#000"
-             
-                >컨퍼런스 자료집</a>
+                    <a href="/Conference.pdf"
+                       style="color:#fff;background:#f3be38;font-size:16px;display:inline-block;padding:8px 16px;"
+                       target="_blank"
+                    >컨퍼런스 자료집</a>
                 </div>
                
             </div>
