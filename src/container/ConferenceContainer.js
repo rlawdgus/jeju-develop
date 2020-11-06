@@ -50,7 +50,7 @@ export default () => {
                         width="100%"/*100%에서 수정 ***************** */
                         height="551px"
                         // src="http://www.jejusoritv.net/p/index.asp" //비디오 링크가  cms에 추가하는 것이 없음
-                        src="http://www.jejusoritv.net/p/index.asp?from=main&live_no=11242" //비디오 링크가  cms에 추가하는 것이 없음 //추가 수정됨
+                        src="https://www.youtube.com/embed/HJDt5ysdbw0" //비디오 링크가  cms에 추가하는 것이 없음 //추가 수정됨
                         alt=""
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
