@@ -43,7 +43,7 @@ if(dataSet[0].id != 114){
         const push_obj = { 
             "id": 114, 
             "module_id": 1, 
-            "title": "(강원)정선아라리한과농원(영)", 
+            "title": "(강원)정선아라리한과<br>농원(영)", 
             "contents": "사단법인 제주관광문화산업진흥원_자연본색", 
             "photo_1": "/data/uploaded/documents-photo_1-116.png?v=1604392471", 
             "photo_1_thumb": "/data/uploaded/documents-photo_1-116-thumb.png?v=1604392471", 
@@ -66,7 +66,7 @@ if(dataSet[0].id != 114){
             "photo_1_height": "94", 
             "photo_2_height": "201", 
             "type": 6,
-            "title_en": "Jeongseon Arari Hangwa Farming Asso"
+            "title_en": "Jeongseon Arari Hangwa<br>Farming Asso"
         }
         dataSet.splice(0, 0, push_obj)
     }
