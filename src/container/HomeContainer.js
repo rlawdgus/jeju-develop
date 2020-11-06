@@ -62,7 +62,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    <span> {current_pack.movie_name} </span>
+                    {/* <span> {current_pack.movie_name} </span> */}
                 </div>
                 <div className={"right" + current_pack.css}>
                     <Link to={LANGUAGE_PATH + Paths.exhibition} >

@@ -13,17 +13,17 @@ export default () => {
     const LANGUAGE_PACK = {
         kr: {
             css: "",
-            title: "환영사",
+            title: "개회사",
             title2: "축사",
-            name: "이름(소속)",
-            name2: "이름(소속)"
+            name: "제주특별자치도의회 좌남수 의원",
+            name2: "더불어민주당 위성곤 의원"
         },
         en: {
             css: " language-en",
             title: "Welcome Address",
             title2: "Congratulatory message",
-            name: "name()",
-            name2: "name()"
+            name: "제주특별자치도의회 좌남수 의원",
+            name2: "더불어민주당 위성곤 의원"
         },
         cn: {
             css: " language-cn",
@@ -67,7 +67,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    {/* <span> {current_pack.name} </span> */}
+                    <span> {current_pack.name} </span>
                 </div>
 
                 <div className={"speech" + current_pack.css}>
@@ -83,7 +83,7 @@ export default () => {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
-                    {/* <span> {current_pack.name2} </span> */}
+                    <span> {current_pack.name2} </span>
                 </div>
             </div>
         </section>
