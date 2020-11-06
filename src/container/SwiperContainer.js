@@ -40,6 +40,9 @@ export default ({ dataSet, firstOpen }) => {
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
 
+
+	
+	
     return (
         <>
             {dataSet === 'Error' ? (
@@ -66,7 +69,8 @@ export default ({ dataSet, firstOpen }) => {
                     >
                         {dataSet.map((data) => (
                             <SwiperSlide key={data.id}>
-                                <div>
+
+        <div>
                                     <em>{language === 'en' ? data.title_en : data.title}</em>
                                     <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
