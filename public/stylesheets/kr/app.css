@@ -341,11 +341,34 @@ input.leftch[type="checkbox"]:checked + label span {  background:url(../../img/i
 .bigimg ul{padding:0px;margin:0px;}
 .bigimg ul li{float:left;position:relative;text-align:center;width:33.33%;height:368px;}
 .bigimg ul li:after{content:'';width:100%;position:absolute;top:5%;height:1px;left:0px;background:#bebdbd;z-index:0}
-.bigimg ul li em{position:relative;display:block;margin:0 auto;font-style:normal;width:90%;background:#fff;box-sizing:border-box;font-weight:bold;font-size:20px;padding:15px 20px;box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2)  ; z-index:10;
+.bigimg ul li em{position:relative;display:block;margin:0 auto;font-style:normal;width:90%;background:#fff;box-sizing:border-box;font-weight:bold;font-size:20px;padding:15px 20px;.bigimg ul li em {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  font-style: normal;
+  width: 90%;
+  background: #fff;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 20px;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 28px;
+  height: 66px;
+  padding: 6px 12px !important;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  -webkit-box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2);
+  /* word-break: keep-all; */
+}
+/* .bigimg ul li em{position:relative;display:block;margin:0 auto;font-style:normal;width:90%;background:#fff;box-sizing:border-box;font-weight:bold;font-size:20px;padding:15px 20px;box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2)  ; z-index:10;
 	-webkit-box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2)  ; 
   -moz-box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.2)  ; /*white-space: nowrap;text-overflow: ellipsis;overflow:hidden;*/
   word-break: keep-all;
-}
+} */
   .bigimg ul li img{display:block;margin:0 auto;margin-top:30px;}
 .bigimg .bigimgsize{max-width:70%; }
 /* 모달창 */
