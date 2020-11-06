@@ -45,10 +45,10 @@ export default () => {
                 <div className={"speech" + current_pack.css}>
                     {/* <i></i> */}
                     {/* <img src={`${process.env.PUBLIC_URL}/img/bg_speech.png`} alt="" /> */}
-                    <iframe
+                    <iframe 
                         title="youtube"
                         width="100%"/*100%에서 수정 ***************** */
-                        height="551px"
+                        height="551px"  
                         // src="http://www.jejusoritv.net/p/index.asp" //비디오 링크가  cms에 추가하는 것이 없음
                         src="https://www.youtube.com/embed/qBvHqTFWuM4" //비디오 링크가  cms에 추가하는 것이 없음 //추가 수정됨
                         alt=""

@@ -39,9 +39,54 @@ export default ({ dataSet, firstOpen }) => {
 
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
     //--------------------------------------------------------------------------------------
-
-
-	
+if(dataSet[0].id != 114){
+        const push_obj = { 
+            "id": 114, 
+            "module_id": 1, 
+            "title": "(강원)정선아라리한과농원(영)", 
+            "contents": "사단법인 제주관광문화산업진흥원_자연본색", 
+            "photo_1": "/data/uploaded/documents-photo_1-116.png?v=1604392471", 
+            "photo_1_thumb": "/data/uploaded/documents-photo_1-116-thumb.png?v=1604392471", 
+            "photo_2": "/data/uploaded/documents-photo_2-114.png?v=1604576068", 
+            "photo_2_thumb": "/data/uploaded/documents-photo_2-114-thumb.png?v=1604576068", 
+            "photo_3": "/data/uploaded/documents-photo_3-116.png?v=1604481147", 
+            "photo_3_thumb": "/data/uploaded/documents-photo_3-116-thumb.png?v=1604481147", 
+            "photo_4": "/data/uploaded/documents-photo_4-116.png?v=1604481491", 
+            "photo_4_thumb": "/data/uploaded/documents-photo_4-116-thumb.png?v=1604481491", 
+            "photo_5": "", 
+            "photo_5_thumb": "", 
+            "created_at": "2020-11-02 14:58:04", 
+            "updated_at": "2020-11-06 06:24:41", 
+            "video_1": "", 
+            "photo_1_width": "533", 
+            "photo_2_width": "300", 
+            "photo_3_width": "400", 
+            "photo_4_width": "400", 
+            "photo_5_width": "", 
+            "photo_1_height": "94", 
+            "photo_2_height": "201", 
+            "type": 6,
+            "title_en": "Jeongseon Arari Hangwa Farming Asso"
+        }
+        dataSet.splice(0, 0, push_obj)
+    }
+    
+    function ChangeBrToBr(props) {
+        console.log(props.name_ko,props.name_en)
+        let title = (language === 'en' ? props.name_en : props.name_ko)
+        console.log(title.split('<br>').length,title.split('<br>'))
+        if(title.split('<br>').length == 1){
+            console.log('return title')
+            return title
+        }else{
+            var return_title = ''
+            console.log('return title to br')
+            return_title = title.split('<br>').map( line => { //국영문 구분법
+                return (<span>{line}<br/></span>)
+            })
+            return return_title
+        }
+    }
 	
     return (
         <>
@@ -71,7 +116,9 @@ export default ({ dataSet, firstOpen }) => {
                             <SwiperSlide key={data.id}>
 
         <div>
-                                    <em>{language === 'en' ? data.title_en : data.title}</em>
+                                    <em>
+                                        <ChangeBrToBr name_ko={data.title}  name_en={data.title_en} />
+                                    </em>
                                     <img src={URL + data.photo_2} alt="no_image" onClick={() => firstOpen(data.id)} />
                                 </div>
                             </SwiperSlide>
