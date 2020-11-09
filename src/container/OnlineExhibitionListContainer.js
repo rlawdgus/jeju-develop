@@ -181,6 +181,24 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
     }
 
     const current_pack = LANGUAGE_PACK[language] ? LANGUAGE_PACK[language] : LANGUAGE_PACK["kr"]
+    
+        function ChangeBrToBr(props) {
+        console.log(props.name_ko,props.name_en)
+        let title = (language === 'en' ? props.name_en : props.name_ko)
+        console.log(title.split('<br>').length,title.split('<br>'))
+        if(title.split('<br>').length == 1){
+            console.log('return title')
+            return title
+        }else{
+            var return_title = ''
+            console.log('return title to br')
+            return_title = title.split('<br>').map( line => { //국영문 구분법
+                return (<span>{line}<br/></span>)
+            })
+            return return_title
+        }
+    }
+    
     //--------------------------------------------------------------------------------------
 
     useEffect(() => {
@@ -243,14 +261,18 @@ const OnlineExhibitionListContainer = ({ type, items, loading, swiper, firstOpen
                                 !exist ?
                                     result.map(res => (
                                         <li key={res.id}>
-                                            <em>{language === 'en' ? res.title_en : res.title}</em>
+                                                 <em>
+                                                <ChangeBrToBr name_ko={res.title}  name_en={res.title_en} />
+                                                </em>
                                             <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_2} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                         </li>
                                     ))
                                     :
                                     find.map(res => (
                                         <li key={res.id}>
-                                            <em>{language === 'en' ? res.title_en : res.title}</em>
+                                            <em>
+                                                <ChangeBrToBr name_ko={res.title}  name_en={res.title_en} />
+                                                </em>
                                             <img className={"bigimgsize" + current_pack.css} src={URL + res.photo_2} onError={imgError} onClick={() => firstOpen(res.id)} alt="" />
                                         </li>
                                     ))
