@@ -77,10 +77,10 @@ export default ({ dataSet, firstOpen }) => {
     function ChangeBrToBr(props) {
         console.log(props.name_ko,props.name_en)
         let title = (language === 'en' ? props.name_en : props.name_ko)
+        
         console.log(title.split('<br>').length,title.split('<br>'))
         if(title.split('<br>').length == 1){
             console.log('return title')
-            return title
         }else{
             var return_title = ''
             console.log('return title to br')

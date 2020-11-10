@@ -419,3 +419,14 @@ a.buy{width: 220px; display:block;margin:0 auto;margin-top:10px;border-radius:10
 .swiper-slide img{max-width:100%;}
 
 .main_content div.movie a.down_conference{display:inline-block;margin:0;font-size:1.5rem;background: #fdb414; padding: 12px 0; position: static;color: white; margin-top: 10px;}
+
+/*html body .swiper-container .swiper-wrapper .swiper-slide {
+    width: 48% !important;
+}*/
+
+/*html body .swiper-container .swiper-wrapper .swiper-slide  div{
+    width: 95% !important;
+}
+html body .swiper-container .swiper-wrapper .swiper-slide img{
+    height: 100%;
+}*/
