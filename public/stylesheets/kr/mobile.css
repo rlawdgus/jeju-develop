@@ -430,3 +430,9 @@ a.buy{width: 220px; display:block;margin:0 auto;margin-top:10px;border-radius:10
 html body .swiper-container .swiper-wrapper .swiper-slide img{
     height: 100%;
 }*/
+
+.swiper-slide div em {
+    font-size: 8px !important;
+    height: 35px;
+    display: block;
+}
