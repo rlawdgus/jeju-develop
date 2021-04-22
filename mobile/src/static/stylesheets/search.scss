@@ -1,0 +1,19 @@
+#on_ex_container > div.subnavi > input {
+    box-sizing: border-box;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 85%;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-bottom: 1px solid white;
+    background-color: #289ab9;
+    color: white;
+    outline: none;
+    z-index: -1;
+}
+
+.on{
+    z-index: 100 !important;
+}
